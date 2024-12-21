@@ -266,3 +266,21 @@ textarea {
   border: 2px solid black;
   margin-bottom: 16px;
 }
+
+.modal-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+#confirm{
+  background-color: #b34141;
+  color: aliceblue;
+}
+
+#cancel{
+  background-color: darkgreen;
+  color: aliceblue;
+}
+

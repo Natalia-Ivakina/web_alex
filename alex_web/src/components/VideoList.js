@@ -1,8 +1,20 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import DeleteReorderButtonsComponent from "../components/DeleteReorderButtons";
 
 const VideoList = ({videos, apiType, deleteVideos, reorderVideos}) => {
     const [message, setMessage] = useState('');
+
+    /**
+     * clear msg - 5 sec
+     */
+    useEffect(() => {
+        if (message) {
+            const timer = setTimeout(() => {
+                setMessage('');
+            }, 5000); // 5 sec
+            return () => clearTimeout(timer);
+        }
+    }, [message]);
 
     return (
         <div>

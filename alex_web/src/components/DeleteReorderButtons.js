@@ -1,12 +1,19 @@
 import { useState } from "react";
-import {deleteVideo, reorderVideo} from "../services/videoService";
+import { deleteVideo, reorderVideo } from "../services/videoService";
 
 const DeleteReorderButtonsComponent = ({ videoName, apiType, onActionComplete, OnDelete, OnReorder }) => {
     const [error, setError] = useState(null);
     const [newIndex, setNewIndex] = useState("");
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const handleDelete = async () => {
+    const handleDelete = () => {
         setError(null);
+        setIsModalOpen(true);
+    };
+
+    const confirmDelete = async () => {
+        setIsModalOpen(false);
+
         try {
             const response = await deleteVideo(videoName, apiType);
             onActionComplete(response.message);
@@ -15,6 +22,10 @@ const DeleteReorderButtonsComponent = ({ videoName, apiType, onActionComplete, O
             onActionComplete("Error deleting video");
             setError(err);
         }
+    };
+
+    const cancelDelete = () => {
+        setIsModalOpen(false);
     };
 
     const handleReorder = async () => {
@@ -42,12 +53,27 @@ const DeleteReorderButtonsComponent = ({ videoName, apiType, onActionComplete, O
                     placeholder="#"
                     value={newIndex}
                     onChange={(e) => setNewIndex(e.target.value)}
-                    />
+                />
                 <button onClick={handleReorder}>Reorder</button>
             </div>
-            <div>
-                <button className="deleteButton" onClick={handleDelete}>Delete</button>
-            </div>
+
+            {/* delete */}
+            {!isModalOpen && (
+                <div>
+                    <button className="deleteButton" onClick={handleDelete}>Delete</button>
+                </div>
+            )}
+
+            {/* confirm deleting */}
+            {isModalOpen && (
+                <div className="modal">
+                    <div className="modal-content">
+                        <p>Delete?</p>
+                        <button id={"confirm"} onClick={confirmDelete}>Yes</button>
+                        <button id={"cancel"} onClick={cancelDelete}>No</button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

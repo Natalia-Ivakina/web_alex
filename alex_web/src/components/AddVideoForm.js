@@ -1,10 +1,22 @@
 import {addVideo} from "../services/videoService";
 import useVideoForm from "../hooks/useVideoForm";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 const AddNewVideoComponent = ({apiType, onAddVideo}) => {
     const {title, setTitle, link, setLink, resetForm} = useVideoForm();
     const [message, setMessage] = useState('');
+
+    /**
+     * clear msg - 5 sec
+     */
+    useEffect(() => {
+        if (message) {
+            const timer = setTimeout(() => {
+                setMessage('');
+            }, 5000); // 5 sec
+            return () => clearTimeout(timer);
+        }
+    }, [message]);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
