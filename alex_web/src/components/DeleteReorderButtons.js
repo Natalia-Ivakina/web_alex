@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { deleteVideo } from "../services/videoService";
 
-const DeleteReorderButtonsComponent = ({ videoName, apiType, onActionComplete }) => {
+const DeleteReorderButtonsComponent = ({ videoName, apiType, onActionComplete, OnDelete }) => {
     const [error, setError] = useState(null);
 
     const handleDelete = async () => {
@@ -9,6 +9,7 @@ const DeleteReorderButtonsComponent = ({ videoName, apiType, onActionComplete })
         try {
             const response = await deleteVideo(videoName, apiType);
             onActionComplete(response.message);
+            OnDelete(response.videos);
         } catch (err) {
             onActionComplete("Error deleting video");
             setError(err);

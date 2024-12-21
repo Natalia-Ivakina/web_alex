@@ -21,8 +21,13 @@ const AmvPage = () => {
     }, []);
 
     //new list
-    const updateVideos = (videos) => {
+    const afterAddVideos = (videos) => {
         setAmv(videos);
+    };
+
+    //new list after deleting
+    const afterDeleteVideos = (updatedVideos) => {
+        setAmv(updatedVideos);
     };
 
     return (
@@ -30,7 +35,7 @@ const AmvPage = () => {
             <div>
                 <h2>AMV</h2>
 
-                <AddNewVideoComponent apiType="amv" onAddVideo={updateVideos}/>
+                <AddNewVideoComponent apiType="amv" onAddVideo={afterAddVideos}/>
             </div>
             <p className="headertext">amvProjects</p>
             <p className="amvtext">Here are some explanations to help you make sense of what you’re seeing on this page.
@@ -43,7 +48,7 @@ const AmvPage = () => {
                 Some of them are real pro’s in video editing, motion design and visual effects.
                 I’m proud to have been a part of the Amv community!
                 And who knows, maybe I’ll go back to the origins eventually.</p>
-            <VideoList videos={amv} apiType="amv"/> {/* Updated to use amv */}
+            <VideoList videos={amv} apiType="amv" updateVideos={afterDeleteVideos}/> {/* Updated to use amv */}
         </>
     );
 };

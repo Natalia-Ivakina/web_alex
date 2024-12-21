@@ -21,17 +21,22 @@ const MoodsPage = () => {
     }, []);
 
     //new list
-    const updateVideos = (videos) => {
+    const afterAddVideos = (videos) => {
         setMoods(videos);
+    };
+
+    //new list after deleting
+    const afterDeleteVideos = (updatedVideos) => {
+        setMoods(updatedVideos);
     };
     return (
         <>
             <div>
                 <h2>Moods</h2>
-                <AddNewVideoComponent apiType="moods" onAddVideo={updateVideos}/>
+                <AddNewVideoComponent apiType="moods" onAddVideo={afterAddVideos}/>
             </div>
             <p className="headertext">Moods</p>
-            <VideoList videos={moods} apiType="moods"/> {/* Updated to use moods */}
+            <VideoList videos={moods} apiType="moods" updateVideos={afterDeleteVideos}/> {/* Updated to use moods */}
         </>
     );
 };

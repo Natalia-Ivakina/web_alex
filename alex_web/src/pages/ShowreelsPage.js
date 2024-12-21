@@ -21,18 +21,23 @@ const ShowreelsPage = () => {
     }, []);
 
     //new list
-    const updateVideos = (videos) => {
+    const afterAddVideos = (videos) => {
         setShowreel(videos);
+    };
+
+    //new list after deleting
+    const afterDeleteVideos = (updatedVideos) => {
+        setShowreel(updatedVideos);
     };
 
     return (
         <>
             <div>
                 <h2>Show reels</h2>
-                <AddNewVideoComponent apiType="showreels" onAddVideo={updateVideos} />
+                <AddNewVideoComponent apiType="showreels" onAddVideo={afterAddVideos} />
             </div>
             <p className="headertext">Show reel</p>
-            <VideoList videos={showreel} apiType="showreels" />
+            <VideoList videos={showreel} apiType="showreels" updateVideos={afterDeleteVideos}/>
         </>
     );
 };

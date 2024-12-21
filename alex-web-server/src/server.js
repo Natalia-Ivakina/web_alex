@@ -53,7 +53,7 @@ app.post("/api/:category", (
     try {
         const newVideo = req.body;
         saveVideoData(filePath, newVideo);
-        const videos = loadVideoData(filePath); // Получаем обновленный список видео
+        const videos = loadVideoData(filePath); // new list
         res.status(201).json({ message: `${category}: ${newVideo.name} added successfully`, videos });
     } catch (error) {
         res.status(500).json({ message: "Error saving video", error: error.message });
