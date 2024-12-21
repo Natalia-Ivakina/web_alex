@@ -1,9 +1,10 @@
 const express = require("express");
 const path = require("path");
-const {saveVideoData,
-        loadVideoData,
-        deleteVideo,
-        //reorderVideo
+const {
+    saveVideoData,
+    loadVideoData,
+    deleteVideo,
+    reorderVideo
 }
     = require("./dataAccess.js");
 
@@ -17,81 +18,122 @@ const videoPaths = {
     showreels: path.join(__dirname, "../videodata/showreels.json"),
 };
 
-// load
+/**
+ * LOAD
+ */
 app.get("/api/:category", (
     req,
     res) => {
-    const { category } = req.params;
+    const {category} = req.params;
     const filePath = videoPaths[category];
 
     if (!filePath) {
-        //console.error(`Category ${category} not found`);
-        return res.status(404).json({ message: "Category not found" });
+        return res.status(404).json({message: "Category not found"});
     }
 
     try {
         const videos = loadVideoData(filePath);
-        //console.log(`Fetched videos for category: ${category}`);
         res.json(videos);
     } catch (error) {
-        //console.error("Error fetching videos:", error);
-        res.status(500).json({ message: "Error loading videos", error: error.message });
+        res.status(500).json({message: "Error loading videos", error: error.message});
     }
 });
 
-// add
+/**
+ * ADD
+ */
 app.post("/api/:category", (
     req,
     res) => {
-    const { category } = req.params;
+    const {category} = req.params;
     const filePath = videoPaths[category];
 
     if (!filePath) {
-        return res.status(404).json({ message: "Category not found" });
+        return res.status(404).json({message: "Category not found"});
     }
 
     try {
         const newVideo = req.body;
         saveVideoData(filePath, newVideo);
         const videos = loadVideoData(filePath); // new list
-        res.status(201).json({ message: `${category}: ${newVideo.name} added successfully`, videos });
+        res.status(201).json({message: `${category}: ${newVideo.name} added successfully`, videos});
     } catch (error) {
-        res.status(500).json({ message: "Error saving video", error: error.message });
+        res.status(500).json({message: "Error saving video", error: error.message});
     }
 });
 
-//delete
+/**
+ * DELETE
+ */
 app.delete("/api/:category", (
     req,
     res) => {
-    const { category } = req.params;
+    const {category} = req.params;
     const filePath = videoPaths[category];
-    const { name } = req.body; // 'name'
-    console.log("Category:", category);
-    console.log("Video name:", name);
+    const {name} = req.body; // 'name'
 
     if (!filePath) {
         return res.status(404).json({
-            message: "Category not found" });
+            message: "Category not found"
+        });
     }
 
     try {
         if (!name) {
             return res.status(400).json({
-                message: "Video name is required" });
+                message: "Video name is required"
+            });
         }
 
         const updatedList = deleteVideo(filePath, name);
         const videos = loadVideoData(filePath);
-        res.status(201).json({ message: `Video: ${name} deleted successfully`,  videos} );
+        res.status(201).json({message: `Video: ${name} deleted successfully`, videos});
 
     } catch (error) {
         res.status(500).json({
-            message: "Error deleting video", error: error.message });
+            message: "Error deleting video", error: error.message
+        });
     }
 });
 
-//reorder
+/**
+ * REORDER
+ */
+app.put("/api/:category", (
+    req,
+    res) => {
+    const { category } = req.params;
+    const filePath = videoPaths[category];
+    const { name, newIndex } = req.body;
+
+    if (!filePath) {
+        return res.status(404).json({
+            message: "Category not found"
+        });
+    }
+
+    try {
+        if (!name || typeof newIndex !== "number") {
+            return res.status(400).json({
+                message: "Video name and new index are required"
+            });
+        }
+
+        // Perform the reorder operation
+        reorderVideo(filePath, name, newIndex);
+        const videos = loadVideoData(filePath); // Load the updated list
+
+        res.status(200).json({
+            message: `Video: ${name} reordered successfully`,
+            videos
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: "Error reordering video",
+            error: error.message
+        });
+    }
+});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

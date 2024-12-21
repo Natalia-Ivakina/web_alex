@@ -20,24 +20,33 @@ const ProjectListPage = () => {
         fetchVideos();
     }, []);
 
-    //new list
+    //after adding
     const afterAddVideos = (videos) => {
         setProjects(videos);
     };
-
-    //new list after deleting
+    //after deleting
     const afterDeleteVideos = (updatedVideos) => {
         setProjects(updatedVideos);
+    };
+    //after reordering
+    const afterReorderVideos = (reorderedVideos) => {
+        setProjects(reorderedVideos);
     };
 
     return (
         <>
             <div>
                 <h2>Projects</h2>
-                <AddNewVideoComponent apiType="projects" onAddVideo={afterAddVideos}/>
+                <AddNewVideoComponent
+                    apiType="projects"
+                    onAddVideo={afterAddVideos}/>
             </div>
             <p className="headertext">Projects</p>
-            <VideoList videos={projects} apiType="projects" updateVideos={afterDeleteVideos}/>
+            <VideoList
+                videos={projects}
+                apiType="projects"
+                updateVideos={afterDeleteVideos}
+                reorderVideos={afterReorderVideos}/>
         </>
     );
 };

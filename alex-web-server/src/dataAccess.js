@@ -3,70 +3,71 @@ const path = require("path");
 
 //load
 const loadVideoData = (filePath) => {
-  try {
-    const data = fs.readFileSync(filePath, 'utf8');
-    console.log(`Loaded data from ${filePath}`);
-    return JSON.parse(data);
-  } catch (error) {
-    console.error(`Error loading data from ${filePath}:`, error);
-    throw error;
-  }
+    try {
+        const data = fs.readFileSync(filePath, 'utf8');
+        return JSON.parse(data);
+    } catch (error) {
+        throw error;
+    }
 };
 
 //save
 const saveVideoData = (filePath, videoData) => {
-  try {
-    const existingData = loadVideoData(filePath);
-    existingData.unshift(videoData);  // Добавляем новое видео в список
-    fs.writeFileSync(filePath, JSON.stringify(existingData, null, 2));  // Записываем в файл
-    console.log(`Saved new video data to ${filePath}`);
-  } catch (error) {
-    console.error(`Error saving video to ${filePath}:`, error);
-    throw error;
-  }
+    try {
+        const existingData = loadVideoData(filePath);
+        existingData.unshift(videoData);  //start of list
+        fs.writeFileSync(filePath, JSON.stringify(existingData, null, 2));
+    } catch (error) {
+        throw error;
+    }
 };
 
 //delete
 function deleteVideo(dir, videoName) {
-  const videoList = loadVideoData(dir);
-  //console.log("Loaded video list:", videoList); // Логируем, что было загружено
+    const videoList = loadVideoData(dir);
 
-  if (!videoList || videoList.length === 0) {
-    return null;
-  }
+    if (!videoList || videoList.length === 0) {
+        return null;
+    }
 
-  const index = videoList.findIndex((video) => video.name === videoName);
-  if (index === -1) {
-    return null;
-  }
-  videoList.splice(index, 1);
-  //console.log("Updated video list:", videoList); // Логируем обновленный список
-  fs.writeFileSync(dir, JSON.stringify(videoList, null, 2), "utf8");
-  return videoList;
+    const index = videoList.findIndex((video) => video.name === videoName);
+    if (index === -1) {
+        return null;
+    }
+    videoList.splice(index, 1);
+    fs.writeFileSync(dir, JSON.stringify(videoList, null, 2), "utf8");
+    return videoList;
 }
 
 //reorder
-// function reorderVideo(dir, videoName, newIndex) {
-//   let videoList = loadVideoData(dir);
-//   if (!videoList || videoList.length === 0) {
-//     return;
-//   }
-//
-//   //find index
-//   const videoIndex = videoList.findIndex((video) => video.name === videoName);
-//   if (videoIndex === -1) {
-//     return;
-//   }
-//
-//   const [videoToMove] = videoList.splice(videoIndex, 1);
-//   videoList.splice(newIndex, 0, videoToMove);
-//
-//   fs.writeFileSync(dir, JSON.stringify(videoList, null, 2), "utf8");
-// }
+function reorderVideo(dir, videoName, newIndex) {
+    let videoList = loadVideoData(dir);
+    if (!videoList || videoList.length === 0) {
+        return;
+    }
+
+    // Find the current index of the video to be moved
+    const videoIndex = videoList.findIndex((video) => video.name === videoName);
+    if (videoIndex === -1 || newIndex < 0 || newIndex >= videoList.length) {
+        return; // Invalid index or video not found
+    }
+
+    // Remove the video from its current position
+    const [videoToMove] = videoList.splice(videoIndex, 1);
+
+    // Adjust newIndex for splicing when moving backwards
+    const adjustedIndex = videoIndex < newIndex ? newIndex : newIndex;
+
+    // Insert the video into the new position
+    videoList.splice(adjustedIndex, 0, videoToMove);
+
+    // Write the updated list back to the file
+    fs.writeFileSync(dir, JSON.stringify(videoList, null, 2), "utf8");
+}
 
 module.exports = {
-  loadVideoData,
-  saveVideoData,
-  deleteVideo,
-  //reorderVideo,
+    loadVideoData,
+    saveVideoData,
+    deleteVideo,
+    reorderVideo,
 };

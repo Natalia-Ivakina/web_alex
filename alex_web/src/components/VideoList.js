@@ -1,10 +1,8 @@
 import {useState} from "react";
 import DeleteReorderButtonsComponent from "../components/DeleteReorderButtons";
 
-const VideoList = ({videos, apiType, updateVideos}) => {
+const VideoList = ({videos, apiType, deleteVideos, reorderVideos}) => {
     const [message, setMessage] = useState('');
-
-
 
     return (
         <div>
@@ -37,7 +35,8 @@ const VideoList = ({videos, apiType, updateVideos}) => {
                                         videoName={project.name}
                                         apiType={apiType}
                                         onActionComplete={(msg) => setMessage(msg)}
-                                        OnDelete={updateVideos}
+                                        OnDelete={deleteVideos}
+                                        OnReorder={reorderVideos}
                                     />
                                 <p>Video # {index + 1}</p>
                             </span>

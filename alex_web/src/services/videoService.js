@@ -1,5 +1,11 @@
 import axios from "axios";
 
+/**
+ * ADD
+ * @param videoData
+ * @param apiType
+ * @returns {Promise<any>}
+ */
 export const addVideo = async (videoData, apiType) => {
     try {
         const response = await axios.post(`/api/${apiType}`, videoData);
@@ -9,6 +15,12 @@ export const addVideo = async (videoData, apiType) => {
     }
 };
 
+/**
+ * DELETE
+ * @param videoName
+ * @param apiType
+ * @returns {Promise<any>}
+ */
 export const deleteVideo = async (videoName, apiType) => {
     try {
         const response = await axios.delete(`/api/${apiType}`, {
@@ -20,6 +32,11 @@ export const deleteVideo = async (videoName, apiType) => {
     }
 };
 
+/**
+ * LOAD
+ * @param category
+ * @returns {Promise<any>}
+ */
 export const loadVideos = async (category) => {
     try {
         const response = await axios.get(`/api/${category}`);
@@ -28,5 +45,25 @@ export const loadVideos = async (category) => {
     } catch (error) {
         console.error("Error loading videos:", error);
         throw new Error("Failed to fetch videos");
+    }
+};
+
+/**
+ * REORDER
+ * @param videoName
+ * @param newIndex
+ * @param apiType
+ * @returns {Promise<any>}
+ */
+export const reorderVideo = async (videoName, newIndex, apiType) => {
+    try {
+        const response = await axios.put(`/api/${apiType}`, {
+            name: videoName,
+            newIndex: newIndex,
+        });
+        return response.data;
+    } catch (error) {
+        console.error("Error reordering video:", error);
+        throw new Error("Failed to reorder video");
     }
 };

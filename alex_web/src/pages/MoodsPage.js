@@ -20,23 +20,32 @@ const MoodsPage = () => {
         fetchVideos();
     }, []);
 
-    //new list
+    //after add
     const afterAddVideos = (videos) => {
         setMoods(videos);
     };
-
-    //new list after deleting
+    //after deleting
     const afterDeleteVideos = (updatedVideos) => {
         setMoods(updatedVideos);
+    };
+    //after reordering
+    const afterReorderVideos = (reorderedVideos) => {
+        setMoods(reorderedVideos);
     };
     return (
         <>
             <div>
                 <h2>Moods</h2>
-                <AddNewVideoComponent apiType="moods" onAddVideo={afterAddVideos}/>
+                <AddNewVideoComponent
+                    apiType="moods"
+                    onAddVideo={afterAddVideos}/>
             </div>
             <p className="headertext">Moods</p>
-            <VideoList videos={moods} apiType="moods" updateVideos={afterDeleteVideos}/> {/* Updated to use moods */}
+            <VideoList
+                videos={moods}
+                apiType="moods"
+                updateVideos={afterDeleteVideos}
+                reorderVideos={afterReorderVideos}/>
         </>
     );
 };
