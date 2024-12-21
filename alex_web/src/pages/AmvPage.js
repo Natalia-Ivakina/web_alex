@@ -26,7 +26,7 @@ const AmvPage = () => {
     //after deleting
     const afterDeleteVideos = (updatedVideos) => {
         setAmv(updatedVideos);
-    };
+    }
     //after reordering
     const afterReorderVideos = (reorderedVideos) => {
         setAmv(reorderedVideos);
@@ -54,7 +54,7 @@ const AmvPage = () => {
             <VideoList
                 videos={amv}
                 apiType="amv"
-                updateVideos={afterDeleteVideos}
+                deleteVideos={afterDeleteVideos}
                 reorderVideos={afterReorderVideos}/>
         </>
     );

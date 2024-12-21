@@ -46,9 +46,11 @@ function reorderVideo(dir, videoName, newIndex) {
         return;
     }
 
+    const zeroBasedIndex = newIndex - 1;
+
     // Find the current index of the video to be moved
     const videoIndex = videoList.findIndex((video) => video.name === videoName);
-    if (videoIndex === -1 || newIndex < 0 || newIndex >= videoList.length) {
+    if (videoIndex === -1 || zeroBasedIndex < 0 || zeroBasedIndex >= videoList.length) {
         return; // Invalid index or video not found
     }
 
@@ -56,7 +58,7 @@ function reorderVideo(dir, videoName, newIndex) {
     const [videoToMove] = videoList.splice(videoIndex, 1);
 
     // Adjust newIndex for splicing when moving backwards
-    const adjustedIndex = videoIndex < newIndex ? newIndex : newIndex;
+    const adjustedIndex = videoIndex < zeroBasedIndex ? zeroBasedIndex : zeroBasedIndex;
 
     // Insert the video into the new position
     videoList.splice(adjustedIndex, 0, videoToMove);

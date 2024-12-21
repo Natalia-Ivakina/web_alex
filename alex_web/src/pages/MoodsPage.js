@@ -20,14 +20,14 @@ const MoodsPage = () => {
         fetchVideos();
     }, []);
 
-    //after add
+    //new list
     const afterAddVideos = (videos) => {
         setMoods(videos);
     };
     //after deleting
     const afterDeleteVideos = (updatedVideos) => {
         setMoods(updatedVideos);
-    };
+    }
     //after reordering
     const afterReorderVideos = (reorderedVideos) => {
         setMoods(reorderedVideos);
@@ -44,7 +44,7 @@ const MoodsPage = () => {
             <VideoList
                 videos={moods}
                 apiType="moods"
-                updateVideos={afterDeleteVideos}
+                deleteVideos={afterDeleteVideos}
                 reorderVideos={afterReorderVideos}/>
         </>
     );

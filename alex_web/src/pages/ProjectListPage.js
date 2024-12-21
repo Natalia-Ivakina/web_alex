@@ -20,14 +20,14 @@ const ProjectListPage = () => {
         fetchVideos();
     }, []);
 
-    //after adding
+    //new list
     const afterAddVideos = (videos) => {
         setProjects(videos);
     };
     //after deleting
     const afterDeleteVideos = (updatedVideos) => {
         setProjects(updatedVideos);
-    };
+    }
     //after reordering
     const afterReorderVideos = (reorderedVideos) => {
         setProjects(reorderedVideos);
@@ -45,7 +45,7 @@ const ProjectListPage = () => {
             <VideoList
                 videos={projects}
                 apiType="projects"
-                updateVideos={afterDeleteVideos}
+                deleteVideos={afterDeleteVideos}
                 reorderVideos={afterReorderVideos}/>
         </>
     );
