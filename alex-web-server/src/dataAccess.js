@@ -1,8 +1,8 @@
 const fs = require("fs");
 const path = require("path");
 
-//load
-const loadVideoData = (filePath) => {
+//loadData
+const loadData = (filePath) => {
     try {
         const data = fs.readFileSync(filePath, 'utf8');
         return JSON.parse(data);
@@ -11,10 +11,10 @@ const loadVideoData = (filePath) => {
     }
 };
 
-//save
+//save Video
 const saveVideoData = (filePath, videoData) => {
     try {
-        const existingData = loadVideoData(filePath);
+        const existingData = loadData(filePath);
         existingData.unshift(videoData);  //start of list
         fs.writeFileSync(filePath, JSON.stringify(existingData, null, 2));
     } catch (error) {
@@ -22,9 +22,9 @@ const saveVideoData = (filePath, videoData) => {
     }
 };
 
-//delete
+//delete Video
 function deleteVideo(dir, videoName) {
-    const videoList = loadVideoData(dir);
+    const videoList = loadData(dir);
 
     if (!videoList || videoList.length === 0) {
         return null;
@@ -39,9 +39,9 @@ function deleteVideo(dir, videoName) {
     return videoList;
 }
 
-//reorder
+//reorder Video
 function reorderVideo(dir, videoName, newIndex) {
-    let videoList = loadVideoData(dir);
+    let videoList = loadData(dir);
     if (!videoList || videoList.length === 0) {
         return;
     }
@@ -67,9 +67,34 @@ function reorderVideo(dir, videoName, newIndex) {
     fs.writeFileSync(dir, JSON.stringify(videoList, null, 2), "utf8");
 }
 
+
+// Edit number of videos on the page
+function changeNonOfVideoOnPage(dir, pageName, newNum) {
+    let data = loadData(dir);
+    if (!data) {
+        console.error("Failed to load data");
+        return;
+    }
+
+    // found page
+    const page = data.find(item => item.name === pageName);
+    if (page) {
+        // edit
+        page.quantity = String(newNum);
+        console.log(`Updated ${pageName} quantity to ${newNum}`);
+    } else {
+        console.error(`Page "${pageName}" not found in data`);
+    }
+
+    // save
+    fs.writeFileSync(dir, JSON.stringify(data, null, 2), "utf8");
+}
+
+
 module.exports = {
-    loadVideoData,
+    loadVideoData: loadData,
     saveVideoData,
     deleteVideo,
     reorderVideo,
+    changeNonOfVideoOnPage,
 };
