@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import DeleteReorderButtonsComponent from "../components/DeleteReorderButtons";
+import PaginationComponent from "../components/Pagination";
 
 const VideoList = ({videos, apiType, deleteVideos, reorderVideos}) => {
     const [message, setMessage] = useState('');
@@ -62,16 +63,11 @@ const VideoList = ({videos, apiType, deleteVideos, reorderVideos}) => {
     return (
         <div>
             <div className="reorder">
-                <p>How many videos do you want per page?</p>
-                <input
-                    type="number"
-                    className="adminInput"
-                    value={inputVideosPerPage}
-                    onChange={handleVideosPerPageInputChange} // Update input field value
-                    min="1"
+                <PaginationComponent
+                    inputVideosPerPage={inputVideosPerPage}
+                    handleVideosPerPageInputChange={handleVideosPerPageInputChange}
+                    handleSaveVideosPerPage={handleSaveVideosPerPage}
                 />
-                <button onClick={handleSaveVideosPerPage}>Save</button>
-                {/* Apply the change on button click */}
             </div>
             {message && <div className="message">{message}</div>}
             <div className="video-grid">
