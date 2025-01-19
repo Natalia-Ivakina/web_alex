@@ -38,11 +38,20 @@ const VideoList = ({ videos, apiType, deleteVideos, reorderVideos, videosPerPage
         setInputVideosPerPage(e.target.value);
     };
 
-    const handleSaveVideosPerPage = () => {
+    const handleSaveVideosPerPage = async () => {
         const value = parseInt(inputVideosPerPage, 10);
+        //console.log("inputted value:", value);
         if (!isNaN(value) && value > 0) {
             setInternalVideosPerPage(value);
             setCurrentPage(1);
+
+            try {
+                // Save count to the server
+                await editVideoCount(apiType, value);
+                setMessage("Video count updated successfully!");
+            } catch (error) {
+                setMessage("Error updating video count.");
+            }
         } else {
             setMessage("Please enter a valid number greater than 0.");
         }
