@@ -1,18 +1,18 @@
 [
   {
     "name": "amv",
-    "quantity": "2"
+    "quantity": 2
   },
   {
     "name": "moods",
-    "quantity": "4"
+    "quantity": 1
   },
   {
     "name": "projects",
-    "quantity": "6"
+    "quantity": 6
   },
   {
     "name": "showreels",
-    "quantity": "2"
+    "quantity": 2
   }
 ]

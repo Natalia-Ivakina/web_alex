@@ -40,10 +40,10 @@ export const deleteVideo = async (videoName, apiType) => {
 export const loadVideos = async (category) => {
     try {
         const response = await axios.get(`/api/${category}`);
-        console.log("Videos fetched from server:", response.data);
+        //console.log("Videos fetched from server:", response.data);
         return response.data;
     } catch (error) {
-        console.error("Error loading videos:", error);
+        //console.error("Error loading videos:", error);
         throw new Error("Failed to fetch videos");
     }
 };
@@ -63,7 +63,7 @@ export const reorderVideo = async (videoName, newIndex, apiType) => {
         });
         return response.data;
     } catch (error) {
-        console.error("Error reordering video:", error);
+        //console.error("Error reordering video:", error);
         throw new Error("Failed to reorder video");
     }
 };

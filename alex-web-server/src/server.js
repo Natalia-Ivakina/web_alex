@@ -4,7 +4,8 @@ const {
     saveVideoData,
     loadVideoData,
     deleteVideo,
-    reorderVideo
+    reorderVideo,
+    changeNonOfVideoOnPage
 }
     = require("./dataAccess.js");
 
@@ -18,8 +19,12 @@ const videoPaths = {
     showreels: path.join(__dirname, "../videodata/showreels.json"),
 };
 
+const nunOfPageVideoPaths = {
+    nunOfPageVideo: path.join(__dirname, "../videodata/numberOfVideos.json"),
+};
+
 /**
- * LOAD
+ * Load Videos for different categories
  */
 app.get("/api/:category", (
     req,
@@ -40,7 +45,7 @@ app.get("/api/:category", (
 });
 
 /**
- * ADD
+ * Add Video to Category
  */
 app.post("/api/:category", (
     req,
@@ -63,7 +68,7 @@ app.post("/api/:category", (
 });
 
 /**
- * DELETE
+ * DELETE Video in Category
  */
 app.delete("/api/:category", (
     req,
@@ -97,7 +102,7 @@ app.delete("/api/:category", (
 });
 
 /**
- * REORDER
+ * REORDER Video in Category
  */
 app.put("/api/:category", (
     req,
@@ -133,6 +138,49 @@ app.put("/api/:category", (
             error: error.message
         });
     }
+});
+
+
+/**
+ * Count Videos (for /api/count/:page)
+ */
+app.get("/api/count/:page", (req, res) => {
+    const { page } = req.params;
+    const filePath = nunOfPageVideoPaths.nunOfPageVideo;
+
+    if (!filePath) {
+        return res.status(404).json({message: "Count data not found"});
+    }
+
+    try {
+        const videosCount = loadVideoData(filePath);
+        // Find the entry where 'name' matches the 'page' parameter
+        const result = videosCount.find(item => item.name === page);
+        if (result) {
+            res.json(result.quantity); // Send the quantity directly
+        } else {
+            res.status(404).json({ error: `Page "${page}" not found` });
+        }
+    } catch (error) {
+        res.status(500).json({message: "Error loading videos Count", error: error.message});
+    }
+
+});
+
+/**
+ * Edit Video Count (for /api/count/:page)
+ */
+app.post("/api/count/:page", (req, res) => {
+    const pageName = req.params.page;
+    const { newNum } = req.body;
+
+    if (typeof newNum !== 'number' || newNum <= 0) {
+        return res.status(400).json({ message: "Please provide a valid number greater than 0." });
+    }
+
+    changeNonOfVideoOnPage(nunOfPageVideoPaths.nunOfPageVideo, pageName, newNum);
+
+    res.status(200).json({ message: `Updated quantity for "${pageName}" to ${newNum}` });
 });
 
 const PORT = process.env.PORT || 5000;

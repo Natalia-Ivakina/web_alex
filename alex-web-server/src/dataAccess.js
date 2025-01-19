@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 
 //loadData
-const loadData = (filePath) => {
+const loadVideoData = (filePath) => {
     try {
         const data = fs.readFileSync(filePath, 'utf8');
         return JSON.parse(data);
@@ -14,7 +14,7 @@ const loadData = (filePath) => {
 //save Video
 const saveVideoData = (filePath, videoData) => {
     try {
-        const existingData = loadData(filePath);
+        const existingData = loadVideoData(filePath);
         existingData.unshift(videoData);  //start of list
         fs.writeFileSync(filePath, JSON.stringify(existingData, null, 2));
     } catch (error) {
@@ -24,7 +24,7 @@ const saveVideoData = (filePath, videoData) => {
 
 //delete Video
 function deleteVideo(dir, videoName) {
-    const videoList = loadData(dir);
+    const videoList = loadVideoData(dir);
 
     if (!videoList || videoList.length === 0) {
         return null;
@@ -41,7 +41,7 @@ function deleteVideo(dir, videoName) {
 
 //reorder Video
 function reorderVideo(dir, videoName, newIndex) {
-    let videoList = loadData(dir);
+    let videoList = loadVideoData(dir);
     if (!videoList || videoList.length === 0) {
         return;
     }
@@ -70,7 +70,7 @@ function reorderVideo(dir, videoName, newIndex) {
 
 // Edit number of videos on the page
 function changeNonOfVideoOnPage(dir, pageName, newNum) {
-    let data = loadData(dir);
+    let data = loadVideoData(dir);
     if (!data) {
         console.error("Failed to load data");
         return;
@@ -92,7 +92,7 @@ function changeNonOfVideoOnPage(dir, pageName, newNum) {
 
 
 module.exports = {
-    loadVideoData: loadData,
+    loadVideoData,
     saveVideoData,
     deleteVideo,
     reorderVideo,
