@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 
 //loadData
-const loadVideoData = (filePath) => {
+const loadJsonData = (filePath) => {
     try {
         const data = fs.readFileSync(filePath, 'utf8');
         return JSON.parse(data);
@@ -14,7 +14,7 @@ const loadVideoData = (filePath) => {
 //save Video
 const saveVideoData = (filePath, videoData) => {
     try {
-        const existingData = loadVideoData(filePath);
+        const existingData = loadJsonData(filePath);
         existingData.unshift(videoData);  //start of list
         fs.writeFileSync(filePath, JSON.stringify(existingData, null, 2));
     } catch (error) {
@@ -24,7 +24,7 @@ const saveVideoData = (filePath, videoData) => {
 
 //delete Video
 function deleteVideo(dir, videoName) {
-    const videoList = loadVideoData(dir);
+    const videoList = loadJsonData(dir);
 
     if (!videoList || videoList.length === 0) {
         return null;
@@ -41,7 +41,7 @@ function deleteVideo(dir, videoName) {
 
 //reorder Video
 function reorderVideo(dir, videoName, newIndex) {
-    let videoList = loadVideoData(dir);
+    let videoList = loadJsonData(dir);
     if (!videoList || videoList.length === 0) {
         return;
     }
@@ -69,8 +69,8 @@ function reorderVideo(dir, videoName, newIndex) {
 
 
 // Edit number of videos on the page
-function changeNonOfVideoOnPage(dir, pageName, newNum) {
-    let data = loadVideoData(dir);
+function changeData(dir, pageName, newData) {
+    let data = loadJsonData(dir);
     if (!data) {
         console.error("Failed to load data");
         return;
@@ -80,8 +80,8 @@ function changeNonOfVideoOnPage(dir, pageName, newNum) {
     const page = data.find(item => item.name === pageName);
     if (page) {
         // edit
-        page.quantity = String(newNum);
-        console.log(`Updated ${pageName} quantity to ${newNum}`);
+        page.quantity = String(newData);
+        //console.log(`Updated ${pageName} data to ${newData}`);
     } else {
         console.error(`Page "${pageName}" not found in data`);
     }
@@ -92,9 +92,9 @@ function changeNonOfVideoOnPage(dir, pageName, newNum) {
 
 
 module.exports = {
-    loadVideoData,
+    loadJsonData,
     saveVideoData,
     deleteVideo,
     reorderVideo,
-    changeNonOfVideoOnPage,
+    changeData,
 };

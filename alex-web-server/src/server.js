@@ -2,10 +2,10 @@ const express = require("express");
 const path = require("path");
 const {
     saveVideoData,
-    loadVideoData,
+    loadJsonData,
     deleteVideo,
     reorderVideo,
-    changeNonOfVideoOnPage
+    changeData
 }
     = require("./dataAccess.js");
 
@@ -23,6 +23,10 @@ const nunOfPageVideoPaths = {
     nunOfPageVideo: path.join(__dirname, "../videodata/numberOfVideos.json"),
 };
 
+const textPaths = {
+    text: path.join(__dirname, "../textdata/textdata.json"),
+};
+
 /**
  * Load Videos for different categories
  */
@@ -37,7 +41,7 @@ app.get("/api/:category", (
     }
 
     try {
-        const videos = loadVideoData(filePath);
+        const videos = loadJsonData(filePath);
         res.json(videos);
     } catch (error) {
         res.status(500).json({message: "Error loading videos", error: error.message});
@@ -60,7 +64,7 @@ app.post("/api/:category", (
     try {
         const newVideo = req.body;
         saveVideoData(filePath, newVideo);
-        const videos = loadVideoData(filePath); // new list
+        const videos = loadJsonData(filePath); // new list
         res.status(201).json({message: `${category}: ${newVideo.name} added successfully`, videos});
     } catch (error) {
         res.status(500).json({message: "Error saving video", error: error.message});
@@ -91,7 +95,7 @@ app.delete("/api/:category", (
         }
 
         const updatedList = deleteVideo(filePath, name);
-        const videos = loadVideoData(filePath);
+        const videos = loadJsonData(filePath);
         res.status(201).json({message: `Video: ${name} deleted successfully`, videos});
 
     } catch (error) {
@@ -126,7 +130,7 @@ app.put("/api/:category", (
 
         // Perform the reorder operation
         reorderVideo(filePath, name, newIndex);
-        const videos = loadVideoData(filePath); // Load the updated list
+        const videos = loadJsonData(filePath); // Load the updated list
 
         res.status(200).json({
             message: `Video: ${name} reordered successfully`,
@@ -153,7 +157,7 @@ app.get("/api/count/:page", (req, res) => {
     }
 
     try {
-        const videosCount = loadVideoData(filePath);
+        const videosCount = loadJsonData(filePath);
         // Find the entry where 'name' matches the 'page' parameter
         const result = videosCount.find(item => item.name === page);
         if (result) {
@@ -178,9 +182,51 @@ app.post("/api/count/:page", (req, res) => {
         return res.status(400).json({ message: "Please provide a valid number greater than 0." });
     }
 
-    changeNonOfVideoOnPage(nunOfPageVideoPaths.nunOfPageVideo, pageName, newNum);
+    changeData(nunOfPageVideoPaths.nunOfPageVideo, pageName, newNum);
 
     res.status(200).json({ message: `Updated quantity for "${pageName}" to ${newNum}` });
+});
+
+/**
+ * Load text page
+ */
+app.get("/api/text/:page", (req, res) => {
+    const { page } = req.params;
+    const filePath = textPaths.text;
+
+    if (!filePath) {
+        return res.status(404).json({message: "Count data not found"});
+    }
+
+    try {
+        const pageText = loadJsonData(filePath);
+        // Find the entry where 'name' matches the 'page' parameter
+        const result = pageText.find(item => item.name === page);
+        if (result) {
+            res.json(result.text);
+        } else {
+            res.status(404).json({ error: `Page "${page}" not found` });
+        }
+    } catch (error) {
+        res.status(500).json({message: "Error loading page text", error: error.message});
+    }
+    //res.send("Text");
+});
+
+/**
+ * Edit text page
+ */
+app.post("/api/text/:page", (req, res) => {
+    const pageName = req.params.page;
+    const { newText } = req.body;
+
+    if (typeof newText <= 0) {
+        return res.status(400).json({ message: "Please provide a text" });
+    }
+
+    changeData(textPaths.text, pageName, newText);
+
+    res.status(200).json({ message: `Updated text for "${pageName}"` });
 });
 
 const PORT = process.env.PORT || 5000;
