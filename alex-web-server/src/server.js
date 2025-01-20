@@ -203,7 +203,7 @@ app.get("/api/text/:page", (req, res) => {
         // Find the entry where 'name' matches the 'page' parameter
         const result = pageText.find(item => item.name === page);
         if (result) {
-            res.json(result.text);
+            res.json(result);
         } else {
             res.status(404).json({ error: `Page "${page}" not found` });
         }
@@ -216,18 +216,18 @@ app.get("/api/text/:page", (req, res) => {
 /**
  * Edit text page
  */
-app.post("/api/text/:page", (req, res) => {
-    const pageName = req.params.page;
-    const { newText } = req.body;
-
-    if (typeof newText <= 0) {
-        return res.status(400).json({ message: "Please provide a text" });
-    }
-
-    changeData(textPaths.text, pageName, newText);
-
-    res.status(200).json({ message: `Updated text for "${pageName}"` });
-});
+// app.post("/api/text/:page", (req, res) => {
+//     const pageName = req.params.page;
+//     const { newText } = req.body;
+//
+//     if (typeof newText <= 0) {
+//         return res.status(400).json({ message: "Please provide a text" });
+//     }
+//
+//     changeData(textPaths.text, pageName, newText);
+//
+//     res.status(200).json({ message: `Updated text for "${pageName}"` });
+// });
 
 const PORT = process.env.PORT || 5000;
 const server = app.listen(PORT, () => {

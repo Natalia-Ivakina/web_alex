@@ -9,17 +9,6 @@ const AboutPage = () => {
                 <p className='abouttext'>
                     I'm Alex, a passionate Cinematic Artist, Video Editor, Colorist, Unreal Engine Artist and Motion
                     Designer.
-                    <br/>
-                    My journey in video editing began in 2005, when I got my first PC and was absolutely fascinated by
-                    the idea of creating something out of a simple idea. This idea ignited a passion for crafting
-                    immersive
-                    worlds, giving them life, mood, and a unique narrative.
-                    <br/>
-                    A gamer since the Atari 2600 and a movie fan from the days of our first black-and-white TV, I've got
-                    plenty of experience and a genuine love for creativity.
-                    <br/>
-                    The world of creativity is vast and ever-evolving, and while I know a lot, I'm always learning to
-                    bring my best ideas, my most emotional moods, and captivating stories to life.
                 </p>
                 {/*для админа*/}
                 <button>Edit text</button>

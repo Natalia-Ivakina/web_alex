@@ -206,14 +206,13 @@ iframe {
 }
 
 button {
-  margin: 1%;
-  padding: 1%;
   font-family: "Open Sans", Arial, sans-serif;
   font-size: 0.9em;
   background-color: black;
   color: #84a4c9;
   border-radius: 0.5em;
   cursor: pointer;
+  padding: 8px;
 }
 
 .adminPanel{
@@ -250,10 +249,10 @@ footer {
   bottom: 0;
 }
 
-add-comment-form {
-  border-bottom: 2px solid black;
-  padding: 16px;
-}
+/*add-comment-form {*/
+/*  border-bottom: 2px solid black;*/
+/*  padding: 16px;*/
+/*}*/
 
 input,
 textarea {
@@ -264,7 +263,7 @@ textarea {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 18px;
   border: 2px solid black;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 }
 
 .modal-content {
@@ -283,4 +282,40 @@ textarea {
   background-color: darkgreen;
   color: aliceblue;
 }
+
+.videos-per-page-selector {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+}
+
+.message {
+  color: green;
+}
+
+.horizontal-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+}
+
+.edit-form{
+  border: solid 1px dimgrey;
+  border-radius: 10px;
+  padding: 16px;
+  opacity: 0.8;
+}
+
 

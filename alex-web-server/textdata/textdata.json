@@ -1,26 +1,44 @@
 [
   {
     "name": "home",
-    "text": "home"
+    "title": "home",
+    "text1": "home",
+    "text2": "home",
+    "text3": "home"
   },
   {
     "name": "amv",
-    "text": "amv"
+    "title": "amv",
+    "text1": "amv",
+    "text2": "amv",
+    "text3": "amv"
   },
   {
     "name": "moods",
-    "text": "moods"
+    "title": "moods",
+    "text1": "moods",
+    "text2": "moods",
+    "text3": "moods"
   },
   {
     "name": "projects",
-    "text": "projects"
+    "title": "projects",
+    "text1": "projects",
+    "text2": "projects",
+    "text3": "projects"
   },
   {
     "name": "showreels",
-    "text": "showreels"
+    "title": "showreels",
+    "text1": "showreels",
+    "text2": "showreels",
+    "text3": "showreels"
   },
   {
     "name": "about",
-    "text": "about"
+    "title": "about",
+    "text1": "about",
+    "text2": "about",
+    "text3": "about"
   }
 ]
