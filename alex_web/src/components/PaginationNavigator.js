@@ -7,7 +7,7 @@ const PaginationNavigator = ({
                                  goToNextPage,
                              }) => {
     return (
-        <div className="pagination-navigator">
+        <div className= "pagination-navigator">
             <button onClick={goToPrevPage} disabled={currentPage === 1}>
                 Previous
             </button>

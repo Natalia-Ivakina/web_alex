@@ -37,20 +37,23 @@ const AddNewVideoComponent = ({apiType, onAddVideo}) => {
             <h4>Add Video</h4>
             <form onSubmit={handleSubmit} className="form-container">
                 <div className="row">
-                    <input
+
+                    <textarea
                         placeholder="Title"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                         required
-                    />
+                    ></textarea>
+
                 </div>
                 <div className="row">
-                    <input
+                    <textarea
                         placeholder="Link"
                         value={link}
                         onChange={(e) => setLink(e.target.value)}
                         required
-                    />
+                    ></textarea>
+
                 </div>
                 <button type="submit">Add Video</button>
             </form>

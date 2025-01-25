@@ -3,19 +3,56 @@ import DeleteReorderButtonsComponent from "../components/DeleteReorderButtons";
 import VideosPerPageSelector from "../components/VideosPerPageSelector";
 import PaginationNavigator from "../components/PaginationNavigator";
 import { loadVideoCount, editVideoCount } from "../services/videoPerPageService";
+import PageTextComponent from "./PageText";
+import AddNewVideoComponent from "./AddVideoForm";
+import {EditPageTextComponent} from "./EditPageText";
+import {loadPageText} from "../services/pageTextService";
 
-const VideoList = ({ videos, apiType, deleteVideos, reorderVideos, videosPerPage: externalVideosPerPage }) => {
+
+const VideoList = ({
+                       videos,
+                       apiType,
+                       deleteVideos,
+                       reorderVideos,
+                       videosPerPage: externalVideosPerPage,
+                       addVideos,
+
+}) => {
     const [message, setMessage] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
     const [internalVideosPerPage, setInternalVideosPerPage] = useState(externalVideosPerPage || 4); // Default 4 videos per page
     const [inputVideosPerPage, setInputVideosPerPage] = useState(internalVideosPerPage);
+    const [pageText, setPageText] = useState({
+        title: '',
+        text1: '',
+        text2: '',
+        text3: ''
+    });
+
+    const updatePageText = (updatedText) => {
+        setPageText(updatedText);
+    };
+
+    // Fetch the initial page text when the component mounts
+    useEffect(() => {
+        const fetchPageText = async () => {
+            try {
+                const textData = await loadPageText(apiType);
+                setPageText(textData);
+            } catch (error) {
+                console.error("Error fetching page text:", error);
+            }
+        };
+
+        fetchPageText();
+    }, [apiType]);
 
     useEffect(() => {
         // Update internalVideosPerPage if externalVideosPerPage changes
         if (externalVideosPerPage !== internalVideosPerPage) {
             setInternalVideosPerPage(externalVideosPerPage);
         }
-    }, [externalVideosPerPage]); // Depend on externalVideosPerPage
+    }, [externalVideosPerPage]);
 
     const indexOfLastVideo = currentPage * internalVideosPerPage;
     const indexOfFirstVideo = indexOfLastVideo - internalVideosPerPage;
@@ -40,7 +77,6 @@ const VideoList = ({ videos, apiType, deleteVideos, reorderVideos, videosPerPage
 
     const handleSaveVideosPerPage = async () => {
         const value = parseInt(inputVideosPerPage, 10);
-        //console.log("inputted value:", value);
         if (!isNaN(value) && value > 0) {
             setInternalVideosPerPage(value);
             setCurrentPage(1);
@@ -57,6 +93,9 @@ const VideoList = ({ videos, apiType, deleteVideos, reorderVideos, videosPerPage
         }
     };
 
+    /**
+     * clear msg - 5 sec
+     */
     useEffect(() => {
         if (message) {
             const timer = setTimeout(() => {
@@ -68,10 +107,24 @@ const VideoList = ({ videos, apiType, deleteVideos, reorderVideos, videosPerPage
 
     useEffect(() => {
         setInputVideosPerPage(internalVideosPerPage);
-    }, [internalVideosPerPage]); // update inputVideosPerPage
+    }, [internalVideosPerPage]);
+
+
 
     return (
         <div>
+            <div className="horizontal-container">
+                <AddNewVideoComponent
+                    apiType={apiType}
+                    onAddVideo={addVideos}/>
+                <EditPageTextComponent
+                    apiType={apiType}
+                    onTextUpdate={updatePageText}
+                    textData = {pageText}
+
+                />
+            </div>
+
             <div className="controls">
                 <VideosPerPageSelector
                     inputVideosPerPage={inputVideosPerPage}
@@ -80,6 +133,9 @@ const VideoList = ({ videos, apiType, deleteVideos, reorderVideos, videosPerPage
                     message={message}
                 />
             </div>
+            <div><PageTextComponent
+                pageText={pageText}
+            /></div>
 
             <div className="video-grid">
                 {currentVideos.length > 0 ? (

@@ -5,7 +5,8 @@ const {
     loadJsonData,
     deleteVideo,
     reorderVideo,
-    changeData
+    changeQVideoData,
+    changeTextData
 }
     = require("./dataAccess.js");
 
@@ -182,7 +183,7 @@ app.post("/api/count/:page", (req, res) => {
         return res.status(400).json({ message: "Please provide a valid number greater than 0." });
     }
 
-    changeData(nunOfPageVideoPaths.nunOfPageVideo, pageName, newNum);
+    changeQVideoData(nunOfPageVideoPaths.nunOfPageVideo, pageName, newNum);
 
     res.status(200).json({ message: `Updated quantity for "${pageName}" to ${newNum}` });
 });
@@ -195,12 +196,12 @@ app.get("/api/text/:page", (req, res) => {
     const filePath = textPaths.text;
 
     if (!filePath) {
-        return res.status(404).json({message: "Count data not found"});
+        return res.status(404).json({message: "Text not found"});
     }
 
     try {
         const pageText = loadJsonData(filePath);
-        // Find the entry where 'name' matches the 'page' parameter
+        // Find  'name'  'page' parameter
         const result = pageText.find(item => item.name === page);
         if (result) {
             res.json(result);
@@ -216,18 +217,23 @@ app.get("/api/text/:page", (req, res) => {
 /**
  * Edit text page
  */
-// app.post("/api/text/:page", (req, res) => {
-//     const pageName = req.params.page;
-//     const { newText } = req.body;
-//
-//     if (typeof newText <= 0) {
-//         return res.status(400).json({ message: "Please provide a text" });
-//     }
-//
-//     changeData(textPaths.text, pageName, newText);
-//
-//     res.status(200).json({ message: `Updated text for "${pageName}"` });
-// });
+app.post("/api/text/:page", (req, res) => {
+    const pageName = req.params.page;
+    const { title, text1, text2, text3 } = req.body;
+
+    console.log(`Received data: title: ${title}, text1: ${text1}, text2: ${text2}, text3: ${text3}`);
+
+    const newTextObject = {
+        title,
+        text1,
+        text2,
+        text3,
+    };
+
+    changeTextData(textPaths.text, pageName, newTextObject);
+
+    res.status(200).json({ message: `The text for "${pageName}" updated successfully"` });
+});
 
 const PORT = process.env.PORT || 5000;
 const server = app.listen(PORT, () => {

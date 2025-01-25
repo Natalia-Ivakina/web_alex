@@ -68,8 +68,8 @@ function reorderVideo(dir, videoName, newIndex) {
 }
 
 
-// Edit number of videos on the page
-function changeData(dir, pageName, newData) {
+// Edit data
+function changeQVideoData(dir, pageName, newData) {
     let data = loadJsonData(dir);
     if (!data) {
         console.error("Failed to load data");
@@ -90,11 +90,30 @@ function changeData(dir, pageName, newData) {
     fs.writeFileSync(dir, JSON.stringify(data, null, 2), "utf8");
 }
 
+function changeTextData(dir, pageName, newData) {
+    let data = loadJsonData(dir);
+    if (!data) {
+        console.error("Failed to load data");
+        return;
+    }
+
+    const page = data.find(item => item.name === pageName);
+    if (page) {
+        Object.assign(page, newData);
+        console.log(`Updated ${pageName} data to`, newData);
+    } else {
+        console.error(`Page "${pageName}" not found in data`);
+    }
+
+    fs.writeFileSync(dir, JSON.stringify(data, null, 2), "utf8");
+}
+
 
 module.exports = {
     loadJsonData,
     saveVideoData,
     deleteVideo,
     reorderVideo,
-    changeData,
+    changeQVideoData,
+    changeTextData
 };

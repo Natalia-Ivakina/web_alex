@@ -1,8 +1,7 @@
 import VideoList from "../components/VideoList";
-import AddNewVideoComponent from "../components/AddVideoForm";
 import { useEffect, useState } from "react";
 import {loadVideos} from "../services/videoService";
-import { loadVideoCount, editVideoCount } from "../services/videoPerPageService";
+import { loadVideoCount } from "../services/videoPerPageService";
 
 const ProjectListPage = () => {
     const [projects, setProjects] = useState([]);
@@ -39,8 +38,8 @@ const ProjectListPage = () => {
     }, []);
 
     //new list
-    const afterAddVideos = (videos) => {
-        setProjects(videos);
+    const afterAddVideo = (newVideos) => {
+        setProjects(newVideos);
     };
     //after deleting
     const afterDeleteVideos = (updatedVideos) => {
@@ -53,19 +52,13 @@ const ProjectListPage = () => {
 
     return (
         <>
-            <div>
-                <h2>Projects</h2>
-                <AddNewVideoComponent
-                    apiType="projects"
-                    onAddVideo={afterAddVideos}/>
-            </div>
-            <p className="headertext">Projects</p>
             <VideoList
                 videos={projects}
                 apiType="projects"
                 deleteVideos={afterDeleteVideos}
                 reorderVideos={afterReorderVideos}
                 videosPerPage={videosPerPage} // Pass the dynamic
+                addVideos={afterAddVideo}
             />
         </>
     );

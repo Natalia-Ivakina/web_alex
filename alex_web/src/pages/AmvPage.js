@@ -1,14 +1,11 @@
 import VideoList from "../components/VideoList";
-import AddNewVideoComponent from "../components/AddVideoForm";
 import {useEffect, useState} from "react";
 import {loadVideos} from "../services/videoService";
 import { loadVideoCount, editVideoCount } from "../services/videoPerPageService";
-import PageTextComponent from "../components/PageText";
-import EditPageTextComponent from "../components/EditPageText";
 
 const AmvPage = () => {
     const [amv, setAmv] = useState([]);
-    const [videosPerPage, setVideosPerPage] = useState(4); // Default value
+    const [videosPerPage, setVideosPerPage] = useState();
 
     const fetchVideos = async () => {
         try {
@@ -27,7 +24,6 @@ const AmvPage = () => {
                 console.error("Invalid quantity:", quantity);
                 return;
             }
-
             setVideosPerPage(quantity); // Set the videos per page
         } catch (error) {
             console.error("Error fetching videos per page:", error);
@@ -39,9 +35,10 @@ const AmvPage = () => {
         fetchVideos();
         fetchVideosPerPage();
     }, []);
+
     //new list
-    const afterAddVideos = (videos) => {
-        setAmv(videos);
+    const afterAddVideo = (newVideos) => {
+        setAmv(newVideos);
     };
     //after deleting
     const afterDeleteVideos = (updatedVideos) => {
@@ -52,24 +49,17 @@ const AmvPage = () => {
         setAmv(reorderedVideos);
     };
 
+
     return (
         <>
-            <div className="horizontal-container">
-                <AddNewVideoComponent
-                    apiType="amv"
-                    onAddVideo={afterAddVideos}/>
-                <EditPageTextComponent
-                    apiType="amv"/>
-            </div>
-            <PageTextComponent
-                apiType="amv"
-            />
             <VideoList
                 videos={amv}
                 apiType="amv"
                 deleteVideos={afterDeleteVideos}
                 reorderVideos={afterReorderVideos}
                 videosPerPage={videosPerPage} // Pass the dynamic
+                addVideos={afterAddVideo}
+
             />
         </>
     );

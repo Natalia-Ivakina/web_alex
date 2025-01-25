@@ -8,7 +8,7 @@ const VideosPerPageSelector = ({
                                }) => {
     return (
         <div>
-            <div className="videos-per-page-selector">
+            <div className="videos-per-page-selector edit-form">
                 <p>How many videos do you want per page?</p>
                 <input
                     type="number"
