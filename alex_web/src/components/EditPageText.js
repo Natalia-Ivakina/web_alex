@@ -5,10 +5,20 @@ export const EditPageTextComponent = ({ apiType, onTextUpdate, textData}) => {
     const [message, setMessage] = useState('');
 
     // sending
-    const [title, setTitle] = useState(textData?.title || '');
-    const [text1, setText1] = useState(textData?.text1 || '');
-    const [text2, setText2] = useState(textData?.text2 || '');
-    const [text3, setText3] = useState(textData?.text3 || '');
+    const [title, setTitle] = useState("");
+    const [text1, setText1] = useState("");
+    const [text2, setText2] = useState("");
+    const [text3, setText3] = useState("");
+
+    //filling
+    useEffect(() => {
+        if (textData) {
+            setTitle(textData.title || "");
+            setText1(textData.text1 || "");
+            setText2(textData.text2 || "");
+            setText3(textData.text3 || "");
+        }
+    }, [textData]);
 
 
     const handleSubmit = async (event) => {
@@ -43,33 +53,33 @@ export const EditPageTextComponent = ({ apiType, onTextUpdate, textData}) => {
                 <div className="row">
                     <textarea
                         placeholder="Enter title"
-                        //value={title}
+                        value={title}
                         onChange={(e) =>
                             setTitle(e.target.value)}
-                        required
+                        //required
                     ></textarea>
                     <textarea
                         placeholder="Enter text 1"
-                        //value={text1}
+                        value={text1}
                         onChange={(e) =>
                             setText1(e.target.value)}
-                        required
+                        //required
                     ></textarea>
                 </div>
                 <div className="row">
                     <textarea
                         placeholder="Enter text 2"
-                        //value={text2}
+                        value={text2}
                         onChange={(e) =>
                             setText2(e.target.value)}
-                        required
+                        //required
                     ></textarea>
                     <textarea
                         placeholder="Enter text 3"
-                        //value={text3}
+                        value={text3}
                         onChange={(e) =>
                             setText3(e.target.value)}
-                        required
+                        //required
                     ></textarea>
                 </div>
                 <button type="submit">Edit Text</button>
