@@ -8,8 +8,8 @@ const VideosPerPageSelector = ({
                                }) => {
     return (
         <div>
-            <div className="videos-per-page-selector edit-form">
-                <p>How many videos do you want per page?</p>
+            <div className="videos-per-page-selector edit-form ">
+                <p>Change number videos per page </p>
                 <input
                     type="number"
                     className="adminInput"
@@ -18,7 +18,6 @@ const VideosPerPageSelector = ({
                     min="1"
                 />
                 <button onClick={handleSaveVideosPerPage}>Save</button>
-
             </div>
             <div style={{display: "flex", justifyContent: "flex-end"}}>
                 {message && <div className="message">{message}</div>}

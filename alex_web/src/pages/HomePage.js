@@ -1,9 +1,51 @@
-const HomePage = () => (
-    <>
-        <p className='headertext'>Hello, welcome to my world!</p>
-        {/*для админа*/}
-        <button>Edit text</button>
-    </>
+import {useEffect, useState} from "react";
+import { EditPageTextComponent } from "../components/EditPageText";
+import PageTextComponent from "../components/PageText";
+import {loadPageText} from "../services/pageTextService";
+
+const HomePage = () => {
+    const [message, setMessage] = useState("");
+    const [pageText, setPageText] = useState({
+        title: '',
+        text1: '',
+        text2: '',
+        text3: '',
+        text4: '',
+        text5: ''
+    });
+
+    //initial text
+    useEffect(() => {
+        const fetchPageText = async () => {
+            try {
+                const textData = await loadPageText('home');
+                setPageText(textData);
+            } catch (error) {
+                console.error("Error fetching page text:", error);
+            }
+        };
+
+        fetchPageText();
+    }, ['home']);
+
+    const updatePageText = (updatedText) => {
+        setPageText(updatedText);
+    };
+
+    return (
+        <>
+            <div>
+                <EditPageTextComponent
+                    apiType="home"
+                    onTextUpdate={updatePageText}
+                    textData={pageText}
+                />
+            </div>
+                <div>
+                    <PageTextComponent pageText={pageText}/>
+                </div>
+            </>
 );
+};
 
 export default HomePage;

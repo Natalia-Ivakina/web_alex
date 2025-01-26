@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import DeleteReorderButtonsComponent from "../components/DeleteReorderButtons";
 import VideosPerPageSelector from "../components/VideosPerPageSelector";
 import PaginationNavigator from "../components/PaginationNavigator";
-import { loadVideoCount, editVideoCount } from "../services/videoPerPageService";
+import { editVideoCount } from "../services/videoPerPageService";
 import PageTextComponent from "./PageText";
 import AddNewVideoComponent from "./AddVideoForm";
 import {EditPageTextComponent} from "./EditPageText";
@@ -26,14 +26,16 @@ const VideoList = ({
         title: '',
         text1: '',
         text2: '',
-        text3: ''
+        text3: '',
+        text4: '',
+        text5: ''
     });
 
     const updatePageText = (updatedText) => {
         setPageText(updatedText);
     };
 
-    // Fetch the initial page text when the component mounts
+    // Fetch the initial page text
     useEffect(() => {
         const fetchPageText = async () => {
             try {
@@ -109,22 +111,20 @@ const VideoList = ({
         setInputVideosPerPage(internalVideosPerPage);
     }, [internalVideosPerPage]);
 
-
-
     return (
         <div>
-            <div className="horizontal-container">
-                <AddNewVideoComponent
-                    apiType={apiType}
-                    onAddVideo={addVideos}/>
+            <div>
+                 <AddNewVideoComponent
+                apiType={apiType}
+                onAddVideo={addVideos}/>
+            </div>
+            <div>
                 <EditPageTextComponent
                     apiType={apiType}
                     onTextUpdate={updatePageText}
                     textData = {pageText}
-
                 />
             </div>
-
             <div className="controls">
                 <VideosPerPageSelector
                     inputVideosPerPage={inputVideosPerPage}

@@ -219,16 +219,11 @@ app.get("/api/text/:page", (req, res) => {
  */
 app.post("/api/text/:page", (req, res) => {
     const pageName = req.params.page;
-    const { title, text1, text2, text3 } = req.body;
+    const { title, text1, text2, text3, text4, text5} = req.body;
 
-    console.log(`Received data: title: ${title}, text1: ${text1}, text2: ${text2}, text3: ${text3}`);
+    //console.log(`Received data: title: ${title}, text1: ${text1}, text2: ${text2}, text3: ${text3}, text4: ${text4}, text5: ${text5}\``);
 
-    const newTextObject = {
-        title,
-        text1,
-        text2,
-        text3,
-    };
+    const newTextObject = {title, text1, text2,text3,text4,text5 };
 
     changeTextData(textPaths.text, pageName, newTextObject);
 

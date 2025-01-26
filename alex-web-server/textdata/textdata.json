@@ -1,44 +1,56 @@
 [
   {
     "name": "home",
-    "title": "home",
-    "text1": "home",
-    "text2": "home",
-    "text3": "home"
+    "title": "Welcome",
+    "text1": " ",
+    "text2": " ",
+    "text3": " ",
+    "text4": " ",
+    "text5": " "
   },
   {
     "name": "amv",
-    "title": "kk",
-    "text1": "44",
-    "text2": " aa",
-    "text3": " dd"
+    "title": "Amv",
+    "text1": "",
+    "text2": "",
+    "text3": "",
+    "text4": "",
+    "text5": ""
   },
   {
     "name": "moods",
-    "title": "Moods!",
-    "text1": "moods",
-    "text2": "moods",
-    "text3": "moods"
+    "title": "Moods",
+    "text1": "",
+    "text2": "",
+    "text3": "",
+    "text4": "",
+    "text5": ""
   },
   {
     "name": "projects",
-    "title": "projects",
-    "text1": "projects",
-    "text2": "projects",
-    "text3": "projects"
+    "title": "Projects",
+    "text1": "",
+    "text2": "",
+    "text3": "",
+    "text4": "",
+    "text5": ""
   },
   {
     "name": "showreels",
-    "title": "showreels",
-    "text1": "showreels",
-    "text2": "showreels",
-    "text3": "showreels"
+    "title": "Showreels",
+    "text1": "",
+    "text2": "",
+    "text3": "",
+    "text4": "",
+    "text5": ""
   },
   {
     "name": "about",
-    "title": "about",
-    "text1": "about",
-    "text2": "about",
-    "text3": "about"
+    "title": "About Me",
+    "text1": "Hi everyone!",
+    "text2": "I'm Alex, a passionate Cinematic Artist, Video Editor, Colorist, Unreal Engine Artist and Motion Designer.",
+    "text3": "My journey in video editing began in 2005, when I got my first PC and was absolutely fascinated by the idea of creating something out of a simple idea. This idea ignited a passion for crafting immersive worlds, giving them life, mood, and a unique narrative.",
+    "text4": "A gamer since the Atari 2600 and a movie fan from the days of our first black-and-white TV, I've got plenty of experience and a genuine love for creativity.",
+    "text5": "The world of creativity is vast and ever-evolving, and while I know a lot, I'm always learning to bring my best ideas, my most emotional moods, and captivating stories to life."
   }
 ]

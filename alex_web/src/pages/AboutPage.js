@@ -1,40 +1,60 @@
+import React, {useEffect, useState} from "react";
+import {loadPageText} from "../services/pageTextService";
+import {EditPageTextComponent} from "../components/EditPageText";
+
 const AboutPage = () => {
+    const [message, setMessage] = useState("");
+    const [pageText, setPageText] = useState({
+        title: '',
+        text1: '',
+        text2: '',
+        text3: '',
+        text4: '',
+        text5: ''
+    });
+
+    //initial text
+    useEffect(() => {
+        const fetchPageText = async () => {
+            try {
+                const textData = await loadPageText('about');
+                setPageText(textData);
+            } catch (error) {
+                console.error("Error fetching page text:", error);
+            }
+        };
+
+        fetchPageText();
+    }, ['about']);
+
+    const updatePageText = (updatedText) => {
+        setPageText(updatedText);
+    };
     return (
         <>
-            <p className='headertext'>About Me</p>
-            <div id='aboutme'>
-                <p className='abouttext'>
-                    Hi everyone!
-                </p>
-                <p className='abouttext'>
-                    I'm Alex, a passionate Cinematic Artist, Video Editor, Colorist, Unreal Engine Artist and Motion
-                    Designer.
-                </p>
-                {/*для админа*/}
-                <button>Edit text</button>
+            <div>
+                <EditPageTextComponent
+                    apiType="about"
+                    onTextUpdate={updatePageText}
+                    textData={pageText}
+                />
             </div>
-            <div id='contact'>
-                <img id= 'findme' src="/findme.png" alt="Find me"/>
-                <br/>
-                <a id='artstationlink' href='https://www.artstation.com/alexboy' >
-                    ArtStation
-                </a>
-                <br/>
-                <a id='youtubelink' href='https://www.youtube.com/user/AlexboyAMV' >
-                    Youtube
-                </a>
-                <br/>
-                <a id='linkeldnlink' href='https://www.linkedin.com/in/akialex/' >
-                    LinkedIn
-                </a>
+            <div>
+                <div>
+                    <p className="headertext">{pageText.title}</p>
+                    <div className='aboutme'>
+                        <p className='abouttext'>{pageText.text1}</p>
+                        <p className='abouttext'>{pageText.text2}</p>
+                        <p className='abouttext'>{pageText.text3}</p>
+                        <p className='abouttext'>{pageText.text4}</p>
+                        <p className='abouttext'>{pageText.text5}</p>
+                    </div>
+                </div>
             </div>
-            {/*<div id='me'>*/}
-            {/*    <img id='textme' src="/textme.png" alt="Text me"/>*/}
-            {/*    <img id='arrow' src="/arrow.png" alt="Arrow"/>*/}
-            {/*    <img id='logome' src="/logome.png" alt="Logo me"/>*/}
-            {/*</div>*/}
+
         </>
-    );
+    )
+        ;
 };
 
 export default AboutPage;
