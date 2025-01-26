@@ -54,7 +54,9 @@ const AddNewVideoComponent = ({apiType, onAddVideo}) => {
                     <button type="submit">Add Video</button>
                 </div>
             </form>
-            {message && <div className="message">{message}</div>}
+            <div style={{display: "flex", justifyContent: "flex-end"}}>
+                {message && <div className="message">{message}</div>}
+            </div>
         </div>
     );
 };

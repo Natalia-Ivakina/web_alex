@@ -7,8 +7,8 @@ const VideosPerPageSelector = ({
                                    message,
                                }) => {
     return (
-        <div>
-            <div className="videos-per-page-selector edit-form ">
+        <div className="edit-form ">
+            <div className="videos-per-page-selector" >
                 <p>Change number videos per page </p>
                 <input
                     type="number"
