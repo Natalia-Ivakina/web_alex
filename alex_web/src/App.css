@@ -238,6 +238,8 @@ footer {
   width: 100%;
   background-color: #1f2224;
   bottom: 0;
+  display: flex;
+  justify-content: flex-end
 }
 
 input,
