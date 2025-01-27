@@ -6,7 +6,44 @@ body {
   max-width: 1500px;
   margin: 0 auto;
 }
+/*-burger menu--*/
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
 
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/*-nav menu--*/
 nav {
   border-bottom: 0.2em solid black;
   text-align: center;
@@ -38,7 +75,7 @@ nav a {
 
 nav a:hover {
   background-color: #2d3640;
-  color: #bfbfbf;
+  color: c;
   border-radius: 0.5em;
 }
 
@@ -47,30 +84,6 @@ nav a:hover {
   top: 0.4em;
   right: 0.4em;
 }
-
-/*!* Mobile styles *!*/
-/*@media (max-width: 850px) {*/
-/*  nav ul {*/
-/*    display: none; !* Hidden by default *!*/
-/*    flex-direction: column;*/
-/*    background-color: #1f2224;*/
-/*    font-size: 0.7em;*/
-/*    width: 100%; !* Optional: make the dropdown full width *!*/
-/*  }*/
-
-/*  nav ul.show {*/
-/*    display: flex; !* Show when active *!*/
-/*  }*/
-
-/*  nav li {*/
-/*    padding: 10px 0; !* Adjust padding for mobile *!*/
-/*  }*/
-
-/*  nav a {*/
-/*    padding: 10px 20px; !* Adjust padding for mobile *!*/
-/*  }*/
-
-/*}*/
 
 #wrapper {
   width: 95%;

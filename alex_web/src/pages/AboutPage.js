@@ -27,14 +27,14 @@ const AboutPage = () => {
         setPageText(updatedText);
     };
 
-    //size of screnn
+    //size of screen
     useEffect(() => {
         const handleResize = () => {
             setIsMediumScreen(window.innerWidth <= 1024);
         };
 
         window.addEventListener("resize", handleResize);
-        handleResize(); // Устанавливаем начальное состояние
+        handleResize();
 
         return () => window.removeEventListener("resize", handleResize);
     }, []);
