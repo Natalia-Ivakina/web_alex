@@ -7,11 +7,7 @@ const HomePage = () => {
     const [message, setMessage] = useState("");
     const [pageText, setPageText] = useState({
         title: '',
-        text1: '',
-        text2: '',
-        text3: '',
-        text4: '',
-        text5: ''
+        text: '',
     });
 
     //initial text
@@ -34,7 +30,7 @@ const HomePage = () => {
 
     return (
         <>
-            <div>
+            <div className="adminlayout">
                 <EditPageTextComponent
                     apiType="home"
                     onTextUpdate={updatePageText}

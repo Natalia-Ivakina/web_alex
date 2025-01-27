@@ -6,11 +6,7 @@ const AboutPage = () => {
     const [isMediumScreen, setIsMediumScreen] = useState(false);
     const [pageText, setPageText] = useState({
         title: '',
-        text1: '',
-        text2: '',
-        text3: '',
-        text4: '',
-        text5: ''
+        text: '',
     });
 
     //initial text
@@ -63,7 +59,7 @@ const AboutPage = () => {
 
     return (
         <>
-            <div>
+            <div className="adminlayout">
                 <EditPageTextComponent
                     apiType="about"
                     onTextUpdate={updatePageText}
@@ -72,25 +68,25 @@ const AboutPage = () => {
             </div>
             <div>
                 <p className="headertext">{pageText.title}</p>
-                <div className='edit-form' id="footerborder">
+                <div className='edit-form'>
                     <div className="row">
                         <div className='aboutme'>
-                            <p className='abouttext'>{pageText.text1}</p>
-                            <p className='abouttext'>{pageText.text2}</p>
-                            <p className='abouttext'>{pageText.text3}</p>
-                            <p className='abouttext'>{pageText.text4}</p>
-                            <p className='abouttext'>{pageText.text5}</p>
+                            {pageText.text.split('\n').map((line, index) => (
+                                <p className='abouttext' key={index}>
+                                    {line}
+                                </p>
+                            ))}
                         </div>
                         {!isMediumScreen && contactBlock}
                     </div>
-                    <div className="row pos2">
+                    <div className="row">
                         {isMediumScreen && contactBlock}
-                        <div className="container2  right-align">
+                        <div className="container2 right-align">
                             <div id="me">
                                 <p><img src="/textme.png" alt="logo"/></p>
-                                <div id="arrow">
-                                    <img src="/arrow.png" alt="logo"/>
-                                </div>
+                            </div>
+                            <div id="arrow">
+                                <img src="/arrow.png" alt="logo"/>
                             </div>
                             <div id="logo">
                                 <img src="/logome.png" alt="logo"/>

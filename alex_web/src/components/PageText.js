@@ -5,11 +5,11 @@ const PageTextComponent = ({ pageText }) => {
     return (
         <div>
             <p className="headertext">{pageText.title}</p>
-            <p className="amvtext">{pageText.text1}</p>
-            <p className="amvtext">{pageText.text2}</p>
-            <p className="amvtext">{pageText.text3}</p>
-            <p className="amvtext">{pageText.text4}</p>
-            <p className="amvtext">{pageText.text5}</p>
+            {pageText.text.split('\n').map((line, index) => (
+                <p className='abouttext' key={index}>
+                    {line}
+                </p>
+            ))}
         </div>
     );
 };

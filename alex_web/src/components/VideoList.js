@@ -24,11 +24,7 @@ const VideoList = ({
     const [inputVideosPerPage, setInputVideosPerPage] = useState(internalVideosPerPage);
     const [pageText, setPageText] = useState({
         title: '',
-        text1: '',
-        text2: '',
-        text3: '',
-        text4: '',
-        text5: ''
+        text: '',
     });
 
     const updatePageText = (updatedText) => {
@@ -82,11 +78,10 @@ const VideoList = ({
         if (!isNaN(value) && value > 0) {
             setInternalVideosPerPage(value);
             setCurrentPage(1);
-
             try {
                 // Save count to the server
                 await editVideoCount(apiType, value);
-                setMessage("Video count updated successfully!");
+                setMessage("Number videos per page updated successfully!");
             } catch (error) {
                 setMessage("Error updating video count.");
             }
@@ -114,71 +109,80 @@ const VideoList = ({
     return (
         <div>
             <div>
-                 <AddNewVideoComponent
-                apiType={apiType}
-                onAddVideo={addVideos}/>
+                <div className="row adminlayout">
+                    <AddNewVideoComponent
+                        apiType={apiType}
+                        onAddVideo={addVideos}
+                    />
+                    <EditPageTextComponent
+                        apiType={apiType}
+                        onTextUpdate={updatePageText}
+                        textData={pageText}
+                    />
+                </div>
             </div>
             <div>
-                <EditPageTextComponent
-                    apiType={apiType}
-                    onTextUpdate={updatePageText}
-                    textData = {pageText}
+                <PageTextComponent
+                    pageText={pageText}
                 />
             </div>
-            <div className="controls">
-                <VideosPerPageSelector
-                    inputVideosPerPage={inputVideosPerPage}
-                    handleVideosPerPageInputChange={handleVideosPerPageInputChange}
-                    handleSaveVideosPerPage={handleSaveVideosPerPage}
-                    message={message}
+            <div className="row content">
+                <div>
+                    <VideosPerPageSelector
+                        inputVideosPerPage={inputVideosPerPage}
+                        handleVideosPerPageInputChange={handleVideosPerPageInputChange}
+                        handleSaveVideosPerPage={handleSaveVideosPerPage}
+                        message={message}
+                    />
+                </div>
+                </div>
+                <div className="video-grid">
+                    {currentVideos.length > 0 ? (
+                        currentVideos.map((project, index) => {
+                            const videoId = new URLSearchParams(
+                                new URL(project.link).search
+                            ).get("v");
+                            const embedUrl = `https://www.youtube.com/embed/${videoId}`;
+                            return (
+                                <div key={project.name} className="video-item">
+                                    <p>{project.name}</p>
+                                    <iframe
+                                        width="560"
+                                        height="315"
+                                        src={embedUrl}
+                                        title={project.name}
+                                        allow="
+                                    accelerometer;
+                                    autoplay;
+                                    clipboard-write;
+                                    encrypted-media;
+                                    gyroscope;
+                                    picture-in-picture"
+                                        allowFullScreen
+                                    ></iframe>
+                                    <DeleteReorderButtonsComponent
+                                        videoName={project.name}
+                                        apiType={apiType}
+                                        onActionComplete={(msg) => setMessage(msg)}
+                                        OnDelete={deleteVideos}
+                                        OnReorder={reorderVideos}
+                                    />
+                                    <p>Video # {index + 1}</p>
+                                </div>
+                            );
+                        })
+                    ) : (
+                        <p>No projects available.</p>
+                    )}
+                </div>
+                <PaginationNavigator
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    goToPrevPage={goToPrevPage}
+                    goToNextPage={goToNextPage}
                 />
             </div>
-            <div><PageTextComponent
-                pageText={pageText}
-            /></div>
+            );
+            };
 
-            <div className="video-grid">
-                {currentVideos.length > 0 ? (
-                    currentVideos.map((project, index) => {
-                        const videoId = new URLSearchParams(
-                            new URL(project.link).search
-                        ).get("v");
-                        const embedUrl = `https://www.youtube.com/embed/${videoId}`;
-                        return (
-                            <div key={project.name} className="video-item">
-                                <p>{project.name}</p>
-                                <iframe
-                                    width="560"
-                                    height="315"
-                                    src={embedUrl}
-                                    title={project.name}
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowFullScreen
-                                ></iframe>
-                                <DeleteReorderButtonsComponent
-                                    videoName={project.name}
-                                    apiType={apiType}
-                                    onActionComplete={(msg) => setMessage(msg)}
-                                    OnDelete={deleteVideos}
-                                    OnReorder={reorderVideos}
-                                />
-                                <p>Video # {index + 1}</p>
-                            </div>
-                        );
-                    })
-                ) : (
-                    <p>No projects available.</p>
-                )}
-            </div>
-
-            <PaginationNavigator
-                currentPage={currentPage}
-                totalPages={totalPages}
-                goToPrevPage={goToPrevPage}
-                goToNextPage={goToNextPage}
-            />
-        </div>
-    );
-};
-
-export default VideoList;
+            export default VideoList;

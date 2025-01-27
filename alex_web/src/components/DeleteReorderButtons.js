@@ -50,7 +50,7 @@ const DeleteReorderButtonsComponent = ({ videoName, apiType, onActionComplete, O
                 <input
                     type="text"
                     className="adminInput"
-                    placeholder="#"
+                    placeholder=""
                     value={newIndex}
                     onChange={(e) => setNewIndex(e.target.value)}
                 />

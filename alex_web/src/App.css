@@ -92,7 +92,7 @@ nav a:hover {
   text-align: center;
   width: 20%;
   margin: 2%;
-  padding: 0.3em;
+  padding: 0.3em 1em 0.3em 0.3em;
 }
 
 #contact a:hover {
@@ -221,8 +221,11 @@ button {
   background-color: black;
   color: #84a4c9;
   border-radius: 0.5em;
-  cursor: pointer;
   padding: 8px;
+}
+
+button:hover{
+  color: #bfbfbf;
 }
 
 .adminPanel{
@@ -265,12 +268,16 @@ input,
 textarea {
   display: block;
   width: 300px;
+  height: min(3em);
   padding: 8px;
   border-radius: 8px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 18px;
+  font-size: 14px;
   border: 2px solid black;
   margin-bottom: 8px;
+}
+
+.numberInput{
+  width: 3em;
 }
 
 .modal-content {
@@ -290,13 +297,6 @@ textarea {
   color: aliceblue;
 }
 
-.videos-per-page-selector {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 10px;
-}
-
 .message {
   color: green;
 }
@@ -314,19 +314,46 @@ textarea {
   margin: 0;
 }
 
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.adminlayout{
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.content {
+  display: flex;
+  justify-content: end;
+}
+
+#pagePanel{
+  background-color: #1f2224;
+}
+
+@media (max-width: 600px) {
+  .adminlayout {
+    display: flex;
+    flex-direction: column;
+
+  }
+}
+
 .edit-form{
-  border: solid 1px dimgrey;
-  border-radius: 10px;
+  background-color: #2d3640;
+  border-radius: 5px;
   padding: 10px;
   opacity: 0.8;
   margin-bottom: 1em;
 }
 
-textarea {
-  font-size: 0.7em;
-  width: min(22em);
-  height: min(4em);
-}
 
 #findme{
   padding: 0;
@@ -391,8 +418,24 @@ textarea {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, auto);
-  padding: 0;
+  padding-right: 70px;
   margin: 0;
+}
+
+#me {
+  grid-row: 3 / 3;
+  grid-column: 1 / 2;
+  padding-top: 100px;
+  margin-right: -2em;
+  text-align:right;
+}
+
+#arrow {
+  grid-row: 3 / 3;
+  grid-column: 1 / 2;
+  margin-left: -1em;
+  text-align:right;
+  padding-top: 100px;
 }
 
 #logo {
@@ -403,13 +446,7 @@ textarea {
   text-align: left;
 }
 
-#me {
-  grid-row: 2 / 3;
-  grid-column: 1 / 2;
-  padding: 0;
-  margin: 0;
-  text-align:right;
-}
+
 
 .row.developer {
   display: flex;
@@ -425,15 +462,13 @@ textarea {
   flex-grow: 1;
 }
 
-#footerborder{
-  border: none;
-}
-
 .right-align {
   display: flex;
   justify-content: flex-end;
   width: 100%;
 }
+
+
 
 
 

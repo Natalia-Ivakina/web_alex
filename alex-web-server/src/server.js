@@ -185,7 +185,7 @@ app.post("/api/count/:page", (req, res) => {
 
     changeQVideoData(nunOfPageVideoPaths.nunOfPageVideo, pageName, newNum);
 
-    res.status(200).json({ message: `Updated quantity for "${pageName}" to ${newNum}` });
+    res.status(200).json({ message: `Updated quantity of videos for "${pageName}" to ${newNum}` });
 });
 
 /**
@@ -219,8 +219,8 @@ app.get("/api/text/:page", (req, res) => {
  */
 app.post("/api/text/:page", (req, res) => {
     const pageName = req.params.page;
-    const { title, text1, text2, text3, text4, text5} = req.body;
-    const newTextObject = {title, text1, text2,text3,text4,text5 };
+    const { title, text} = req.body;
+    const newTextObject = {title, text};
 
     changeTextData(textPaths.text, pageName, newTextObject);
 

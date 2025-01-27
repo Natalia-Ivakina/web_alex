@@ -34,24 +34,24 @@ const AddNewVideoComponent = ({apiType, onAddVideo}) => {
 
     return (
         <div className="edit-form">
-            <h4>Add new video</h4>
+            <p>Add new video</p>
             <form onSubmit={handleSubmit} className="form-container ">
-                <div className="row">
-                    <textarea
-                        placeholder="Title"
+                <div>
+                    <input
+                        placeholder="Video title"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                         required
-                    ></textarea>
-                    <textarea
-                        placeholder="Link"
+                    ></input>
+                    <input
+                        placeholder="Video link"
                         value={link}
                         onChange={(e) => setLink(e.target.value)}
                         required
-                    ></textarea>
+                    ></input>
                 </div>
                 <div className="row">
-                    <button type="submit">Add Video</button>
+                    <button type="submit">Save</button>
                 </div>
             </form>
             <div style={{display: "flex", justifyContent: "flex-end"}}>
