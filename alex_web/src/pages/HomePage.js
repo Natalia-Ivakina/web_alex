@@ -45,7 +45,7 @@ const HomePage = () => {
                     <PageTextComponent pageText={pageText}/>
                 </div>
             </>
-);
+    );
 };
 
 export default HomePage;

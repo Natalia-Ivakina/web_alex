@@ -1,11 +1,11 @@
 [
   {
     "name": "home",
-    "title": "Welcome",
-    "text1": " ",
-    "text2": " ",
+    "title": "Home",
+    "text1": "",
+    "text2": "\n\n",
     "text3": " ",
-    "text4": " ",
+    "text4": "\n\n",
     "text5": " "
   },
   {
@@ -50,7 +50,7 @@
     "text1": "Hi everyone!",
     "text2": "I'm Alex, a passionate Cinematic Artist, Video Editor, Colorist, Unreal Engine Artist and Motion Designer.",
     "text3": "My journey in video editing began in 2005, when I got my first PC and was absolutely fascinated by the idea of creating something out of a simple idea. This idea ignited a passion for crafting immersive worlds, giving them life, mood, and a unique narrative.",
-    "text4": "A gamer since the Atari 2600 and a movie fan from the days of our first black-and-white TV, I've got plenty of experience and a genuine love for creativity.",
-    "text5": "The world of creativity is vast and ever-evolving, and while I know a lot, I'm always learning to bring my best ideas, my most emotional moods, and captivating stories to life."
+    "text4": "I'm Alex, a passionate Cinematic Artist, Video Editor, Colorist, Unreal Engine Artist and Motion Designer.",
+    "text5": "My journey in video editing began in 2005, when I got my first PC and was absolutely fascinated by the idea of creating something out of a simple idea. This idea ignited a passion for crafting immersive worlds, giving them life, mood, and a unique narrative."
   }
 ]
