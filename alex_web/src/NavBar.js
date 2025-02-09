@@ -9,7 +9,7 @@ const NavBar = () => {
     //size of screen
     useEffect(() => {
         const handleResize = () => {
-            setIsSmallScreen(window.innerWidth <= 1000);
+            setIsSmallScreen(window.innerWidth <= 600);
         };
         window.addEventListener("resize", handleResize);
         handleResize();
