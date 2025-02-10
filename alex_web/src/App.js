@@ -9,6 +9,7 @@ import Footer from "./Footer";
 import MoodsPage from "./pages/MoodsPage";
 import AmvPage from "./pages/AmvPage";
 import ShowreelsPage from "./pages/ShowreelsPage";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
               <Route path="/projects" element={<ProjectListPage />} />
               <Route path="/moods" element={<MoodsPage />} />
               <Route path="/amv" element={<AmvPage />} />
+              <Route path="/admin" element={<LoginPage />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </div>

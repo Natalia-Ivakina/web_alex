@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {loadPageText} from "../services/pageTextService";
 import {EditPageTextComponent} from "../components/EditPageText";
+import LoginButtonComponent from "../components/LoginButton";
 
 const AboutPage = () => {
     const [isMediumScreen, setIsMediumScreen] = useState(false);
@@ -96,7 +97,7 @@ const AboutPage = () => {
                 </div>
             </div>
 
-            <div className="row developer">
+            <div className="row developer developer-container">
                 <p>Design and Development by Natalia Ivakina © ~ 2025</p>
             </div>
         </>
