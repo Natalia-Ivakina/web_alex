@@ -83,7 +83,7 @@ const VideoList = ({
                 await editVideoCount(apiType, value);
                 setMessage("Number videos per page updated successfully!");
             } catch (error) {
-                setMessage("Error updating video count.");
+                setMessage(error.message);
             }
         } else {
             setMessage("Please enter a valid number greater than 0.");

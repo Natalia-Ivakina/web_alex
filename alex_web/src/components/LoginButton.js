@@ -1,35 +1,70 @@
-import { useState } from "react";
-import LoginFormComponent from "./LoginForm";
+import React, { useState, useEffect } from 'react';
+import { login, logout, checkAuth } from "../services/loginService"; // Import the login services
+import LoginFormComponent from './LoginForm';
 
 const LoginButtonComponent = () => {
     const [isLoginVisible, setIsLoginVisible] = useState(false);
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+    const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
 
-    const handleLoginClick = () => {
+
+    // Check if the user is logged in when the component mounts
+    useEffect(() => {
+        checkAuth()
+            .then((authenticated) => {
+                setIsUserLoggedIn(authenticated);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }, []);
+
+    const handleAdminClick = () => {
         setIsLoginVisible(!isLoginVisible);
     };
 
-    const handleSubmit = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
-        console.log("Username:", username, "Password:", password);
+        try {
+            const result = await login(password);  // Call login service
+            setIsUserLoggedIn(true);  // Set the user as logged in
+        } catch (error) {
+            alert("Login failed");
+        }
+    };
+
+    const handleLogout = async () => {
+        try {
+            await logout();  // Call logout service
+            setIsUserLoggedIn(false);  // Set the user as logged out
+        } catch (error) {
+            alert("Logout failed");
+        }
     };
 
     return (
         <div className="login-container">
-            <button id="loginButton" onClick={handleLoginClick}>
+            <button id="loginButton" onClick={handleAdminClick}>
                 <img src="/logome.png" alt="Login" />
             </button>
 
-            {isLoginVisible && (
+            {isLoginVisible && !isUserLoggedIn && (
                 <div className="login-form-container">
                     <LoginFormComponent
                         username={username}
                         setUsername={setUsername}
                         password={password}
                         setPassword={setPassword}
-                        handleSubmit={handleSubmit}
+                        handleSubmit={handleLogin}
                     />
+                </div>
+            )}
+
+            {isUserLoggedIn && (
+                <div className="login-form">
+                    <p>Hi, Admin!</p>
+                    <button onClick={handleLogout}>Logout</button>
                 </div>
             )}
         </div>

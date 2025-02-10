@@ -531,7 +531,6 @@ textarea {
   height: 3em;
   width: auto;
   display: block;
-  opacity: 0.5;
 }
 
 /* login form */
@@ -539,7 +538,6 @@ textarea {
   display: flex;
   align-items: center;
   gap: 10px;
-  opacity: 0.5;
 }
 
 .login-form input {

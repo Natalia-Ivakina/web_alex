@@ -9,7 +9,6 @@ import axios from "axios";
 export const loadVideoCount = async (pageName) => {
     try {
         const response = await axios.get(`/api/count/${pageName}`);
-
         // the server returns the quantity number
         console.log("count fetched from server:", response.data);
 
@@ -33,6 +32,11 @@ export const editVideoCount = async (pageName, newNum) => {
         const response = await axios.post(`/api/count/${pageName}`, { newNum });
         return response.data;
     } catch (error) {
+        if (error.response && error.response.status === 403) {
+            // Handle unauthorized access
+            console.error("Unauthorized to edit video count");
+            throw new Error("You are not authorized to edit the video count.");
+        }
         console.error("Error editing video count:", error);
         throw new Error("Failed to edit video count");
     }

@@ -19,7 +19,7 @@ const DeleteReorderButtonsComponent = ({ videoName, apiType, onActionComplete, O
             onActionComplete(response.message);
             OnDelete(response.videos);
         } catch (err) {
-            onActionComplete("Error deleting video");
+            onActionComplete(err.message);
             setError(err);
         }
     };
@@ -39,7 +39,7 @@ const DeleteReorderButtonsComponent = ({ videoName, apiType, onActionComplete, O
             onActionComplete(response.message);
             OnReorder(response.videos);
         } catch (err) {
-            onActionComplete("Error reordering video");
+            onActionComplete(err.message);
             setError(err);
         }
     };

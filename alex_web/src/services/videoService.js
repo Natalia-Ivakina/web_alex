@@ -11,6 +11,11 @@ export const addVideo = async (videoData, apiType) => {
         const response = await axios.post(`/api/${apiType}`, videoData);
         return response.data;
     } catch (error) {
+        if (error.response && error.response.status === 403) {
+            // Handle unauthorized access
+            console.error("Unauthorized to edit video count");
+            throw new Error("You are not authorized to add the video");
+        }
         throw new Error("Error adding video");
     }
 };
@@ -28,6 +33,11 @@ export const deleteVideo = async (videoName, apiType) => {
         });
         return response.data;
     } catch (error) {
+        if (error.response && error.response.status === 403) {
+            // Handle unauthorized access
+            console.error("Unauthorized to edit video count");
+            throw new Error("You are not authorized to delete the video.");
+        }
         throw new Error("Error deleting video");
     }
 };
@@ -63,6 +73,11 @@ export const reorderVideo = async (videoName, newIndex, apiType) => {
         });
         return response.data;
     } catch (error) {
+        if (error.response && error.response.status === 403) {
+            // Handle unauthorized access
+            console.error("Unauthorized to edit video count");
+            throw new Error("You are not authorized to reorder the video.");
+        }
         //console.error("Error reordering video:", error);
         throw new Error("Failed to reorder video");
     }
