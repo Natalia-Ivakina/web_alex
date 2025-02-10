@@ -73,46 +73,50 @@ const AboutPage = () => {
 
     return (
         <>
-            {isAuthenticated && (
-                <div className="adminlayout">
-                    <EditPageTextComponent
-                        apiType="about"
-                        onTextUpdate={updatePageText}
-                        textData={pageText}
-                    />
-                </div>
-            )}
-            <div>
-                <p className="headertext">{pageText.title}</p>
-                <div className='edit-form'>
-                    <div className="row">
-                        <div className='aboutme'>
-                            {pageText.text.split('\n').map((line, index) => (
-                                <p className='abouttext' key={index}>
-                                    {line}
-                                </p>
-                            ))}
+            <div className="page-container">
+                <main>
+                    {isAuthenticated && (
+                        <div className="adminlayout">
+                            <EditPageTextComponent
+                                apiType="about"
+                                onTextUpdate={updatePageText}
+                                textData={pageText}
+                            />
                         </div>
-                        {!isMediumScreen && contactBlock}
-                    </div>
-                    <div className="row">
-                        {isMediumScreen && contactBlock}
-                        <div className="container2 right-align">
-                            <div id="me">
-                                <p><img src="/textme.png" alt="logo"/></p>
+                    )}
+                    <div>
+                        <p className="headertext">{pageText.title}</p>
+                        <div className='edit-form'>
+                            <div className="row">
+                                <div className='aboutme'>
+                                    {pageText.text.split('\n').map((line, index) => (
+                                        <p className='abouttext' key={index}>
+                                            {line}
+                                        </p>
+                                    ))}
+                                </div>
+                                {!isMediumScreen && contactBlock}
                             </div>
-                            <div id="arrow">
-                                <img src="/arrow.png" alt="logo"/>
-                            </div>
-                            <div id="logo">
-                                <img src="/logome.png" alt="logo"/>
+                            <div className="row">
+                                {isMediumScreen && contactBlock}
+                                <div className="container2 right-align">
+                                    <div id="me">
+                                        <p><img src="/textme.png" alt="logo"/></p>
+                                    </div>
+                                    <div id="arrow">
+                                        <img src="/arrow.png" alt="logo"/>
+                                    </div>
+                                    <div id="logo">
+                                        <img src="/logome.png" alt="logo"/>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </main>
             </div>
 
-            <div className="row developer developer-container">
+            <div className="row developer">
                 <p>Design and Development by Natalia Ivakina © ~ 2025</p>
             </div>
         </>

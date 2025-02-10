@@ -6,6 +6,17 @@ body {
   max-width: 1500px;
   margin: 0 auto;
 }
+body, .page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 85vh; /* Full height of the viewport */
+}
+
+/* Main content should grow to take available space */
+main {
+  flex-grow: 1;
+}
+
 /*-burger menu--*/
 .burger-menu {
   position: absolute;
@@ -458,6 +469,7 @@ textarea {
   padding: 0.2em;
 }
 
+/* about page */
 .container2 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -490,8 +502,6 @@ textarea {
   text-align: left;
 }
 
-
-
 .row.developer {
   display: flex;
   justify-content: center;
@@ -499,11 +509,6 @@ textarea {
   width: 100%;
   color: dimgrey;
   font-size: 0.6em;
-  margin-top: 20em;
-}
-
-.empty-space {
-  flex-grow: 1;
 }
 
 .right-align {
@@ -543,13 +548,6 @@ textarea {
 .login-form input {
   padding: 1px;
   border-radius: 5px;
-}
-
-
-.developer-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .login-form-container {
