@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import { EditPageTextComponent } from "../components/EditPageText";
 import PageTextComponent from "../components/PageText";
 import {loadPageText} from "../services/pageTextService";
+import { checkAuth } from "../services/loginService";
 
 const HomePage = () => {
     const [message, setMessage] = useState("");
@@ -9,6 +10,19 @@ const HomePage = () => {
         title: '',
         text: '',
     });
+
+    // Check if the user is authenticated when the component mounts
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+    useEffect(() => {
+        checkAuth()
+            .then((authenticated) => {
+                setIsAuthenticated(authenticated); // Set authentication state
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }, []);
 
     //initial text
     useEffect(() => {
@@ -30,13 +44,15 @@ const HomePage = () => {
 
     return (
         <>
-            <div className="adminlayout">
-                <EditPageTextComponent
-                    apiType="home"
-                    onTextUpdate={updatePageText}
-                    textData={pageText}
-                />
-            </div>
+            {isAuthenticated && (
+                <div className="adminlayout">
+                    <EditPageTextComponent
+                        apiType="home"
+                        onTextUpdate={updatePageText}
+                        textData={pageText}
+                    />
+                </div>
+            )}
                 <div>
                     <PageTextComponent pageText={pageText}/>
                 </div>

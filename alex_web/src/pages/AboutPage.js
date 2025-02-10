@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {loadPageText} from "../services/pageTextService";
 import {EditPageTextComponent} from "../components/EditPageText";
-import LoginButtonComponent from "../components/LoginButton";
+import { checkAuth } from "../services/loginService";
 
 const AboutPage = () => {
     const [isMediumScreen, setIsMediumScreen] = useState(false);
@@ -9,6 +9,19 @@ const AboutPage = () => {
         title: '',
         text: '',
     });
+
+    // Check if the user is authenticated when the component mounts
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+    useEffect(() => {
+        checkAuth()
+            .then((authenticated) => {
+                setIsAuthenticated(authenticated); // Set authentication state
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }, []);
 
     //initial text
     useEffect(() => {
@@ -60,13 +73,15 @@ const AboutPage = () => {
 
     return (
         <>
-            <div className="adminlayout">
-                <EditPageTextComponent
-                    apiType="about"
-                    onTextUpdate={updatePageText}
-                    textData={pageText}
-                />
-            </div>
+            {isAuthenticated && (
+                <div className="adminlayout">
+                    <EditPageTextComponent
+                        apiType="about"
+                        onTextUpdate={updatePageText}
+                        textData={pageText}
+                    />
+                </div>
+            )}
             <div>
                 <p className="headertext">{pageText.title}</p>
                 <div className='edit-form'>
