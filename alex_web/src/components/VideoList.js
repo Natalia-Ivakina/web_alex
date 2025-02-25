@@ -18,7 +18,7 @@ const VideoList = ({
                        videosPerPage: externalVideosPerPage,
                        addVideos,
 
-}) => {
+                   }) => {
     const [message, setMessage] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
     const [internalVideosPerPage, setInternalVideosPerPage] = useState(externalVideosPerPage || 4); // Default 4 videos per page

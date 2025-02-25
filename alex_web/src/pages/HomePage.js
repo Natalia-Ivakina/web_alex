@@ -4,6 +4,9 @@ import PageTextComponent from "../components/PageText";
 import {loadPageText} from "../services/pageTextService";
 import { checkAuth } from "../services/loginService";
 
+import CanvasAnimation from "../components/CustomAnimation";
+import Card3 from "../components/AnimatedCard3";
+
 const HomePage = () => {
     const [message, setMessage] = useState("");
     const [pageText, setPageText] = useState({
@@ -53,11 +56,14 @@ const HomePage = () => {
                     />
                 </div>
             )}
-                <div>
-                    <PageTextComponent pageText={pageText}/>
-                </div>
-            </>
+            <div>
+                <PageTextComponent pageText={pageText}/>
+                <CanvasAnimation></CanvasAnimation>
+                <Card3/>
+            </div>
+        </>
     );
 };
+
 
 export default HomePage;
