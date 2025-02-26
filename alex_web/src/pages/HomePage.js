@@ -3,8 +3,6 @@ import { EditPageTextComponent } from "../components/EditPageText";
 import PageTextComponent from "../components/PageText";
 import {loadPageText} from "../services/pageTextService";
 import { checkAuth } from "../services/loginService";
-
-import CanvasAnimation from "../components/CustomAnimation";
 import Card3 from "../components/AnimatedCard3";
 
 const HomePage = () => {
@@ -58,7 +56,6 @@ const HomePage = () => {
             )}
             <div>
                 <PageTextComponent pageText={pageText}/>
-                <CanvasAnimation></CanvasAnimation>
                 <Card3/>
             </div>
         </>
