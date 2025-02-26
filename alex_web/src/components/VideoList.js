@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { checkAuth } from "../services/loginService";
 import DeleteReorderButtonsComponent from "../components/DeleteReorderButtons";
 import VideosPerPageSelector from "../components/VideosPerPageSelector";
@@ -8,7 +8,6 @@ import PageTextComponent from "./PageText";
 import AddNewVideoComponent from "./AddVideoForm";
 import {EditPageTextComponent} from "./EditPageText";
 import {loadPageText} from "../services/pageTextService";
-
 
 const VideoList = ({
                        videos,
@@ -38,7 +37,7 @@ const VideoList = ({
     useEffect(() => {
         checkAuth()
             .then((authenticated) => {
-                setIsAuthenticated(authenticated); // Set authentication state
+                setIsAuthenticated(authenticated);
             })
             .catch((error) => {
                 console.error(error);
@@ -46,7 +45,7 @@ const VideoList = ({
     }, []);
 
     // Fetch the initial page text
-    useEffect(() => {
+    useEffect (() => {
         const fetchPageText = async () => {
             try {
                 const textData = await loadPageText(apiType);
@@ -59,6 +58,7 @@ const VideoList = ({
         fetchPageText();
     }, [apiType]);
 
+    //pagination__________________________________
     useEffect(() => {
         // Update internalVideosPerPage if externalVideosPerPage changes
         if (externalVideosPerPage !== internalVideosPerPage) {
@@ -124,6 +124,7 @@ const VideoList = ({
         <div className="page-container">
             <main>
                 {isAuthenticated && (
+                    //_________________ for admin_____________________________
                     <div>
                         <div>
                             <div className="row adminlayout">

@@ -25,7 +25,7 @@ const MoodsPage = () => {
                 return;
             }
 
-            setVideosPerPage(quantity); // Set the videos per page
+            setVideosPerPage(quantity); //videos per page
         } catch (error) {
             console.error("Error fetching videos per page:", error);
         }

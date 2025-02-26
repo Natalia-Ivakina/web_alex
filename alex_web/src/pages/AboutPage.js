@@ -9,28 +9,32 @@ const AboutPage = () => {
         title: '',
         text: '',
     });
+    const [isLoading, setIsLoading] = useState(true);
+    const [isImagesLoaded, setIsImagesLoaded] = useState(false);
 
-    // Check if the user is authenticated when the component mounts
+    // Check if the user is authenticated_____________
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     useEffect(() => {
         checkAuth()
             .then((authenticated) => {
-                setIsAuthenticated(authenticated); // Set authentication state
+                setIsAuthenticated(authenticated); // Set auth state
             })
             .catch((error) => {
                 console.error(error);
             });
     }, []);
 
-    //initial text
+    //pause for text_________________________
     useEffect(() => {
         const fetchPageText = async () => {
             try {
                 const textData = await loadPageText('about');
                 setPageText(textData);
+                setIsLoading(false);
             } catch (error) {
                 console.error("Error fetching page text:", error);
+                setIsLoading(false);
             }
         };
 
@@ -41,7 +45,37 @@ const AboutPage = () => {
         setPageText(updatedText);
     };
 
-    //size of screen
+    //pause for img_________________________
+    useEffect(() => {
+        const images = [
+            '/findme.png',
+            '/textme.png',
+            '/arrow.png',
+            '/logome.png'
+        ];
+
+        let loadedImages = 0;
+
+        const preloadImages = () => {
+            images.forEach((src) => {
+                const img = new Image();
+                img.src = src;
+                img.onload = () => {
+                    loadedImages += 1;
+                    if (loadedImages === images.length) {
+                        setIsImagesLoaded(true);
+                    }
+                };
+                img.onerror = () => {
+                    console.error(`Error loading image: ${src}`);
+                };
+            });
+        };
+
+        preloadImages();
+    }, []);
+
+    //size of screen_______________________
     useEffect(() => {
         const handleResize = () => {
             setIsMediumScreen(window.innerWidth <= 1024);
@@ -73,52 +107,58 @@ const AboutPage = () => {
 
     return (
         <>
-            <div className="page-container">
-                <main>
-                    {isAuthenticated && (
-                        <div className="adminlayout">
-                            <EditPageTextComponent
-                                apiType="about"
-                                onTextUpdate={updatePageText}
-                                textData={pageText}
-                            />
-                        </div>
-                    )}
-                    <div>
-                        <p className="headertext">{pageText.title}</p>
-                        <div className='edit-form'>
-                            <div className="row">
-                                <div className='aboutme'>
-                                    {pageText.text.split('\n').map((line, index) => (
-                                        <p className='abouttext' key={index}>
-                                            {line}
-                                        </p>
-                                    ))}
+            {!isLoading && isImagesLoaded ? (
+                <>
+                    <div className="page-container">
+                        <main>
+                            {isAuthenticated && (
+                                <div className="adminlayout">
+                                    <EditPageTextComponent
+                                        apiType="about"
+                                        onTextUpdate={updatePageText}
+                                        textData={pageText}
+                                    />
                                 </div>
-                                {!isMediumScreen && contactBlock}
-                            </div>
-                            <div className="row">
-                                {isMediumScreen && contactBlock}
-                                <div className="container2 right-align">
-                                    <div id="me">
-                                        <p><img src="/textme.png" alt="logo"/></p>
+                            )}
+                            <div>
+                                <p className="headertext">{pageText.title}</p>
+                                <div className='edit-form'>
+                                    <div className="row">
+                                        <div className='aboutme'>
+                                            {pageText.text.split('\n').map((line, index) => (
+                                                <p className='abouttext' key={index}>
+                                                    {line}
+                                                </p>
+                                            ))}
+                                        </div>
+                                        {!isMediumScreen && contactBlock}
                                     </div>
-                                    <div id="arrow">
-                                        <img src="/arrow.png" alt="logo"/>
-                                    </div>
-                                    <div id="logo">
-                                        <img src="/logome.png" alt="logo"/>
+                                    <div className="row">
+                                        {isMediumScreen && contactBlock}
+                                        <div className="container2 right-align">
+                                            <div id="me">
+                                                <p><img src="/textme.png" alt="logo"/></p>
+                                            </div>
+                                            <div id="arrow">
+                                                <img src="/arrow.png" alt="logo"/>
+                                            </div>
+                                            <div id="logo">
+                                                <img src="/logome.png" alt="logo"/>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </main>
                     </div>
-                </main>
-            </div>
 
-            <div className="row developer">
-                <p>Design and Development by Natalia Ivakina © ~ 2025</p>
-            </div>
+                    <div className="row developer">
+                        <p>Design and Development by Natalia Ivakina © ~ 2025</p>
+                    </div>
+                        </>
+            ) : (
+                <div>Loading...</div>
+            )}
         </>
     );
 };

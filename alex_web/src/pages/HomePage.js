@@ -11,28 +11,31 @@ const HomePage = () => {
         title: '',
         text: '',
     });
+    const [isLoading, setIsLoading] = useState(true);
 
-    // Check if the user is authenticated when the component mounts
+    // Check if the user is authenticated
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     useEffect(() => {
         checkAuth()
             .then((authenticated) => {
-                setIsAuthenticated(authenticated); // Set authentication state
+                setIsAuthenticated(authenticated);
             })
             .catch((error) => {
                 console.error(error);
             });
     }, []);
 
-    //initial text
+    //pause for text_________________________
     useEffect(() => {
         const fetchPageText = async () => {
             try {
                 const textData = await loadPageText('home');
                 setPageText(textData);
+                setIsLoading(false);
             } catch (error) {
                 console.error("Error fetching page text:", error);
+                setIsLoading(false);
             }
         };
 
@@ -45,19 +48,25 @@ const HomePage = () => {
 
     return (
         <>
-            {isAuthenticated && (
-                <div className="adminlayout">
-                    <EditPageTextComponent
-                        apiType="home"
-                        onTextUpdate={updatePageText}
-                        textData={pageText}
-                    />
-                </div>
+            {!isLoading ? (
+                <>
+                    {isAuthenticated && (
+                        <div className="adminlayout">
+                            <EditPageTextComponent
+                                apiType="home"
+                                onTextUpdate={updatePageText}
+                                textData={pageText}
+                            />
+                        </div>
+                    )}
+                    <div>
+                        <PageTextComponent pageText={pageText}/>
+                        <Card3/>
+                    </div>
+                </>
+            ) : (
+                <div>Loading...</div>
             )}
-            <div>
-                <PageTextComponent pageText={pageText}/>
-                <Card3/>
-            </div>
         </>
     );
 };

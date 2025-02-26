@@ -2,13 +2,16 @@ import VideoList from "../components/VideoList";
 import {useEffect, useState} from "react";
 import {loadVideos} from "../services/videoService";
 import { loadVideoCount, editVideoCount } from "../services/videoPerPageService";
+import React from 'react';
+
 
 const AmvPage = () => {
     const [amv, setAmv] = useState([]);
-    const [videosPerPage, setVideosPerPage] = useState();
+    const [videosPerPage, setVideosPerPage] = useState(4); // Default value
 
     const fetchVideos = async () => {
         try {
+
             const videos = await loadVideos("amv");
             setAmv(videos);
         } catch (error) {
@@ -24,7 +27,7 @@ const AmvPage = () => {
                 console.error("Invalid quantity:", quantity);
                 return;
             }
-            setVideosPerPage(quantity); // Set the videos per page
+            setVideosPerPage(quantity); // videos per page
         } catch (error) {
             console.error("Error fetching videos per page:", error);
         }
@@ -57,9 +60,8 @@ const AmvPage = () => {
                 apiType="amv"
                 deleteVideos={afterDeleteVideos}
                 reorderVideos={afterReorderVideos}
-                videosPerPage={videosPerPage} // Pass the dynamic
+                videosPerPage={videosPerPage}
                 addVideos={afterAddVideo}
-
             />
         </>
     );
