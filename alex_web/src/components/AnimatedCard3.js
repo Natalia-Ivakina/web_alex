@@ -16,7 +16,11 @@ const Card3 = () => {
                 "VS3EE8v5pcY",
                 "tjO1eWQ7AM8",
                 "SGx_vYfs_P0",
-                "-VOMQDBQjfE"
+                "-VOMQDBQjfE",
+                "z52ZuqvYXM8",
+                "yx3AYiFVIis",
+                "TuoRb0lvfpI",
+                "MjNJ0IbfN-g"
             ].map((videoId, index) => (
                 <div
                     key={index}
