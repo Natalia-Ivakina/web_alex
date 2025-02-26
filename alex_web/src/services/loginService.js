@@ -2,12 +2,15 @@ import axios from "axios";
 
 /**
  * Login Service
- * @param {string} password - password
+ * @param {string} username - Admin login
+ * @param {string} password - Admin password
  * @returns {Promise<any>} - Response
  */
-export const login = async (password) => {
+export const login = async (username, password) => {
     try {
-        const response = await axios.post('/api/login', { password });
+        const response = await axios.post('/api/login', {
+            login: username, password
+        });
         if (response.data.success) {
             console.log("Login successful!");
             return response.data;
@@ -24,7 +27,9 @@ export const login = async (password) => {
  */
 export const checkAuth = async () => {
     try {
-        const response = await axios.get('/api/check-auth', { withCredentials: true });
+        const response = await axios.get('/api/check-auth', {
+            withCredentials: true
+        });
         return response.data.authenticated;
     } catch (error) {
         console.error("Failed to check authentication:", error.response?.data?.message || error.message);

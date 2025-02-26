@@ -45,8 +45,8 @@ const authMiddleware = (req, res, next) => {
 
 // login
 app.post("/api/login", (req, res) => {
-    const { password } = req.body;
-    if (password === process.env.ADMIN_PASSWORD) {
+    const { login, password } = req.body;
+    if (login === process.env.ADMIN_LOGIN && password === process.env.ADMIN_PASSWORD) {
         res.cookie("authToken", process.env.SESSION_SECRET, {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',

@@ -27,8 +27,8 @@ const LoginButtonComponent = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const result = await login(password);  // Call login service
-            setIsUserLoggedIn(true);  // Set the user as logged in
+            const result = await login(username, password);
+            setIsUserLoggedIn(true);
         } catch (error) {
             alert("Login failed");
         }
@@ -37,7 +37,7 @@ const LoginButtonComponent = () => {
     const handleLogout = async () => {
         try {
             await logout();  // Call logout service
-            setIsUserLoggedIn(false);  // Set the user as logged out
+            setIsUserLoggedIn(false);
         } catch (error) {
             alert("Logout failed");
         }
