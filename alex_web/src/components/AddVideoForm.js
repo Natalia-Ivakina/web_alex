@@ -18,6 +18,11 @@ const AddNewVideoComponent = ({apiType, onAddVideo}) => {
         }
     }, [message]);
 
+    /**
+     *
+     * @param event
+     * @returns {Promise<void>}
+     */
     const handleSubmit = async (event) => {
         event.preventDefault();
         const newVideo = {name: title, link: link};
@@ -38,12 +43,14 @@ const AddNewVideoComponent = ({apiType, onAddVideo}) => {
             <form onSubmit={handleSubmit} className="form-container ">
                 <div>
                     <input
+                        type='text'
                         placeholder="Video title"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                         required
                     ></input>
                     <input
+                        type='text'
                         placeholder="Video link"
                         value={link}
                         onChange={(e) => setLink(e.target.value)}

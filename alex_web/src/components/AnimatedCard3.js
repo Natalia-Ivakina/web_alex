@@ -8,6 +8,9 @@ const Card3 = () => {
         setFlippedIndex(flippedIndex === index ? null : index);
     };
     return (
+        /**
+         * list of cards
+         */
         <div className="cards-list">
             {[
                 "VS3EE8v5pcY",

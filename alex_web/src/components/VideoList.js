@@ -32,7 +32,7 @@ const VideoList = ({
         setPageText(updatedText);
     };
 
-    // Check if the user is authenticated when the component mounts
+    // Check if the user is authenticated
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     useEffect(() => {
@@ -170,12 +170,12 @@ const VideoList = ({
                                         src={embedUrl}
                                         title={project.name}
                                         allow="
-                                accelerometer;
-                                autoplay;
-                                clipboard-write;
-                                encrypted-media;
-                                gyroscope;
-                                picture-in-picture"
+                                            accelerometer;
+                                            autoplay;
+                                            clipboard-write;
+                                            encrypted-media;
+                                            gyroscope;
+                                            picture-in-picture"
                                         allowFullScreen
                                     ></iframe>
                                     {isAuthenticated && (

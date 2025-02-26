@@ -36,11 +36,11 @@ const textPaths = {
 //__________________LOGIN   ________________________________
 // Middleware for auth
 const authMiddleware = (req, res, next) => {
-    console.log("Cookies:", req.cookies);  // Логирование cookies
+    console.log("Cookies:", req.cookies);
     if (req.cookies.authToken === process.env.SESSION_SECRET) {
-        return next(); // Proceed to the next middleware or route
+        return next();
     }
-    res.status(403).json({ message: "Unauthorized" }); // Forbidden if not authenticated
+    res.status(403).json({ message: "Unauthorized" });
 };
 
 // login
@@ -49,9 +49,9 @@ app.post("/api/login", (req, res) => {
     if (password === process.env.ADMIN_PASSWORD) {
         res.cookie("authToken", process.env.SESSION_SECRET, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === 'production', // Only true in production
+            secure: process.env.NODE_ENV === 'production',
             sameSite: "strict", // value
-            maxAge: 60 * 60 * 1000 * 24 * 7// time of the session - 7 days
+            maxAge: 60 * 60 * 1000 * 24 * 2// time of the session - 2 days
         });
         return res.json({ success: true });
     }
@@ -111,7 +111,7 @@ app.get("/api/count/:page",  (req, res) => {
         // Find the entry where 'name' matches the 'page' parameter
         const result = videosCount.find(item => item.name === page);
         if (result) {
-            res.json(result.quantity); // Send the quantity directly
+            res.json(result.quantity);
         } else {
             res.status(404).json({ error: `Page "${page}" not found` });
         }
@@ -144,7 +144,6 @@ app.get("/api/text/:page", (req, res) => {
     } catch (error) {
         res.status(500).json({message: "Error loading page text", error: error.message});
     }
-    //res.send("Text");
 });
 
 
@@ -229,9 +228,9 @@ app.put("/api/:category", authMiddleware, (
             });
         }
 
-        // Perform the reorder operation
+        // the reorder operation
         reorderVideo(filePath, name, newIndex);
-        const videos = loadJsonData(filePath); // Load the updated list
+        const videos = loadJsonData(filePath);
 
         res.status(200).json({
             message: `Video: ${name} reordered successfully`,

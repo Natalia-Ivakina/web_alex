@@ -50,18 +50,17 @@ export const EditPageTextComponent = ({ apiType, onTextUpdate, textData}) => {
             <form onSubmit={handleSubmit} className="form-container">
                 <div>
                     <input
+                        type='text'
                         placeholder="Page title"
                         value={title}
                         onChange={(e) =>
                             setTitle(e.target.value)}
-                        //required
                     ></input>
                     <textarea
                         placeholder="Enter page text"
                         value={text}
                         onChange={(e) =>
                             setText(e.target.value)}
-                        //required
                     ></textarea>
                 </div>
                 <div className="row">
