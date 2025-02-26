@@ -139,10 +139,6 @@ const VideoList = ({
                                 />
                             </div>
                         </div>
-                        <div>
-                            <PageTextComponent
-                                pageText={pageText}/>
-                        </div>
                         <div className="row content">
                             <div>
                                 <VideosPerPageSelector
@@ -154,7 +150,10 @@ const VideoList = ({
                         </div>
                     </div>
                 )}
-
+                <div>
+                    <PageTextComponent
+                        pageText={pageText}/>
+                </div>
                 <div className="video-grid">
                     {currentVideos.length > 0 ?
                         (currentVideos.map((project, index) => {
