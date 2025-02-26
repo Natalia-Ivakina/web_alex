@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useRef } from "react";
 import { checkAuth } from "../services/loginService";
 import DeleteReorderButtonsComponent from "../components/DeleteReorderButtons";
 import VideosPerPageSelector from "../components/VideosPerPageSelector";
@@ -120,6 +120,30 @@ const VideoList = ({
         setInputVideosPerPage(internalVideosPerPage);
     }, [internalVideosPerPage]);
 
+    // Lazy loading video iframe________________________________________
+    const videoRef = useRef([]);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries, observer) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const iframe = entry.target;
+                        iframe.src = iframe.dataset.src;  // Lazy load the video source
+                        observer.unobserve(iframe);
+                    }
+                });
+            },
+            { threshold: 0.5 }
+        );
+
+        videoRef.current.forEach((video) => observer.observe(video));
+
+        return () => {
+            videoRef.current.forEach((video) => observer.unobserve(video));
+        };
+    }, []);
+
     return (
         <div className="page-container">
             <main>
@@ -150,6 +174,7 @@ const VideoList = ({
                         </div>
                     </div>
                 )}
+                {/*____________________________________________________*/}
                 <div>
                     <PageTextComponent
                         pageText={pageText}/>
@@ -178,6 +203,7 @@ const VideoList = ({
                                             picture-in-picture"
                                         allowFullScreen
                                     ></iframe>
+                                    {/*_________________ for admin_____________________________*/}
                                     {isAuthenticated && (
                                         <div>
                                             <DeleteReorderButtonsComponent
@@ -190,6 +216,7 @@ const VideoList = ({
                                             <p>Video # {index + 1}</p>
                                         </div>
                                     )}
+                                    {/*_______________________________________________________*/}
                                 </div>);
                         })) :
                         (<p>No projects available.</p>)
