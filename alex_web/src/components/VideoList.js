@@ -9,6 +9,7 @@ import PageTextComponent from "./PageText";
 import AddNewVideoComponent from "./AddVideoForm";
 import { EditPageTextComponent } from "./EditPageText";
 import { loadPageText } from "../services/pageTextService";
+import VideoCard from "./VideoCard";
 
 const VideoList = ({
   videos,
@@ -50,7 +51,7 @@ const VideoList = ({
   } = useQuery({
     queryKey: ["pageText", apiType],
     queryFn: () => loadPageText(apiType),
-    staleTime: 1000 * 60 * 5, // кэш живёт 5 минут
+    staleTime: 1000 * 60 * 5, // 5 min
   });
 
   const updatePageText = (updatedText) => {
@@ -189,11 +190,12 @@ const VideoList = ({
               const videoId = new URLSearchParams(
                 new URL(project.link).search
               ).get("v");
-              const embedUrl = `https://www.youtube.com/embed/${videoId}`;
+
+              //const embedUrl = `https://www.youtube.com/embed/${videoId}`;
               return (
                 <div key={project.name} className="video-item">
-                  <p>{project.name}</p>
-                  <iframe
+                  {/* <p>{project.name}</p> */}
+                  {/* <iframe
                     width="560"
                     height="315"
                     src={embedUrl}
@@ -206,7 +208,8 @@ const VideoList = ({
                                             gyroscope;
                                             picture-in-picture"
                     allowFullScreen
-                  ></iframe>
+                  ></iframe> */}
+                  <VideoCard videoId={videoId} title={project.name} />
                   {/*_________________ for admin_____________________________*/}
                   {isAuthenticated && (
                     <div>

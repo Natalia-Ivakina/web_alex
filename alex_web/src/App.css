@@ -222,7 +222,7 @@ iframe {
 .video-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 16px;
+  gap: 20px;
   padding: 16px;
 }
 
@@ -244,10 +244,19 @@ iframe {
   flex-direction: column;
   align-items: center;
   background-color: #394652;
-  padding: 16px;
+  /* padding: 16px; */
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 5px 5px 30px 7px rgba(0, 0, 0, 0.25),
+    -5px -5px 30px 7px rgba(0, 0, 0, 0.22);
   max-width: 700px;
+  transition: 0.4s;
+}
+
+.video-item:hover {
+  transform: scale(0.97, 0.97);
+  box-shadow: 5px 5px 30px 15px rgba(0, 0, 0, 0.25),
+    -5px -5px 30px 15px rgba(0, 0, 0, 0.22);
+  cursor: pointer;
 }
 
 .video-item iframe {

@@ -1,12 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../Card3.css";
 
 const Card3 = () => {
   const [flippedIndex, setFlippedIndex] = useState(null);
+  const cardsRef = useRef([]);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (flippedIndex !== null) {
+        const clickedOutside = cardsRef.current.every(
+          (cardRef, index) =>
+            index !== flippedIndex ||
+            (cardRef && !cardRef.contains(event.target))
+        );
+
+        if (clickedOutside) {
+          setFlippedIndex(null);
+        }
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [flippedIndex]);
 
   const handleFlip = (index) => {
     setFlippedIndex(flippedIndex === index ? null : index);
   };
+
   return (
     /**
      * list of cards
@@ -24,6 +47,7 @@ const Card3 = () => {
       ].map((videoId, index) => (
         <div
           key={index}
+          ref={(el) => (cardsRef.current[index] = el)}
           className={`card3 ${flippedIndex === index ? "flipped" : ""}`}
           onClick={() => handleFlip(index)}
         >
@@ -39,7 +63,7 @@ const Card3 = () => {
                 <iframe
                   width="100%"
                   height="100%"
-                  src={`https://www.youtube.com/embed/${videoId}?autoplay=0&modestbranding=1&controls=1&rel=0`}
+                  src={`https://www.youtube.com/embed/${videoId}?autoplay=0&modestbranding=1&controls=0&rel=0`}
                   allow="autoplay; encrypted-media"
                   allowFullScreen
                 ></iframe>
