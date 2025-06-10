@@ -1,75 +1,59 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { EditPageTextComponent } from "../components/EditPageText";
 import PageTextComponent from "../components/PageText";
-import {loadPageText} from "../services/pageTextService";
+import { loadPageText } from "../services/pageTextService";
 import { checkAuth } from "../services/loginService";
 import Card3 from "../components/AnimatedCard3";
 
 const HomePage = () => {
-    const [message, setMessage] = useState("");
-    const [pageText, setPageText] = useState({
-        title: '',
-        text: '',
-    });
-    const [isLoading, setIsLoading] = useState(true);
+  const queryClient = useQueryClient();
 
-    // Check if the user is authenticated
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // Check if the user is authenticated
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-    useEffect(() => {
-        checkAuth()
-            .then((authenticated) => {
-                setIsAuthenticated(authenticated);
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-    }, []);
+  useEffect(() => {
+    checkAuth()
+      .then(setIsAuthenticated)
+      .catch((error) => console.error("Auth check failed:", error));
+  }, []);
 
-    //pause for text_________________________
-    useEffect(() => {
-        const fetchPageText = async () => {
-            try {
-                const textData = await loadPageText('home');
-                setPageText(textData);
-                setIsLoading(false);
-            } catch (error) {
-                console.error("Error fetching page text:", error);
-                setIsLoading(false);
-            }
-        };
+  //pause for text_________________________
+  const {
+    data: pageText = { title: "", text: "" },
+    isLoading,
+    error,
+    refetch,
+  } = useQuery({
+    queryKey: ["pageText", "home"],
+    queryFn: () => loadPageText("home"),
+    staleTime: 1000 * 60 * 5, //5 min
+  });
 
-        fetchPageText();
-    }, ['home']);
+  const updatePageText = (updatedText) => {
+    queryClient.setQueryData(["pageText", "home"], updatedText);
+  };
 
-    const updatePageText = (updatedText) => {
-        setPageText(updatedText);
-    };
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error loading page text</div>;
 
-    return (
-        <>
-            {!isLoading ? (
-                <>
-                    {isAuthenticated && (
-                        <div className="adminlayout">
-                            <EditPageTextComponent
-                                apiType="home"
-                                onTextUpdate={updatePageText}
-                                textData={pageText}
-                            />
-                        </div>
-                    )}
-                    <div>
-                        <PageTextComponent pageText={pageText}/>
-                        <Card3/>
-                    </div>
-                </>
-            ) : (
-                <div>Loading...</div>
-            )}
-        </>
-    );
+  return (
+    <>
+      {isAuthenticated && (
+        <div className="adminlayout">
+          <EditPageTextComponent
+            apiType="home"
+            onTextUpdate={updatePageText}
+            textData={pageText}
+          />
+        </div>
+      )}
+      <div>
+        <PageTextComponent pageText={pageText} />
+        <Card3 />
+      </div>
+    </>
+  );
 };
-
 
 export default HomePage;

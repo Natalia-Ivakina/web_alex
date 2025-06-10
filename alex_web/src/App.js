@@ -1,5 +1,6 @@
-import './App.css';
+import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import ProjectListPage from "./pages/ProjectListPage";
@@ -11,8 +12,11 @@ import AmvPage from "./pages/AmvPage";
 import ShowreelsPage from "./pages/ShowreelsPage";
 import LoginPage from "./pages/LoginPage";
 
+const queryClient = new QueryClient();
+
 function App() {
   return (
+    <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <div>
           <NavBar />
@@ -24,13 +28,14 @@ function App() {
               <Route path="/projects" element={<ProjectListPage />} />
               <Route path="/moods" element={<MoodsPage />} />
               <Route path="/amv" element={<AmvPage />} />
-              <Route path="/admin" element={<LoginPage />} />
+              <Route path="/kosh" element={<LoginPage />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </div>
-            <Footer />
+          <Footer />
         </div>
       </BrowserRouter>
+    </QueryClientProvider>
   );
 }
 

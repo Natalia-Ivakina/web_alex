@@ -6,7 +6,8 @@ body {
   max-width: 1500px;
   margin: 0 auto;
 }
-body, .page-container {
+body,
+.page-container {
   display: flex;
   flex-direction: column;
   min-height: 85vh; /* Full height of the viewport */
@@ -40,13 +41,13 @@ main {
   display: none;
   position: absolute;
   left: auto;
-  right:0;
+  right: 0;
   background-color: #2d3640;
   min-width: 160px;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
   z-index: 1;
   border-radius: 8px;
-  opacity: 0.6;
+  opacity: 0.8;
 }
 
 .menu-content a {
@@ -64,7 +65,6 @@ main {
   display: block;
 }
 /*-end--*/
-
 
 /*-nav menu--*/
 nav {
@@ -108,14 +108,13 @@ nav a:hover {
   right: 0.4em;
 }
 
-@media screen and (max-width: 860px) { /* middle screen nav */
+@media screen and (max-width: 860px) {
+  /* middle screen nav */
   nav ul {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-
-
   }
-  nav a{
+  nav a {
     padding: 12px 16px;
   }
 
@@ -151,9 +150,9 @@ nav a:hover {
 }
 
 #contact a:hover {
-    background-color: #2d3640;
-    color: #bfbfbf;
-    border-radius: 0.5em;
+  background-color: #2d3640;
+  color: #bfbfbf;
+  border-radius: 0.5em;
 }
 
 #youtubelink,
@@ -279,17 +278,17 @@ button {
   padding: 8px;
 }
 
-button:hover{
+button:hover {
   color: #bfbfbf;
 }
 
-.adminPanel{
+.adminPanel {
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
 
-.deleteButton{
+.deleteButton {
   background-color: #b34141;
   color: white;
 }
@@ -316,7 +315,7 @@ footer {
   background-color: #1f2224;
   bottom: 0;
   display: flex;
-  justify-content: flex-end
+  justify-content: flex-end;
 }
 
 input,
@@ -331,7 +330,7 @@ textarea {
   margin-bottom: 8px;
 }
 
-.numberInput{
+.numberInput {
   width: 3em;
 }
 
@@ -342,12 +341,12 @@ textarea {
   gap: 10px;
 }
 
-#confirm{
+#confirm {
   background-color: #b34141;
   color: aliceblue;
 }
 
-#cancel{
+#cancel {
   background-color: darkgreen;
   color: aliceblue;
 }
@@ -375,7 +374,7 @@ textarea {
   gap: 8px;
 }
 
-.adminlayout{
+.adminlayout {
   display: flex;
   justify-content: center;
   margin: 0;
@@ -389,7 +388,7 @@ textarea {
   justify-content: end;
 }
 
-#pagePanel{
+#pagePanel {
   background-color: #1f2224;
 }
 
@@ -397,11 +396,10 @@ textarea {
   .adminlayout {
     display: flex;
     flex-direction: column;
-
   }
 }
 
-.edit-form{
+.edit-form {
   background-color: #2d3640;
   border-radius: 5px;
   padding: 10px;
@@ -409,26 +407,25 @@ textarea {
   margin-bottom: 1em;
 }
 
-
-#findme{
+#findme {
   padding: 0;
   margin: 0;
   width: 130%;
 }
 
-#logo img{
+#logo img {
   max-height: 8.5em;
   padding: 0;
   margin: 0;
 }
 
-#me img{
+#me img {
   max-width: 2em;
   padding: 0;
   margin: 0;
 }
 
-#arrow img{
+#arrow img {
   max-width: 4em;
   padding: 0;
   margin: 0;
@@ -448,13 +445,13 @@ textarea {
   }
 }
 
-.menufooter ul{
+.menufooter ul {
   list-style-type: none;
   text-align: left;
   padding-left: 2em;
 }
 
-.menufooter a{
+.menufooter a {
   text-decoration: none;
   color: #84a4c9;
   font-size: 0.7em;
@@ -462,7 +459,7 @@ textarea {
   margin: 0;
 }
 
-.menufooter a:hover{
+.menufooter a:hover {
   background-color: #2d3640;
   color: #bfbfbf;
   border-radius: 0.5em;
@@ -483,14 +480,14 @@ textarea {
   grid-column: 1 / 2;
   padding-top: 100px;
   margin-right: -2em;
-  text-align:right;
+  text-align: right;
 }
 
 #arrow {
   grid-row: 3 / 3;
   grid-column: 1 / 2;
   margin-left: -1em;
-  text-align:right;
+  text-align: right;
   padding-top: 100px;
 }
 
@@ -555,11 +552,3 @@ textarea {
   padding: 0px;
   height: 10px;
 }
-
-
-
-
-
-
-
-
