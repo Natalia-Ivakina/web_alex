@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-import "../Card3.css";
+import "../VideoCardMain.css";
 
-const Card3 = () => {
+const VideoCardMain = () => {
   const [flippedIndex, setFlippedIndex] = useState(null);
   const cardsRef = useRef([]);
 
@@ -76,4 +76,4 @@ const Card3 = () => {
   );
 };
 
-export default Card3;
+export default VideoCardMain;

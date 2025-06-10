@@ -41,8 +41,8 @@ const VideoCard = ({ videoId, title }) => {
             alt={title}
           />
           <div className="play-button">
-            <svg viewBox="0 0 24 24" fill="#fff">
-              <path d="M8 5v14l11-7z" />
+            <svg viewBox="0 0 24 24" fill="#fff0f0">
+              <path d="M5 3l14 9-14 9z" />
             </svg>
           </div>
         </div>

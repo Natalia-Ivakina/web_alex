@@ -7,7 +7,7 @@ import PaginationNavigator from "../components/PaginationNavigator";
 import { editVideoCount } from "../services/videoPerPageService";
 import PageTextComponent from "./PageText";
 import AddNewVideoComponent from "./AddVideoForm";
-import { EditPageTextComponent } from "./EditPageText";
+import { EditPageTextComponent } from "./EditPageTextForm";
 import { loadPageText } from "../services/pageTextService";
 import VideoCard from "./VideoCard";
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { loadPageText } from "../services/pageTextService";
-import { EditPageTextComponent } from "../components/EditPageText";
+import { EditPageTextComponent } from "../components/EditPageTextForm";
 import { checkAuth } from "../services/loginService";
 
 const AboutPage = () => {

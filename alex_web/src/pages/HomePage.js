@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { EditPageTextComponent } from "../components/EditPageText";
+import { EditPageTextComponent } from "../components/EditPageTextForm";
 import PageTextComponent from "../components/PageText";
 import { loadPageText } from "../services/pageTextService";
 import { checkAuth } from "../services/loginService";
-import Card3 from "../components/AnimatedCard3";
+import Card3 from "../components/VideoCardMain";
 
 const HomePage = () => {
   const queryClient = useQueryClient();
