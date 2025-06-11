@@ -7,7 +7,7 @@ import ProjectsPage from "./pages/ProjectsPage";
 import NavBar from "./NavBar";
 import NotFoundPage from "./pages/NotFoundPage";
 import Footer from "./Footer";
-import MoodsPage from "./pages/MoodsPage";
+import ContactPage from "./pages/ContactPage";
 import AmvPage from "./pages/AmvPage";
 import ShowreelsPage from "./pages/ShowreelsPage";
 import LoginPage from "./pages/LoginPage";
@@ -26,8 +26,8 @@ function App() {
               <Route path="/about" element={<AboutPage />} />
               <Route path="/showreels" element={<ShowreelsPage />} />
               <Route path="/projects" element={<ProjectsPage />} />
-              <Route path="/moods" element={<MoodsPage />} />
               <Route path="/amv" element={<AmvPage />} />
+              <Route path="/contact" element={<ContactPage />} />
               <Route path="/kosh" element={<LoginPage />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>

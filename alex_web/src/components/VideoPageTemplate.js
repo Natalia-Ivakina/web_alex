@@ -41,6 +41,7 @@ const VideoPageTemplate = ({ apiType }) => {
       reorderVideos={afterCRUDVideo}
       videosPerPage={videosPerPage}
       addVideos={afterCRUDVideo}
+      changeColor={afterCRUDVideo}
     />
   );
 };

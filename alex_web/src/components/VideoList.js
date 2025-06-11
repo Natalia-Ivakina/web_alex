@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { checkAuth } from "../services/loginService";
-import DeleteReorderButtonsComponent from "../components/DeleteReorderButtons";
+import ManageVideoFormComponent from "../components/ManageVideoForm";
 import VideosPerPageSelector from "../components/VideosPerPageSelector";
 import PaginationNavigator from "../components/PaginationNavigator";
 import { editVideoCount } from "../services/videoPerPageService";
@@ -18,6 +18,7 @@ const VideoList = ({
   reorderVideos,
   videosPerPage: externalVideosPerPage,
   addVideos,
+  changeColor,
 }) => {
   const queryClient = useQueryClient();
 
@@ -174,7 +175,7 @@ const VideoList = ({
                     handleVideosPerPageInputChange
                   }
                   handleSaveVideosPerPage={handleSaveVideosPerPage}
-                  message={message}
+                  message={message || "⠀"}
                 />
               </div>
             </div>
@@ -191,34 +192,24 @@ const VideoList = ({
                 new URL(project.link).search
               ).get("v");
 
-              //const embedUrl = `https://www.youtube.com/embed/${videoId}`;
               return (
                 <div key={project.name} className="video-item">
                   {/* <p>{project.name}</p> */}
-                  {/* <iframe
-                    width="560"
-                    height="315"
-                    src={embedUrl}
+                  <VideoCard
+                    videoId={videoId}
                     title={project.name}
-                    allow="
-                                            accelerometer;
-                                            autoplay;
-                                            clipboard-write;
-                                            encrypted-media;
-                                            gyroscope;
-                                            picture-in-picture"
-                    allowFullScreen
-                  ></iframe> */}
-                  <VideoCard videoId={videoId} title={project.name} />
+                    color={project.color}
+                  />
                   {/*_________________ for admin_____________________________*/}
                   {isAuthenticated && (
-                    <div>
-                      <DeleteReorderButtonsComponent
+                    <div id="admin-counter-panel">
+                      <ManageVideoFormComponent
                         videoName={project.name}
                         apiType={apiType}
                         onActionComplete={(msg) => setMessage(msg)}
-                        OnDelete={deleteVideos}
-                        OnReorder={reorderVideos}
+                        onDelete={deleteVideos}
+                        onReorder={reorderVideos}
+                        onChangeColor={changeColor}
                       />
                       <p>Video # {index + 1}</p>
                     </div>

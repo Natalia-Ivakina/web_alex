@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import "../VideoCardMain.css";
+import "../styles/VideoCardMain.css";
 
 const VideoCardMain = () => {
   const [flippedIndex, setFlippedIndex] = useState(null);

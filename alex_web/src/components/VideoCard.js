@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-import "../VideoCard.css";
+import "../styles/VideoCard.css";
 
-const VideoCard = ({ videoId, title }) => {
+const VideoCard = ({ videoId, title, color }) => {
   const [showVideo, setShowVideo] = useState(false);
   const videoCardRef = useRef(null);
 
@@ -41,7 +41,7 @@ const VideoCard = ({ videoId, title }) => {
             alt={title}
           />
           <div className="play-button">
-            <svg viewBox="0 0 24 24" fill="#fff0f0">
+            <svg viewBox="0 0 24 24" fill={`#${color}`}>
               <path d="M5 3l14 9-14 9z" />
             </svg>
           </div>

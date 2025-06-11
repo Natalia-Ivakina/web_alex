@@ -7,17 +7,17 @@ import axios from "axios";
  * @returns {Promise<any>}
  */
 export const addVideo = async (videoData, apiType) => {
-    try {
-        const response = await axios.post(`/api/${apiType}`, videoData);
-        return response.data;
-    } catch (error) {
-        if (error.response && error.response.status === 403) {
-            // Handle unauthorized access
-            console.error("Unauthorized to edit video count");
-            throw new Error("You are not authorized to add the video");
-        }
-        throw new Error("Error adding video");
+  try {
+    const response = await axios.post(`/api/${apiType}`, videoData);
+    return response.data;
+  } catch (error) {
+    if (error.response && error.response.status === 403) {
+      // Handle unauthorized access
+      console.error("Unauthorized to edit video count");
+      throw new Error("You are not authorized to add the video");
     }
+    throw new Error("Error adding video");
+  }
 };
 
 /**
@@ -27,19 +27,19 @@ export const addVideo = async (videoData, apiType) => {
  * @returns {Promise<any>}
  */
 export const deleteVideo = async (videoName, apiType) => {
-    try {
-        const response = await axios.delete(`/api/${apiType}`, {
-            data: { name: videoName },
-        });
-        return response.data;
-    } catch (error) {
-        if (error.response && error.response.status === 403) {
-            // Handle unauthorized access
-            console.error("Unauthorized to edit video count");
-            throw new Error("You are not authorized to delete the video.");
-        }
-        throw new Error("Error deleting video");
+  try {
+    const response = await axios.delete(`/api/${apiType}`, {
+      data: { name: videoName },
+    });
+    return response.data;
+  } catch (error) {
+    if (error.response && error.response.status === 403) {
+      // Handle unauthorized access
+      console.error("Unauthorized to edit video count");
+      throw new Error("You are not authorized to delete the video.");
     }
+    throw new Error("Error deleting video");
+  }
 };
 
 /**
@@ -48,14 +48,14 @@ export const deleteVideo = async (videoName, apiType) => {
  * @returns {Promise<any>}
  */
 export const loadVideos = async (category) => {
-    try {
-        const response = await axios.get(`/api/${category}`);
-        //console.log("Videos fetched from server:", response.data);
-        return response.data;
-    } catch (error) {
-        //console.error("Error loading videos:", error);
-        throw new Error("Failed to fetch videos");
-    }
+  try {
+    const response = await axios.get(`/api/${category}`);
+    //console.log("Videos fetched from server:", response.data);
+    return response.data;
+  } catch (error) {
+    //console.error("Error loading videos:", error);
+    throw new Error("Failed to fetch videos");
+  }
 };
 
 /**
@@ -66,19 +66,44 @@ export const loadVideos = async (category) => {
  * @returns {Promise<any>}
  */
 export const reorderVideo = async (videoName, newIndex, apiType) => {
-    try {
-        const response = await axios.put(`/api/${apiType}`, {
-            name: videoName,
-            newIndex: newIndex,
-        });
-        return response.data;
-    } catch (error) {
-        if (error.response && error.response.status === 403) {
-            // Handle unauthorized access
-            console.error("Unauthorized to edit video count");
-            throw new Error("You are not authorized to reorder the video.");
-        }
-        //console.error("Error reordering video:", error);
-        throw new Error("Failed to reorder video");
+  try {
+    const response = await axios.put(`/api/${apiType}/reorder`, {
+      name: videoName,
+      newIndex: newIndex,
+    });
+    return response.data;
+  } catch (error) {
+    if (error.response && error.response.status === 403) {
+      // Handle unauthorized access
+      console.error("Unauthorized to edit video count");
+      throw new Error("You are not authorized to reorder the video.");
     }
+    //console.error("Error reordering video:", error);
+    throw new Error("Failed to reorder video");
+  }
+};
+
+/**
+ * CHANGE THE ICON COLOR
+ * @param videoName
+ * @param newColor
+ * @param apiType
+ * @returns {Promise<any>}
+ */
+export const changeIconColor = async (videoName, newColor, apiType) => {
+  try {
+    const response = await axios.put(`/api/${apiType}/color`, {
+      name: videoName,
+      color: newColor,
+    });
+    return response.data;
+  } catch (error) {
+    if (error.response && error.response.status === 403) {
+      // Handle unauthorized access
+      console.error("Unauthorized to edit video count");
+      throw new Error("You are not authorized to change the icon color.");
+    }
+    //console.error("Error changing color:", error);
+    throw new Error("Failed to change color");
+  }
 };
