@@ -27,7 +27,7 @@ const VideoPageTemplate = ({ apiType }) => {
     select: (quantity) => (isNaN(quantity) ? 4 : quantity),
   });
 
-  // after any change, either refetch or set data manually
+  // after any change - refetch
   const afterCRUDVideo = () => refetchVideos();
 
   if (videosLoading || countLoading) return <div>Loading...</div>;

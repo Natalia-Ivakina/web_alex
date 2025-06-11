@@ -1,14 +1,13 @@
 import { useEffect, useState, useRef } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { checkAuth } from "../services/loginService";
+import { EditPageTextComponent } from "./EditPageTextForm";
+import { loadPageText } from "../services/pageTextService";
+import PageTextComponent from "./PageText";
+import AddNewVideoComponent from "./AddVideoForm";
 import ManageVideoFormComponent from "../components/ManageVideoForm";
 import VideosPerPageSelector from "../components/VideosPerPageSelector";
 import PaginationNavigator from "../components/PaginationNavigator";
-import { editVideoCount } from "../services/videoPerPageService";
-import PageTextComponent from "./PageText";
-import AddNewVideoComponent from "./AddVideoForm";
-import { EditPageTextComponent } from "./EditPageTextForm";
-import { loadPageText } from "../services/pageTextService";
 import VideoCard from "./VideoCard";
 
 const VideoList = ({
@@ -27,9 +26,6 @@ const VideoList = ({
   const [internalVideosPerPage, setInternalVideosPerPage] = useState(
     externalVideosPerPage || 4
   ); // Default 4 videos per page
-  const [inputVideosPerPage, setInputVideosPerPage] = useState(
-    internalVideosPerPage
-  );
 
   // Check if the user is authenticated
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -59,14 +55,7 @@ const VideoList = ({
     queryClient.setQueryData(["pageText", apiType], updatedText);
   };
 
-  //pagination__________________________________
-  useEffect(() => {
-    // Update internalVideosPerPage if externalVideosPerPage changes
-    if (externalVideosPerPage !== internalVideosPerPage) {
-      setInternalVideosPerPage(externalVideosPerPage);
-    }
-  }, [externalVideosPerPage]);
-
+  //pagination
   const indexOfLastVideo = currentPage * internalVideosPerPage;
   const indexOfFirstVideo = indexOfLastVideo - internalVideosPerPage;
   const currentVideos = videos.slice(indexOfFirstVideo, indexOfLastVideo);
@@ -84,42 +73,10 @@ const VideoList = ({
     }
   };
 
-  const handleVideosPerPageInputChange = (e) => {
-    setInputVideosPerPage(e.target.value);
+  const handleVideosPerPageChange = (newCount) => {
+    setInternalVideosPerPage(newCount);
+    setCurrentPage(1);
   };
-
-  const handleSaveVideosPerPage = async () => {
-    const value = parseInt(inputVideosPerPage, 10);
-    if (!isNaN(value) && value > 0) {
-      setInternalVideosPerPage(value);
-      setCurrentPage(1);
-      try {
-        // Save count to the server
-        await editVideoCount(apiType, value);
-        setMessage("Number videos per page updated successfully!");
-      } catch (error) {
-        setMessage(error.message);
-      }
-    } else {
-      setMessage("Please enter a valid number greater than 0.");
-    }
-  };
-
-  /**
-   * clear msg - 5 sec
-   */
-  useEffect(() => {
-    if (message) {
-      const timer = setTimeout(() => {
-        setMessage("");
-      }, 5000);
-      return () => clearTimeout(timer);
-    }
-  }, [message]);
-
-  useEffect(() => {
-    setInputVideosPerPage(internalVideosPerPage);
-  }, [internalVideosPerPage]);
 
   // Lazy loading video iframe________________________________________
   const videoRef = useRef([]);
@@ -130,7 +87,7 @@ const VideoList = ({
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const iframe = entry.target;
-            iframe.src = iframe.dataset.src; // Lazy load
+            iframe.src = iframe.dataset.src;
             observer.unobserve(iframe);
           }
         });
@@ -147,6 +104,15 @@ const VideoList = ({
 
   //if (isTextLoading) return <div>Loading page text...</div>;
   //if (textError) return <div>Error loading text</div>;
+
+  useEffect(() => {
+    if (message) {
+      const timer = setTimeout(() => {
+        setMessage("");
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [message]);
 
   return (
     <div className="page-container">
@@ -167,15 +133,16 @@ const VideoList = ({
                 />
               </div>
             </div>
-            <div className="row content">
-              <div>
+            <div id="info-pagination-row">
+              <div className="infoMessage">
+                {message && <div>{message}</div>}
+              </div>
+              <div className="row content">
                 <VideosPerPageSelector
-                  inputVideosPerPage={inputVideosPerPage}
-                  handleVideosPerPageInputChange={
-                    handleVideosPerPageInputChange
-                  }
-                  handleSaveVideosPerPage={handleSaveVideosPerPage}
-                  message={message || "⠀"}
+                  initialVideosPerPage={internalVideosPerPage}
+                  apiType={apiType}
+                  onVideosPerPageChange={handleVideosPerPageChange}
+                  onMessage={setMessage}
                 />
               </div>
             </div>
@@ -194,7 +161,6 @@ const VideoList = ({
 
               return (
                 <div key={project.name} className="video-item">
-                  {/* <p>{project.name}</p> */}
                   <VideoCard
                     videoId={videoId}
                     title={project.name}
@@ -223,12 +189,15 @@ const VideoList = ({
           )}
         </div>
       </main>
-      <PaginationNavigator
-        currentPage={currentPage}
-        totalPages={totalPages}
-        goToPrevPage={goToPrevPage}
-        goToNextPage={goToNextPage}
-      />
+      {/*if q of pages > 1*/}
+      {totalPages > 1 && (
+        <PaginationNavigator
+          currentPage={currentPage}
+          totalPages={totalPages}
+          goToPrevPage={goToPrevPage}
+          goToNextPage={goToNextPage}
+        />
+      )}
     </div>
   );
 };
