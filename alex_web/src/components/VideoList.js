@@ -130,7 +130,7 @@ const VideoList = ({
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const iframe = entry.target;
-            iframe.src = iframe.dataset.src; // Lazy load the video source
+            iframe.src = iframe.dataset.src; // Lazy load
             observer.unobserve(iframe);
           }
         });

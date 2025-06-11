@@ -1,7 +1,7 @@
 [
   {
     "name": "amv",
-    "quantity": "12"
+    "quantity": "6"
   },
   {
     "name": "moods",
@@ -9,10 +9,10 @@
   },
   {
     "name": "projects",
-    "quantity": "30"
+    "quantity": "6"
   },
   {
     "name": "showreels",
-    "quantity": "10"
+    "quantity": "6"
   }
 ]

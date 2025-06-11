@@ -11,6 +11,7 @@ body,
   display: flex;
   flex-direction: column;
   min-height: 85vh; /* Full height of the viewport */
+  align-items: center;
 }
 
 /* Main content should grow to take available space */
@@ -284,6 +285,7 @@ button {
   color: #84a4c9;
   border-radius: 0.5em;
   padding: 8px;
+  cursor: pointer;
 }
 
 button:hover {
