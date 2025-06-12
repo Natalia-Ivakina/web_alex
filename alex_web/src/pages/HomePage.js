@@ -4,7 +4,8 @@ import { EditPageTextComponent } from "../components/EditPageTextForm";
 import PageTextComponent from "../components/PageText";
 import { loadPageText } from "../services/pageTextService";
 import { checkAuth } from "../services/loginService";
-import Card3 from "../components/VideoCardMain";
+import MainTemplate from "../components/MainTemplate";
+import NavBar from "../components/NavBar";
 
 const HomePage = () => {
   const queryClient = useQueryClient();
@@ -19,27 +20,27 @@ const HomePage = () => {
   }, []);
 
   //pause for text_________________________
-  const {
-    data: pageText = { title: "", text: "" },
-    isLoading,
-    error,
-    refetch,
-  } = useQuery({
-    queryKey: ["pageText", "home"],
-    queryFn: () => loadPageText("home"),
-    staleTime: 1000 * 60 * 5, //5 min
-  });
+  // const {
+  //   data: pageText = { title: "", text: "" },
+  //   isLoading,
+  //   error,
+  //   refetch,
+  // } = useQuery({
+  //   queryKey: ["pageText", "home"],
+  //   queryFn: () => loadPageText("home"),
+  //   staleTime: 1000 * 60 * 5, //5 min
+  // });
 
-  const updatePageText = (updatedText) => {
-    queryClient.setQueryData(["pageText", "home"], updatedText);
-  };
+  // const updatePageText = (updatedText) => {
+  //   queryClient.setQueryData(["pageText", "home"], updatedText);
+  // };
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error loading page text</div>;
+  // if (isLoading) return <div>Loading...</div>;
+  // if (error) return <div>Error loading page text</div>;
 
   return (
     <>
-      {isAuthenticated && (
+      {/* {isAuthenticated && (
         <div className="adminlayout">
           <EditPageTextComponent
             apiType="home"
@@ -47,10 +48,10 @@ const HomePage = () => {
             textData={pageText}
           />
         </div>
-      )}
+      )} */}
       <div>
-        <PageTextComponent pageText={pageText} />
-        <Card3 />
+        {/* <PageTextComponent pageText={pageText} /> */}
+        <MainTemplate />
       </div>
     </>
   );

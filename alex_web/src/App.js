@@ -4,9 +4,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import ProjectsPage from "./pages/ProjectsPage";
-import NavBar from "./NavBar";
+//import NavBar from "./components/NavBar";
 import NotFoundPage from "./pages/NotFoundPage";
-import Footer from "./Footer";
+import Footer from "./components/Footer";
 import ContactPage from "./pages/ContactPage";
 import AmvPage from "./pages/AmvPage";
 import ShowreelsPage from "./pages/ShowreelsPage";
@@ -19,8 +19,8 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <div>
-          <NavBar />
-          <div id="wrapper">
+          {/* <NavBar /> */}
+          <div>
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/about" element={<AboutPage />} />

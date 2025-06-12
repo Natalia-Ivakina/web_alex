@@ -1,0 +1,37 @@
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import Menu from "./Menu";
+import BurgerMenuComponent from "./BurgerMenu";
+import { useLocation } from "react-router-dom";
+import CustomNavBar from "./CustomNavBar";
+
+const NavBar = () => {
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const location = useLocation();
+  const isCustomPage = location.pathname === "/";
+
+  //size of screen
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth <= 600);
+    };
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return (
+    <>
+      {isCustomPage ? (
+        <CustomNavBar />
+      ) : (
+        <nav>
+          {!isSmallScreen && <Menu />}
+          {isSmallScreen && <BurgerMenuComponent />}
+        </nav>
+      )}
+    </>
+  );
+};
+
+export default NavBar;

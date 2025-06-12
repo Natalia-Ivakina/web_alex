@@ -1,0 +1,72 @@
+.film-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 0.2fr 1.5fr 0.2fr 2.5fr 0.2fr 1.5fr 0.2fr 0.9fr;
+  grid-template-rows: 1fr 0.065fr 1fr;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 1500px;
+  height: 100vh;
+  margin: 0 auto;
+  background-image: url("../../public/bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.film-cell {
+  background: #020202;
+  position: relative;
+  opacity: 0.8;
+}
+
+.film {
+  background: #fff;
+  border: 1px solid #333;
+  border-radius: 8px;
+  position: relative;
+}
+
+.empty-cell {
+  position: relative;
+}
+
+.info-cell {
+  background: #020202;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  opacity: 0.8;
+}
+
+.top-transparent,
+.bottom-transparent {
+  background-image: url("../../public/bg.png");
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.top-transparent {
+  border-bottom-left-radius: 35px;
+  border-bottom-right-radius: 35px;
+}
+
+.bottom-transparent {
+  border-top-left-radius: 35px;
+  border-top-right-radius: 35px;
+}
+
+.info {
+  background: #fff;
+  border: 1px solid #333;
+  border-radius: 8px;
+  position: relative;
+}
+
+.foto-cell {
+  background: #020202;
+  position: relative;
+  opacity: 0.8;
+}

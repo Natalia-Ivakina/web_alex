@@ -1,4 +1,12 @@
 import VideoPageTemplate from "../components/VideoPageTemplate";
-const ShowreelsPage = () => <VideoPageTemplate apiType="showreels" />;
+import NavBar from "../components/NavBar";
+const ShowreelsPage = () => (
+  <>
+    <NavBar />
+    <div className="wrapper">
+      <VideoPageTemplate apiType="showreels" />
+    </div>
+  </>
+);
 
 export default ShowreelsPage;
