@@ -12,6 +12,7 @@ const {
   changeVideosPerPage,
   changeTextData,
   changeIconColor,
+  replaceVideo,
 } = require("./dataAccess.js");
 
 const app = express();
@@ -23,6 +24,7 @@ const videoPaths = {
   moods: path.join(__dirname, "../videodata/moods.json"),
   projects: path.join(__dirname, "../videodata/projects.json"),
   showreels: path.join(__dirname, "../videodata/showreels.json"),
+  home: path.join(__dirname, "../videodata/home.json"),
 };
 
 const nunOfPageVideoPaths = {
@@ -94,6 +96,22 @@ app.get("/api/:category", (req, res) => {
     res
       .status(500)
       .json({ message: "Error loading videos", error: error.message });
+  }
+});
+
+/**
+ * Load Videos for home page
+ */
+app.get("/api/home", (req, res) => {
+  const filePath = path.join(__dirname, "../videodata/home.json");
+
+  try {
+    const videos = loadJsonData(filePath);
+    res.json(videos);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Error loading home videos", error: error.message });
   }
 });
 
@@ -202,6 +220,25 @@ app.put("/api/:category/color", authMiddleware, (req, res) => {
     res
       .status(500)
       .json({ message: "Error updating color", error: error.message });
+  }
+});
+
+/**
+ * Replace video
+ */
+app.put("/api/:category/replace", authMiddleware, (req, res) => {
+  const filePath = path.join(__dirname, "../videodata/home.json");
+  const { index, link } = req.body;
+
+  try {
+    replaceVideo(filePath, index, link);
+    const videos = loadJsonData(filePath); // new list
+    res.status(201).json({
+      message: `Video replaced successfully`,
+      videos,
+    });
+  } catch (error) {
+    res.status(500).json({ message: "Error replaycing", error: error.message });
   }
 });
 

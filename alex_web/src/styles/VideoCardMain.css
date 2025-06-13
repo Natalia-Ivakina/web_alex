@@ -114,3 +114,15 @@
 .card-front:hover #play-button div {
   display: flex;
 }
+
+/* crud menu */
+#admin-counter-panel {
+  position: absolute;
+  top: 80%;
+  right: 0;
+  background-color: rgba(52, 50, 50, 0.85);
+  border-radius: 8px;
+  z-index: 2;
+  font-size: 0.8rem;
+  color: #84a4c9;
+}

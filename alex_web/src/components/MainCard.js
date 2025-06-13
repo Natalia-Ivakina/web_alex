@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from "react";
+import ManageHomeVideoComponent from "../components/ManageHomeVideo";
 import "../styles/VideoCardMain.css";
 
 const VideoCard = ({
@@ -7,6 +8,8 @@ const VideoCard = ({
   flippedIndex,
   setFlippedIndex,
   setCardRef,
+  auth,
+  color,
 }) => {
   const cardRef = useRef();
 
@@ -32,7 +35,7 @@ const VideoCard = ({
           />
           <div id="play-button">
             <div>
-              <svg viewBox="0 0 24 24" fill="#000">
+              <svg viewBox="0 0 24 24" fill={`#${color}`}>
                 <path d="M5 3l14 9-14 9z" />
               </svg>
             </div>
@@ -50,6 +53,20 @@ const VideoCard = ({
           )}
         </div>
       </div>
+      {/*_________________ for admin_____________________________*/}
+      {auth && (
+        <div id="admin-counter-panel">
+          {/* <ManageHomeVideoComponent
+            index={index}
+            apiType={apiType}
+            onActionComplete={(msg) => setMessage(msg)}
+            onChangeColor={changeColor}
+            onReplace={changeColor}
+          />*/}
+          <p>Video # {index + 1}</p>
+        </div>
+      )}
+      {/*_______________________________________________________*/}
     </div>
   );
 };

@@ -5,6 +5,7 @@ import {
   reorderVideo,
 } from "../services/videoService";
 import "../styles/ManageVideoForm.css";
+import ColorPickerButton from "./ChangeColor";
 
 const ManageVideoFormComponent = ({
   videoName,
@@ -16,9 +17,7 @@ const ManageVideoFormComponent = ({
 }) => {
   const [error, setError] = useState(null);
   const [newIndex, setNewIndex] = useState("");
-  const [newColor, setNewColor] = useState("ffffff");
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const colorInputRef = useRef(null);
 
   const handleDelete = () => {
     setError(null);
@@ -74,16 +73,6 @@ const ManageVideoFormComponent = ({
     }
   };
 
-  const openColorPicker = () => {
-    colorInputRef.current?.click();
-  };
-
-  const handleColorChange = (e) => {
-    const selectedColor = e.target.value.slice(1); // delete #
-    setNewColor(selectedColor);
-    handleIconColor(selectedColor);
-  };
-
   return (
     <div className="adminPanel">
       {/* delete */}
@@ -112,20 +101,8 @@ const ManageVideoFormComponent = ({
         )}
       </div>
 
-      {/* change icon color */}
-      <div id="color-picker">
-        <button id="changeColor" onClick={openColorPicker}>
-          <span className="tooltip">Set color</span>
-        </button>
-
-        <input
-          type="color"
-          ref={colorInputRef}
-          value={`#${newColor || "000"}`}
-          onChange={handleColorChange}
-          style={{ display: "none" }}
-        />
-      </div>
+      {/* Color Picker */}
+      <ColorPickerButton onColorChange={handleIconColor} />
 
       {/* reorder */}
       <div className="reorder">

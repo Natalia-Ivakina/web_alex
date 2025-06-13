@@ -43,7 +43,7 @@ export const deleteVideo = async (videoName, apiType) => {
 };
 
 /**
- * LOAD
+ * LOAD PAGE VIDEOS
  * @param category
  * @returns {Promise<any>}
  */
@@ -54,6 +54,22 @@ export const loadVideos = async (category) => {
     return response.data;
   } catch (error) {
     //console.error("Error loading videos:", error);
+    throw new Error("Failed to fetch videos");
+  }
+};
+
+/**
+ * LOAD HOME VIDEOS
+ * @param category
+ * @returns {Promise<any>}
+ */
+export const loadHomeVideos = async () => {
+  try {
+    const response = await axios.get(`/api/home`);
+    console.log("Videos fetched from server:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error loading videos:", error);
     throw new Error("Failed to fetch videos");
   }
 };
@@ -105,5 +121,29 @@ export const changeIconColor = async (videoName, newColor, apiType) => {
     }
     //console.error("Error changing color:", error);
     throw new Error("Failed to change color");
+  }
+};
+
+/**
+ * REPLACE VIDEO
+ * @param index
+ * @param link
+ * @param apiType
+ * @returns {Promise<any>}
+ */
+export const replaceVideo = async (index, link) => {
+  try {
+    const response = await axios.put(`/api/replace`, {
+      index: index,
+      link: link,
+    });
+    return response.data;
+  } catch (error) {
+    if (error.response && error.response.status === 403) {
+      // Handle unauthorized access
+      console.error("Unauthorized to edit video count");
+      throw new Error("You are not authorized to change the icon color.");
+    }
+    throw new Error("Failed to replace video");
   }
 };

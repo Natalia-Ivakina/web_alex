@@ -269,6 +269,10 @@ textarea {
   margin: 0;
 }
 
+.reorder {
+  font-size: 0.9rem;
+}
+
 .column {
   display: flex;
   flex-direction: column;

@@ -129,6 +129,26 @@ function changeIconColor(dir, itemName, newColor) {
   }
 }
 
+function replaceVideo(dir, index, link) {
+  let data = loadJsonData(dir);
+
+  if (!data) {
+    console.error("Failed to load data");
+    return;
+  }
+
+  if (index < 0 || index >= data.length) {
+    console.error(`Invalid index: ${index}`);
+    return;
+  }
+
+  data[index].link = link;
+
+  fs.writeFileSync(dir, JSON.stringify(data, null, 2), "utf8");
+
+  console.log(`Updated video at index ${index} successfully.`);
+}
+
 module.exports = {
   loadJsonData,
   saveVideoData,
@@ -137,4 +157,5 @@ module.exports = {
   changeVideosPerPage,
   changeTextData,
   changeIconColor,
+  replaceVideo,
 };
