@@ -47,10 +47,10 @@
 
 /*-nav menu--*/
 nav {
-  /* border-bottom: 0.2em solid black; */
   text-align: center;
   top: 0;
   background-color: #1f2224;
+  /* background-color: rgba(2, 2, 2, 0.3); */
   margin: 0 auto;
 }
 
@@ -72,7 +72,7 @@ nav a {
   color: #84a4c9;
   font-size: 0.9em;
   font-family: "Montserrat", Arial, sans-serif;
-  padding: 24px 32px;
+  padding: 10px 10px;
 }
 
 nav a:hover {

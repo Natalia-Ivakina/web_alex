@@ -7,15 +7,23 @@
 }
 
 .card3 {
-  margin: 30px auto;
-  width: 300px;
-  height: 300px;
+  margin: 12px auto;
+  width: 250px;
+  height: 250px;
   border-radius: 40px;
   box-shadow: 5px 5px 30px 7px rgba(0, 0, 0, 0.25),
     -5px -5px 30px 7px rgba(0, 0, 0, 0.22);
   cursor: pointer;
   transition: 0.4s;
   perspective: 1000px;
+}
+
+@media all and (max-width: 1500px) {
+  .card3 {
+    margin: 24px auto;
+    width: 230px;
+    height: 230px;
+  }
 }
 
 .card3 .card_image {
@@ -31,18 +39,17 @@
   object-fit: cover;
 }
 
-.card3:hover {
+/* .card3:hover {
   transform: scale(0.9, 0.9);
   box-shadow: 5px 5px 30px 15px rgba(0, 0, 0, 0.25),
     -5px -5px 30px 15px rgba(0, 0, 0, 0.22);
-}
+} */
 
-@media all and (max-width: 500px) {
+/* @media all and (max-width: 500px) {
   .card-list {
-    /* On small screens, we are no longer using row direction but column */
     flex-direction: column;
   }
-}
+} */
 
 .card-inner {
   width: 100%;

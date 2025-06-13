@@ -191,12 +191,14 @@ const VideoList = ({
       </main>
       {/*if q of pages > 1*/}
       {totalPages > 1 && (
-        <PaginationNavigator
-          currentPage={currentPage}
-          totalPages={totalPages}
-          goToPrevPage={goToPrevPage}
-          goToNextPage={goToNextPage}
-        />
+        <div className="pagination-wrapper">
+          <PaginationNavigator
+            currentPage={currentPage}
+            totalPages={totalPages}
+            goToPrevPage={goToPrevPage}
+            goToNextPage={goToNextPage}
+          />
+        </div>
       )}
     </div>
   );

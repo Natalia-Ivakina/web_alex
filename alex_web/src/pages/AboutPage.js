@@ -72,22 +72,22 @@ const AboutPage = () => {
   }, []);
 
   //adjustable content
-  const contactBlock = (
-    <div id="contact">
-      <img id="findme" src="/findme.png" alt="Find me" />
-      <a id="artstationlink" href="https://www.artstation.com/alexboy">
-        ArtStation
-      </a>
-      <br />
-      <a id="youtubelink" href="https://www.youtube.com/user/AlexboyAMV">
-        Youtube
-      </a>
-      <br />
-      <a id="linkeldnlink" href="https://www.linkedin.com/in/akialex/">
-        LinkedIn
-      </a>
-    </div>
-  );
+  // const contactBlock = (
+  //   <div id="contact">
+  //     <img id="findme" src="/findme.png" alt="Find me" />
+  //     <a id="artstationlink" href="https://www.artstation.com/alexboy">
+  //       ArtStation
+  //     </a>
+  //     <br />
+  //     <a id="youtubelink" href="https://www.youtube.com/user/AlexboyAMV">
+  //       Youtube
+  //     </a>
+  //     <br />
+  //     <a id="linkeldnlink" href="https://www.linkedin.com/in/akialex/">
+  //       LinkedIn
+  //     </a>
+  //   </div>
+  // );
 
   if (isLoading || !isImagesLoaded) return <div>Loading...</div>;
   if (error) return <div>Error loading page text</div>;
@@ -118,10 +118,10 @@ const AboutPage = () => {
                       </p>
                     ))}
                   </div>
-                  {!isMediumScreen && contactBlock}
+                  {/* {!isMediumScreen && contactBlock} */}
                 </div>
                 <div className="row">
-                  {isMediumScreen && contactBlock}
+                  {/* {isMediumScreen && contactBlock} */}
                   <div className="container2 right-align">
                     <div id="me">
                       <p>

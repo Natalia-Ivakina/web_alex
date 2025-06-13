@@ -17,6 +17,9 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
+      <div className="background-img">
+        <img src="/bg.png" alt="background" />
+      </div>
       <BrowserRouter>
         <div>
           {/* <NavBar /> */}

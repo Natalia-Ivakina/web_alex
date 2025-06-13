@@ -33,159 +33,152 @@ const MainTemplate = () => {
     cardsRef.current[index] = element;
   };
 
-  const videoIds = [
-    "VS3EE8v5pcY",
-    "tjO1eWQ7AM8",
-    "SGx_vYfs_P0",
-    "-VOMQDBQjfE",
-    "z52ZuqvYXM8",
-    "yx3AYiFVIis",
-    "TuoRb0lvfpI",
-    "MjNJ0IbfN-g",
-  ];
+  const videoIds = [];
 
   return (
     <div className="film-grid">
-      <div className="empty-cell" id="1">
-        1
+      <div className="empty-cell"></div>
+      <div className="photo-cell"></div>
+      <div className="film-cell">
+        <MainCard
+          index={0}
+          videoId="VS3EE8v5pcY"
+          flippedIndex={flippedIndex}
+          setFlippedIndex={setFlippedIndex}
+          setCardRef={setCardRef}
+        />
+
+        <MainCard
+          index={1}
+          videoId="tjO1eWQ7AM8"
+          flippedIndex={flippedIndex}
+          setFlippedIndex={setFlippedIndex}
+          setCardRef={setCardRef}
+        />
       </div>
-      <div className="foto-cell" id="2">
-        2
-      </div>
-      <div className="film-cell" id="3">
-        <div className="film" id="4">
-          5
-        </div>
-        <div className="film" id="6">
-          7
-        </div>
-      </div>
-      <div className="foto-cell" id="40">
-        40
-      </div>
+      <div className="photo-cell"></div>
       <div className="info-cell">
+        <div className="info" id="homeNav">
+          <NavBar />
+        </div>
         <div class="top-transparent">
-          <div className="info" id="32">
-            <NavBar />
+          <div className="info">
+            <img src="./Edited.png"></img>
           </div>
-          <div className="info" id="33">
-            33
+          <div className="info">
+            <img src="./Directed.png"></img>
           </div>
-          <div className="info" id="34">
-            34
-          </div>
-          <div className="info" id="35">
-            35
+          <div className="info">
+            <img src="./Color_Grading.png"></img>
           </div>
         </div>
       </div>
-      <div className="foto-cell" id="41">
-        41
+      <div className="photo-cell"></div>
+      <div className="film-cell">
+        <MainCard
+          index={2}
+          videoId="SGx_vYfs_P0"
+          flippedIndex={flippedIndex}
+          setFlippedIndex={setFlippedIndex}
+          setCardRef={setCardRef}
+        />
+
+        <MainCard
+          index={3}
+          videoId="-VOMQDBQjfE"
+          flippedIndex={flippedIndex}
+          setFlippedIndex={setFlippedIndex}
+          setCardRef={setCardRef}
+        />
       </div>
-      <div className="film-cell" id="9">
-        <div className="film" id="10">
-          10
+      <div className="photo-cell">
+        <div className="photo">
+          <img src="./17_2.png" id="top17"></img>
         </div>
-        <div className="film" id="11">
-          11
-        </div>
-      </div>
-      <div className="foto-cell" id="12">
-        12
-      </div>
-      <div className="empty-cell" id="13">
-        13
-      </div>
-      <div className="empty-cell" id="25">
-        25
-      </div>
-      <div className="foto-cell" id="26">
-        26
-      </div>
-      <div className="foto-cell" id="27">
-        27
-      </div>
-      <div className="foto-cell" id="28">
-        28
-      </div>
-      <div className="foto-cell" id="29">
-        29
-      </div>
-      <div className="foto-cell" id="30">
-        30
-      </div>
-      <div className="foto-cell" id="31">
-        31
-      </div>
-      <div className="foto-cell" id="14">
-        14
-      </div>
-      <div className="empty-cell" id="15">
-        15
-      </div>
-      <div className="empty-cell" id="44">
-        44
-      </div>
-      <div className="foto-cell" id="45">
-        45
-      </div>
-      <div className="film-cell" id="16">
-        <div className="film" id="17">
-          17
-        </div>
-        <div className="film" id="18">
-          18
+        <div className="photo">
+          <img src="./20_2.png" id="top20"></img>
         </div>
       </div>
-      <div className="foto-cell" id="42">
-        42
+      <div className="empty-cell"></div>
+      <div className="empty-cell"></div>
+      <div className="photo-cell">
+        <img src="./mark.png" id="photomark"></img>
       </div>
+      <div className="photo-cell"></div>
+      <div className="photo-cell"></div>
+      <div className="photo-cell">
+        <img src="./Alex_Logo1.png" id="photoName"></img>
+      </div>
+      <div className="photo-cell"></div>
+      <div className="photo-cell"></div>
+      <div className="photo-cell"></div>
+      <div className="empty-cell"></div>
+      <div className="empty-cell"></div>
+      <div className="photo-cell"></div>
+      <div className="film-cell">
+        <MainCard
+          index={4}
+          videoId="z52ZuqvYXM8"
+          flippedIndex={flippedIndex}
+          setFlippedIndex={setFlippedIndex}
+          setCardRef={setCardRef}
+        />
+
+        <MainCard
+          index={5}
+          videoId="yx3AYiFVIis"
+          flippedIndex={flippedIndex}
+          setFlippedIndex={setFlippedIndex}
+          setCardRef={setCardRef}
+        />
+      </div>
+      <div className="photo-cell"></div>
       <div className="info-cell">
         <div className="bottom-transparent">
-          <div className="info" id="36">
-            36
+          <div className="info">
+            <img src="./Sound.png"></img>
           </div>
-          <div className="info" id="37">
-            37
+          <div className="info">
+            <img src="./VFX.png"></img>
           </div>
-          <div className="info" id="38">
-            38
+          <div className="info">
+            <img src="./Written.png"></img>
           </div>
-          <div className="info" id="39">
-            39
+        </div>
+        <div className="info">
+          <div className="row developer" id="homeFooter">
+            <p>Design and Development by Natalia Ivakina © ~ 2025</p>
           </div>
         </div>
       </div>
-      <div className="foto-cell" id="43">
-        43
+      <div className="photo-cell"></div>
+      <div className="film-cell">
+        <MainCard
+          index={6}
+          videoId="TuoRb0lvfpI"
+          flippedIndex={flippedIndex}
+          setFlippedIndex={setFlippedIndex}
+          setCardRef={setCardRef}
+        />
+
+        <MainCard
+          index={7}
+          videoId="MjNJ0IbfN-g"
+          flippedIndex={flippedIndex}
+          setFlippedIndex={setFlippedIndex}
+          setCardRef={setCardRef}
+        />
       </div>
-      <div className="film-cell" id="20">
-        <div className="film" id="21">
-          21
+      <div className="photo-cell">
+        <div className="photo">
+          <img src="./17.png" id="bottom17"></img>
         </div>
-        <div className="film" id="22">
-          22
+        <div className="photo">
+          <img src="./20.png" id="bottom20"></img>
         </div>
       </div>
-      <div className="foto-cell" id="23">
-        23
-      </div>
-      <div className="empty-cell" id="24">
-        24
-      </div>
+      <div className="empty-cell"></div>
     </div>
-    // <div className="cards-list">
-    //   {videoIds.map((videoId, index) => (
-    //     <MainCard
-    //       key={index}
-    //       index={index}
-    //       videoId={videoId}
-    //       flippedIndex={flippedIndex}
-    //       setFlippedIndex={setFlippedIndex}
-    //       setCardRef={setCardRef}
-    //     />
-    //   ))}
-    // </div>
   );
 };
 
