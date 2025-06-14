@@ -81,28 +81,50 @@ const MainTemplate = ({ apiType }) => {
   // after any change - refetch
   const afterCRUDVideo = () => refetchVideos();
 
-  const VideoCardByIndex = ({ index }) => (
-    <MainCard
-      index={index}
-      videoId={extractVideoId(videos[index]?.link || "")}
-      flippedIndex={flippedIndex}
-      setFlippedIndex={setFlippedIndex}
-      setCardRef={setCardRef}
-      auth={isAuthenticated}
-      color={videos[index]?.color || ""}
-      apiType={apiType}
-      onReplace={afterCRUDVideo}
-      onChangeColor={afterCRUDVideo}
-    />
-  );
+  // const VideoCardByIndex = ({ index }) => (
+  //   <MainCard
+  //     index={index}
+  //     videoId={extractVideoId(videos[index]?.link || "")}
+  //     flippedIndex={flippedIndex}
+  //     setFlippedIndex={setFlippedIndex}
+  //     setCardRef={setCardRef}
+  //     auth={isAuthenticated}
+  //     color={videos[index]?.color || ""}
+  //     apiType={apiType}
+  //     onReplace={afterCRUDVideo}
+  //     onChangeColor={afterCRUDVideo}
+  //   />
+  //);
 
   return (
     <div className="film-grid">
       <div className="empty-cell"></div>
       <div className="photo-cell"></div>
       <div className="film-cell">
-        <VideoCardByIndex index={0} />
-        <VideoCardByIndex index={1} />
+        <MainCard
+          index={0}
+          videoId={extractVideoId(videos[0]?.link || "")}
+          flippedIndex={flippedIndex}
+          setFlippedIndex={setFlippedIndex}
+          setCardRef={setCardRef}
+          auth={isAuthenticated}
+          color={videos[0]?.color || ""}
+          apiType={apiType}
+          onReplace={afterCRUDVideo}
+          onChangeColor={afterCRUDVideo}
+        />
+        <MainCard
+          index={1}
+          videoId={extractVideoId(videos[1]?.link || "")}
+          flippedIndex={flippedIndex}
+          setFlippedIndex={setFlippedIndex}
+          setCardRef={setCardRef}
+          auth={isAuthenticated}
+          color={videos[1]?.color || ""}
+          apiType={apiType}
+          onReplace={afterCRUDVideo}
+          onChangeColor={afterCRUDVideo}
+        />
       </div>
       <div className="photo-cell"></div>
       <div className="info-cell">
@@ -123,8 +145,30 @@ const MainTemplate = ({ apiType }) => {
       </div>
       <div className="photo-cell"></div>
       <div className="film-cell">
-        <VideoCardByIndex index={2} />
-        <VideoCardByIndex index={3} />
+        <MainCard
+          index={2}
+          videoId={extractVideoId(videos[2]?.link || "")}
+          flippedIndex={flippedIndex}
+          setFlippedIndex={setFlippedIndex}
+          setCardRef={setCardRef}
+          auth={isAuthenticated}
+          color={videos[2]?.color || ""}
+          apiType={apiType}
+          onReplace={afterCRUDVideo}
+          onChangeColor={afterCRUDVideo}
+        />
+        <MainCard
+          index={3}
+          videoId={extractVideoId(videos[3]?.link || "")}
+          flippedIndex={flippedIndex}
+          setFlippedIndex={setFlippedIndex}
+          setCardRef={setCardRef}
+          auth={isAuthenticated}
+          color={videos[3]?.color || ""}
+          apiType={apiType}
+          onReplace={afterCRUDVideo}
+          onChangeColor={afterCRUDVideo}
+        />
       </div>
       <div className="photo-cell">
         <div className="photo">
@@ -151,8 +195,30 @@ const MainTemplate = ({ apiType }) => {
       <div className="empty-cell"></div>
       <div className="photo-cell"></div>
       <div className="film-cell">
-        <VideoCardByIndex index={4} />
-        <VideoCardByIndex index={5} />
+        <MainCard
+          index={4}
+          videoId={extractVideoId(videos[4]?.link || "")}
+          flippedIndex={flippedIndex}
+          setFlippedIndex={setFlippedIndex}
+          setCardRef={setCardRef}
+          auth={isAuthenticated}
+          color={videos[4]?.color || ""}
+          apiType={apiType}
+          onReplace={afterCRUDVideo}
+          onChangeColor={afterCRUDVideo}
+        />
+        <MainCard
+          index={5}
+          videoId={extractVideoId(videos[5]?.link || "")}
+          flippedIndex={flippedIndex}
+          setFlippedIndex={setFlippedIndex}
+          setCardRef={setCardRef}
+          auth={isAuthenticated}
+          color={videos[5]?.color || ""}
+          apiType={apiType}
+          onReplace={afterCRUDVideo}
+          onChangeColor={afterCRUDVideo}
+        />
       </div>
       <div className="photo-cell"></div>
       <div className="info-cell">
@@ -175,8 +241,30 @@ const MainTemplate = ({ apiType }) => {
       </div>
       <div className="photo-cell"></div>
       <div className="film-cell">
-        <VideoCardByIndex index={6} />
-        <VideoCardByIndex index={7} />
+        <MainCard
+          index={6}
+          videoId={extractVideoId(videos[6]?.link || "")}
+          flippedIndex={flippedIndex}
+          setFlippedIndex={setFlippedIndex}
+          setCardRef={setCardRef}
+          auth={isAuthenticated}
+          color={videos[6]?.color || ""}
+          apiType={apiType}
+          onReplace={afterCRUDVideo}
+          onChangeColor={afterCRUDVideo}
+        />
+        <MainCard
+          index={7}
+          videoId={extractVideoId(videos[7]?.link || "")}
+          flippedIndex={flippedIndex}
+          setFlippedIndex={setFlippedIndex}
+          setCardRef={setCardRef}
+          auth={isAuthenticated}
+          color={videos[7]?.color || ""}
+          apiType={apiType}
+          onReplace={afterCRUDVideo}
+          onChangeColor={afterCRUDVideo}
+        />
       </div>
       <div className="photo-cell">
         <div className="photo">

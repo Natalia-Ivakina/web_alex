@@ -28,13 +28,8 @@ const VideoCard = ({
     <div
       ref={cardRef}
       className={`card3 ${flippedIndex === index ? "flipped" : ""}`}
-      onClick={handleFlip}
     >
-      <div
-        ref={cardRef}
-        className={`card-inner ${flippedIndex === index ? "flipped" : ""}`}
-        onClick={handleFlip}
-      >
+      <div className="card-inner" onClick={handleFlip}>
         <div className={`card-front ${auth ? "auth" : ""}`}>
           <img
             src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
