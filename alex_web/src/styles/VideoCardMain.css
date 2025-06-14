@@ -97,7 +97,7 @@
   border: none;
 }
 
-#play-button div {
+.play-button div {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -111,18 +111,54 @@
   opacity: 0.7;
 }
 
-.card-front:hover #play-button div {
+.card-front:hover .play-button div {
+  display: flex;
+}
+
+/* if auth */
+.auth .play-button div {
   display: flex;
 }
 
 /* crud menu */
-#admin-counter-panel {
-  position: absolute;
-  top: 80%;
-  right: 0;
-  background-color: rgba(52, 50, 50, 0.85);
+#home-adminPanel {
+  background-color: rgba(52, 50, 50, 0.947);
   border-radius: 8px;
-  z-index: 2;
-  font-size: 0.8rem;
-  color: #84a4c9;
+}
+
+.homeAdminPanel {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.replace {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.3em;
+  padding: 0;
+}
+
+#replaceBtn {
+  font-size: 0.6em;
+  height: 2.2em;
+  padding: 0 0.7em;
+  margin: 0;
+  border-radius: 7px;
+  border: none;
+}
+
+#newLink {
+  height: 0.7em;
+  width: 7em;
+  font-size: 0.6em;
+  border: none;
+  background-color: beige;
+  margin: 0;
+}
+
+#homeColorPicker {
+  transform: scale(0.7);
+  transform-origin: center;
 }

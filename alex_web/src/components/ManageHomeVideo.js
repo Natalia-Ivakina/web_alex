@@ -5,9 +5,8 @@ import ColorPickerButton from "./ChangeColor";
 
 const ManageHomeComponent = ({
   index,
-  link,
   apiType,
-  onActionComplete,
+  //onActionComplete,
   onChangeColor,
   onReplace,
 }) => {
@@ -18,10 +17,10 @@ const ManageHomeComponent = ({
     setError(null);
     try {
       const response = await replaceVideo(index, newLink, apiType);
-      onActionComplete(response.message);
+      //onActionComplete(response.message);
       onReplace(response.videos);
     } catch (err) {
-      onActionComplete(err.message);
+      //onActionComplete(err.message);
       setError(err);
     }
   };
@@ -30,29 +29,34 @@ const ManageHomeComponent = ({
     setError(null);
     try {
       const response = await changeIconColor(index, color, apiType);
-      onActionComplete(response.message);
+      //onActionComplete(response.message);
       onChangeColor(response.videos);
     } catch (err) {
-      onActionComplete(err.message);
+      //onActionComplete(err.message);
       setError(err);
     }
   };
 
   return (
-    <div className="adminPanel">
-      {/* Color Picker */}
-      <ColorPickerButton onColorChange={handleIconColor} />
+    <div className="homeAdminPanel">
+      <div id="homeColorPicker">
+        {/* Color Picker */}
+        <ColorPickerButton onColorChange={handleIconColor} />
+      </div>
 
       {/* replace */}
-      <div>
+      <div className="replace">
         <input
           type="text"
-          className="adminInput"
-          placeholder=""
+          id="newLink"
+          placeholder="link"
           value={newLink}
           onChange={(e) => setNewLink(e.target.value)}
         />
-        <button onClick={handleReplace}>Replace</button>
+
+        <button onClick={handleReplace} id="replaceBtn">
+          Switch
+        </button>
       </div>
     </div>
   );

@@ -1,17 +1,24 @@
-import React, { useRef, useEffect } from "react";
-import ManageHomeVideoComponent from "../components/ManageHomeVideo";
+import { useEffect, useState, useRef } from "react";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import ManageHomeComponent from "../components/ManageHomeVideo";
 import "../styles/VideoCardMain.css";
 
 const VideoCard = ({
-  videoId,
   index,
+  videoId,
   flippedIndex,
   setFlippedIndex,
   setCardRef,
   auth,
   color,
+  apiType,
+  //complete,
+  onReplace,
+  onChangeColor,
 }) => {
   const cardRef = useRef();
+  const queryClient = useQueryClient();
+  //const [message, setMessage] = useState("");
 
   useEffect(() => {
     setCardRef(index, cardRef.current);
@@ -25,15 +32,14 @@ const VideoCard = ({
     <div
       ref={cardRef}
       className={`card3 ${flippedIndex === index ? "flipped" : ""}`}
-      onClick={handleFlip}
     >
-      <div className="card-inner">
-        <div className="card-front">
+      <div className="card-inner" onClick={handleFlip}>
+        <div className={`card-front ${auth ? "auth" : ""}`}>
           <img
             src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
             alt="thumbnail"
           />
-          <div id="play-button">
+          <div className="play-button">
             <div>
               <svg viewBox="0 0 24 24" fill={`#${color}`}>
                 <path d="M5 3l14 9-14 9z" />
@@ -55,15 +61,14 @@ const VideoCard = ({
       </div>
       {/*_________________ for admin_____________________________*/}
       {auth && (
-        <div id="admin-counter-panel">
-          {/* <ManageHomeVideoComponent
+        <div id="home-adminPanel">
+          <ManageHomeComponent
             index={index}
             apiType={apiType}
-            onActionComplete={(msg) => setMessage(msg)}
-            onChangeColor={changeColor}
-            onReplace={changeColor}
-          />*/}
-          <p>Video # {index + 1}</p>
+            //onActionComplete={(msg) => setMessage(msg)}
+            onChangeColor={onChangeColor}
+            onReplace={onReplace}
+          />
         </div>
       )}
       {/*_______________________________________________________*/}

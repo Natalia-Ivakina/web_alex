@@ -226,7 +226,7 @@ app.put("/api/:category/color", authMiddleware, (req, res) => {
 /**
  * Replace video
  */
-app.put("/api/:category/replace", authMiddleware, (req, res) => {
+app.put("/api/replace", authMiddleware, (req, res) => {
   const filePath = path.join(__dirname, "../videodata/home.json");
   const { index, link } = req.body;
 

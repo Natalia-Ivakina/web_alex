@@ -12,23 +12,18 @@ const MainTemplate = ({ apiType }) => {
   const [flippedIndex, setFlippedIndex] = useState(null);
   const cardsRef = useRef([]);
   const [message, setMessage] = useState("");
-  const [videos, setVideos] = useState([]);
 
   // fetch & cache videos
   const {
-    data,
-    error: videosError,
-    isLoading: videosLoading,
+    data: videos = [],
+    //error: videosError,
+    //isLoading: videosLoading,
     refetch: refetchVideos,
   } = useQuery({
     queryKey: ["videos"],
     queryFn: () => loadHomeVideos(),
     staleTime: 1000 * 60 * 5, //5 min
   });
-
-  useEffect(() => {
-    if (data) setVideos(data);
-  }, [data]);
 
   const extractVideoId = (url) => {
     const regex = /(?:v=|\/)([0-9A-Za-z_-]{11})/;
@@ -83,30 +78,31 @@ const MainTemplate = ({ apiType }) => {
     }
   }, [message]);
 
+  // after any change - refetch
+  const afterCRUDVideo = () => refetchVideos();
+
+  const VideoCardByIndex = ({ index }) => (
+    <MainCard
+      index={index}
+      videoId={extractVideoId(videos[index]?.link || "")}
+      flippedIndex={flippedIndex}
+      setFlippedIndex={setFlippedIndex}
+      setCardRef={setCardRef}
+      auth={isAuthenticated}
+      color={videos[index]?.color || ""}
+      apiType={apiType}
+      onReplace={afterCRUDVideo}
+      onChangeColor={afterCRUDVideo}
+    />
+  );
+
   return (
     <div className="film-grid">
       <div className="empty-cell"></div>
       <div className="photo-cell"></div>
       <div className="film-cell">
-        <MainCard
-          index={0}
-          videoId={videos[0] ? extractVideoId(videos[0].link) : ""}
-          flippedIndex={flippedIndex}
-          setFlippedIndex={setFlippedIndex}
-          setCardRef={setCardRef}
-          auth={isAuthenticated}
-          color={videos[0] ? videos[0].color : ""}
-        />
-
-        <MainCard
-          index={1}
-          videoId={videos[1] ? extractVideoId(videos[1].link) : ""}
-          flippedIndex={flippedIndex}
-          setFlippedIndex={setFlippedIndex}
-          setCardRef={setCardRef}
-          auth={isAuthenticated}
-          color={videos[1] ? videos[1].color : ""}
-        />
+        <VideoCardByIndex index={0} />
+        <VideoCardByIndex index={1} />
       </div>
       <div className="photo-cell"></div>
       <div className="info-cell">
@@ -115,55 +111,38 @@ const MainTemplate = ({ apiType }) => {
         </div>
         <div className="top-transparent">
           <div className="info">
-            <img src="./Edited.png"></img>
+            <img src="./Edited.png" alt=""></img>
           </div>
           <div className="info">
-            <img src="./Directed.png"></img>
+            <img src="./Directed.png" alt=""></img>
           </div>
           <div className="info">
-            <img src="./Color_Grading.png"></img>
+            <img src="./Color_Grading.png" alt=""></img>
           </div>
         </div>
       </div>
       <div className="photo-cell"></div>
       <div className="film-cell">
-        <MainCard
-          index={2}
-          videoId={videos[2] ? extractVideoId(videos[2].link) : ""}
-          flippedIndex={flippedIndex}
-          setFlippedIndex={setFlippedIndex}
-          setCardRef={setCardRef}
-          auth={isAuthenticated}
-          color={videos[2] ? videos[2].color : ""}
-        />
-
-        <MainCard
-          index={3}
-          videoId={videos[3] ? extractVideoId(videos[3].link) : ""}
-          flippedIndex={flippedIndex}
-          setFlippedIndex={setFlippedIndex}
-          setCardRef={setCardRef}
-          auth={isAuthenticated}
-          color={videos[4] ? extractVideoId(videos[4].color) : ""}
-        />
+        <VideoCardByIndex index={2} />
+        <VideoCardByIndex index={3} />
       </div>
       <div className="photo-cell">
         <div className="photo">
-          <img src="./17_2.png" id="top17"></img>
+          <img src="./17_2.png" id="top17" alt=""></img>
         </div>
         <div className="photo">
-          <img src="./20_2.png" id="top20"></img>
+          <img src="./20_2.png" id="top20" alt=""></img>
         </div>
       </div>
       <div className="empty-cell"></div>
       <div className="empty-cell"></div>
       <div className="photo-cell">
-        <img src="./mark.png" id="photomark"></img>
+        <img src="./mark.png" id="photomark" alt=""></img>
       </div>
       <div className="photo-cell"></div>
       <div className="photo-cell"></div>
       <div className="photo-cell">
-        <img src="./Alex_Logo1.png" id="photoName"></img>
+        <img src="./Alex_Logo1.png" id="photoName" alt=""></img>
       </div>
       <div className="photo-cell"></div>
       <div className="photo-cell"></div>
@@ -172,37 +151,20 @@ const MainTemplate = ({ apiType }) => {
       <div className="empty-cell"></div>
       <div className="photo-cell"></div>
       <div className="film-cell">
-        <MainCard
-          index={4}
-          videoId={videos[4] ? extractVideoId(videos[4].link) : ""}
-          flippedIndex={flippedIndex}
-          setFlippedIndex={setFlippedIndex}
-          setCardRef={setCardRef}
-          auth={isAuthenticated}
-          color={videos[4] ? videos[4].color : ""}
-        />
-
-        <MainCard
-          index={5}
-          videoId={videos[5] ? extractVideoId(videos[5].link) : ""}
-          flippedIndex={flippedIndex}
-          setFlippedIndex={setFlippedIndex}
-          setCardRef={setCardRef}
-          auth={isAuthenticated}
-          color={videos[5] ? videos[5].color : ""}
-        />
+        <VideoCardByIndex index={4} />
+        <VideoCardByIndex index={5} />
       </div>
       <div className="photo-cell"></div>
       <div className="info-cell">
         <div className="bottom-transparent">
           <div className="info">
-            <img src="./Sound.png"></img>
+            <img src="./Sound.png" alt=""></img>
           </div>
           <div className="info">
-            <img src="./VFX.png"></img>
+            <img src="./VFX.png" alt=""></img>
           </div>
           <div className="info">
-            <img src="./Written.png"></img>
+            <img src="./Written.png" alt=""></img>
           </div>
         </div>
         <div className="info">
@@ -213,32 +175,15 @@ const MainTemplate = ({ apiType }) => {
       </div>
       <div className="photo-cell"></div>
       <div className="film-cell">
-        <MainCard
-          index={6}
-          videoId={videos[6] ? extractVideoId(videos[6].link) : ""}
-          flippedIndex={flippedIndex}
-          setFlippedIndex={setFlippedIndex}
-          setCardRef={setCardRef}
-          auth={isAuthenticated}
-          color={videos[6] ? videos[6].color : ""}
-        />
-
-        <MainCard
-          index={7}
-          videoId={videos[7] ? extractVideoId(videos[7].link) : ""}
-          flippedIndex={flippedIndex}
-          setFlippedIndex={setFlippedIndex}
-          setCardRef={setCardRef}
-          auth={isAuthenticated}
-          color={videos[7] ? videos[7].color : ""}
-        />
+        <VideoCardByIndex index={6} />
+        <VideoCardByIndex index={7} />
       </div>
       <div className="photo-cell">
         <div className="photo">
-          <img src="./17.png" id="bottom17"></img>
+          <img src="./17.png" id="bottom17" alt=""></img>
         </div>
         <div className="photo">
-          <img src="./20.png" id="bottom20"></img>
+          <img src="./20.png" id="bottom20" alt=""></img>
         </div>
       </div>
       <div className="empty-cell"></div>

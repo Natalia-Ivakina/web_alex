@@ -119,7 +119,15 @@ function changeIconColor(dir, itemName, newColor) {
     return;
   }
 
-  const updatingItem = data.find((item) => item.name === itemName);
+  let updatingItem;
+
+  if (!isNaN(itemName)) {
+    const index = Number(itemName);
+    updatingItem = data[index];
+  } else {
+    updatingItem = data.find((item) => item.name === itemName);
+  }
+
   if (updatingItem) {
     updatingItem.color = newColor;
     console.log(`Updated ${itemName} data to`, newColor);
@@ -142,11 +150,12 @@ function replaceVideo(dir, index, link) {
     return;
   }
 
-  data[index].link = link;
+  const updatedData = data.map((item, i) =>
+    i === index ? { ...item, link } : item
+  );
 
-  fs.writeFileSync(dir, JSON.stringify(data, null, 2), "utf8");
-
-  console.log(`Updated video at index ${index} successfully.`);
+  fs.writeFileSync(dir, JSON.stringify(updatedData, null, 2), "utf8");
+  console.log(`Replaced video at index ${index}`);
 }
 
 module.exports = {
