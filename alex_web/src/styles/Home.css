@@ -68,43 +68,68 @@
 
 #photoName {
   width: 35%;
-  margin: 10px;
 }
 
 /* small marks */
 #top17 {
-  transform: rotate(270deg) translate(0%, -45%);
+  transform: rotate(270deg) translate(0%, -80%);
   transform-origin: center;
-  width: 200%;
+  width: 270%;
 }
 
 #top20 {
-  transform: rotate(270deg) translate(0%, -45%);
+  transform: rotate(270deg) translate(0%, -60%);
   transform-origin: center;
-  width: 200%;
+  width: 220%;
 }
 
 #bottom17 {
-  transform: rotate(270deg) translate(0%, -10%);
+  transform: rotate(270deg) translate(0%, -25%);
   transform-origin: center;
-  width: 100%;
+  width: 130%;
 }
 
 #bottom20 {
-  transform: rotate(270deg) translate(0%, -10%);
+  transform: rotate(270deg) translate(0%, -40%);
   transform-origin: center;
-  width: 100%;
+  width: 170%;
 }
 
 #photomark {
   transform: rotate(270deg);
   transform-origin: center;
   z-index: 10;
-  width: 500%;
+  width: 680%;
 }
 
-/* @media all and (max-width: 1500px) {
-} */
+@media all and (max-width: 1500px) {
+  #photomark {
+    width: 830%;
+  }
+  #top17 {
+    width: 340%;
+  }
+
+  #top20 {
+    width: 300%;
+  }
+
+  #bottom17 {
+    width: 170%;
+  }
+
+  #bottom20 {
+    width: 220%;
+  }
+
+  #photoName {
+    width: 47%;
+  }
+
+  .info img {
+    width: 50%;
+  }
+}
 
 /* nav */
 #homeNav {

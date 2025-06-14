@@ -2,7 +2,7 @@
 #admin-counter-panel {
   box-sizing: border-box;
   width: 100%;
-  padding: 0 20px;
+  padding: 10px 20px 10px 20px;
 }
 
 .adminPanel {
@@ -14,21 +14,24 @@
 .deleteButton {
   background-color: #b34141;
   color: white;
+  border: none;
 }
 
 .adminInput {
   padding: 6px 12px;
-  width: 60px;
-  height: 35px;
+  height: 2.2em;
+  width: 3em;
   box-sizing: border-box;
-  border-radius: 4px;
-  margin: 8px 0 0 0;
+  border: none;
+  margin: 0;
 }
 
 .reorder {
   display: flex;
-  gap: 5px;
+  gap: 0.4rem;
   align-items: center;
+  font-size: 0.8em;
+  margin: 0;
 }
 
 #color-picker {
@@ -39,8 +42,8 @@
 
 #changeColor {
   position: relative;
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   transition: 0.4s;
   background: conic-gradient(red, orange, yellow, green, blue, purple, red);

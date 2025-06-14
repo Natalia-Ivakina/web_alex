@@ -161,6 +161,11 @@ const VideoList = ({
 
               return (
                 <div key={project.name} className="video-item">
+                  {isAuthenticated && (
+                    <div>
+                      <p>Video # {index + 1}</p>
+                    </div>
+                  )}
                   <VideoCard
                     videoId={videoId}
                     title={project.name}
@@ -177,7 +182,6 @@ const VideoList = ({
                         onReorder={reorderVideos}
                         onChangeColor={changeColor}
                       />
-                      <p>Video # {index + 1}</p>
                     </div>
                   )}
                   {/*_______________________________________________________*/}

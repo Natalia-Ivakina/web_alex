@@ -41,7 +41,7 @@ const VideosPerPageSelector = ({
         <p>Change number of videos per page</p>
         <input
           className="adminInput"
-          type="number"
+          type="text"
           value={inputVideosPerPage}
           onChange={handleVideosPerPageInputChange}
           min="1"

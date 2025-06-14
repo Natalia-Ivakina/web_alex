@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef } from "react";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
 import ManageHomeComponent from "../components/ManageHomeVideo";
 import "../styles/VideoCardMain.css";
 
@@ -12,13 +11,10 @@ const VideoCard = ({
   auth,
   color,
   apiType,
-  //complete,
   onReplace,
   onChangeColor,
 }) => {
   const cardRef = useRef();
-  const queryClient = useQueryClient();
-  //const [message, setMessage] = useState("");
 
   useEffect(() => {
     setCardRef(index, cardRef.current);
@@ -32,8 +28,13 @@ const VideoCard = ({
     <div
       ref={cardRef}
       className={`card3 ${flippedIndex === index ? "flipped" : ""}`}
+      onClick={handleFlip}
     >
-      <div className="card-inner" onClick={handleFlip}>
+      <div
+        ref={cardRef}
+        className={`card-inner ${flippedIndex === index ? "flipped" : ""}`}
+        onClick={handleFlip}
+      >
         <div className={`card-front ${auth ? "auth" : ""}`}>
           <img
             src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
@@ -61,11 +62,10 @@ const VideoCard = ({
       </div>
       {/*_________________ for admin_____________________________*/}
       {auth && (
-        <div id="home-adminPanel">
+        <div className="home-adminPanel">
           <ManageHomeComponent
             index={index}
             apiType={apiType}
-            //onActionComplete={(msg) => setMessage(msg)}
             onChangeColor={onChangeColor}
             onReplace={onReplace}
           />

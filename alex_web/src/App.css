@@ -124,10 +124,10 @@ main {
 }
 
 .headertext {
-  font-size: 1.9em;
+  font-size: 1.5em;
   font-family: "Montserrat", Arial, sans-serif;
   text-align: center;
-  margin-bottom: 1em;
+  margin-bottom: 0.8em;
   margin-top: 0;
 }
 
@@ -161,7 +161,6 @@ iframe {
   flex-direction: column;
   align-items: center;
   background-color: #394652;
-  /* padding: 16px; */
   border-radius: 8px;
   box-shadow: 5px 5px 30px 7px rgba(0, 0, 0, 0.25),
     -5px -5px 30px 7px rgba(0, 0, 0, 0.22);
@@ -172,7 +171,7 @@ iframe {
 .video-item:hover {
   /* transform: scale(0.97, 0.97); */
   box-shadow: 5px 5px 30px 15px rgba(0, 0, 0, 0.25),
-    -5px -5px 30px 15px rgba(0, 0, 0, 0.22);
+    -5px -5px 30px 15px rgba(162, 156, 156, 0.22);
   cursor: pointer;
 }
 
@@ -183,25 +182,18 @@ iframe {
 }
 
 .video-item p {
-  margin-bottom: 8px;
   font-size: 0.8em;
-  font-weight: bold;
-}
-
-.video-item button {
-  margin-top: 8px;
-  padding: 8px 12px;
-  font-size: 0.8em;
-  cursor: pointer;
+  margin: 10px 0;
 }
 
 button {
   font-family: "Open Sans", Arial, sans-serif;
-  font-size: 0.9em;
   background-color: rgb(0, 0, 0);
   color: #84a4c9;
-  border-radius: 0.5em;
-  padding: 8px;
+  border-radius: 7px;
+  padding: 8px 12px;
+  cursor: pointer;
+  border: none;
   cursor: pointer;
 }
 
@@ -231,25 +223,29 @@ textarea {
   margin-bottom: 8px;
 }
 
-.numberInput {
-  width: 3em;
-}
-
 .modal-content {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 0.5em;
+  font-size: 0.8em;
+  margin: 0;
+  padding: 0;
+  height: 32px;
 }
 
 #confirm {
   background-color: #b34141;
   color: aliceblue;
+  font-size: 0.8em;
+  margin: 0;
 }
 
 #cancel {
   background-color: darkgreen;
   color: aliceblue;
+  font-size: 0.8em;
+  margin: 0;
 }
 
 .message {
@@ -267,10 +263,6 @@ textarea {
   gap: 8px;
   padding: 0;
   margin: 0;
-}
-
-.reorder {
-  font-size: 0.9rem;
 }
 
 .column {
@@ -305,10 +297,6 @@ textarea {
   align-items: center;
 }
 
-#pagePanel {
-  background-color: #1f2224;
-}
-
 @media (max-width: 600px) {
   .adminlayout {
     display: flex;
@@ -317,7 +305,7 @@ textarea {
 }
 
 .edit-form {
-  background-color: #2d3640;
+  background-color: #1f2224;
   border-radius: 5px;
   padding: 10px;
   opacity: 0.8;

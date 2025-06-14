@@ -50,7 +50,6 @@ nav {
   text-align: center;
   top: 0;
   background-color: #1f2224;
-  /* background-color: rgba(2, 2, 2, 0.3); */
   margin: 0 auto;
 }
 
@@ -70,9 +69,10 @@ nav li {
 nav a {
   text-decoration: none;
   color: #84a4c9;
-  font-size: 0.9em;
+  font-size: 0.7em;
   font-family: "Montserrat", Arial, sans-serif;
   padding: 10px 10px;
+  font-weight: 600;
 }
 
 nav a:hover {
