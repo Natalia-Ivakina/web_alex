@@ -24,14 +24,14 @@ const BurgerMenuComponent = () => {
         <Link to="/projects" onClick={toggleMenu}>
           Projects
         </Link>
-        <Link to="/moods" onClick={toggleMenu}>
-          Moods
-        </Link>
         <Link to="/amv" onClick={toggleMenu}>
           AMV Projects
         </Link>
         <Link to="/about" onClick={toggleMenu}>
           About
+        </Link>
+        <Link to="/contact" onClick={toggleMenu}>
+          Hire me
         </Link>
       </div>
     </div>

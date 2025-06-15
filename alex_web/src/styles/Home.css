@@ -64,6 +64,7 @@
 .info img {
   width: 40%;
   height: auto;
+  object-fit: contain;
 }
 
 #photoName {
@@ -72,25 +73,25 @@
 
 /* small marks */
 #top17 {
-  transform: rotate(270deg) translate(0%, -80%);
+  transform: rotate(270deg) translate(-115%, -80%);
   transform-origin: center;
   width: 270%;
 }
 
 #top20 {
-  transform: rotate(270deg) translate(0%, -60%);
+  transform: rotate(270deg) translate(-125%, -60%);
   transform-origin: center;
   width: 220%;
 }
 
 #bottom17 {
-  transform: rotate(270deg) translate(0%, -25%);
+  transform: rotate(270deg) translate(-230%, -25%);
   transform-origin: center;
   width: 130%;
 }
 
 #bottom20 {
-  transform: rotate(270deg) translate(0%, -40%);
+  transform: rotate(270deg) translate(-190%, -40%);
   transform-origin: center;
   width: 170%;
 }
@@ -141,10 +142,55 @@
 }
 
 #homeFooter {
-  /* border: solid white 1px; */
   background-color: #202930;
   border-top-left-radius: 35px;
   border-top-right-radius: 35px;
   margin-top: 24px;
   padding-bottom: 24px;
+  width: 100%;
+}
+
+@media all and (max-width: 900px) {
+  .film-grid {
+    grid-template-columns: 0.5fr 1fr 0.5fr;
+    grid-template-rows: auto;
+    background-color: rgba(2, 2, 2, 0.3);
+    max-width: 100%;
+    height: auto;
+  }
+
+  .logo-cell {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    overflow: visible;
+  }
+
+  .logo-cell img {
+    width: 60%;
+    position: absolute;
+    top: -20px;
+    left: -50;
+  }
+
+  .empty-cell {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    min-height: 1em;
+  }
+
+  .light-cell {
+    width: 2em;
+    height: 2em;
+    background-color: #8082823e;
+    border-radius: 8px;
+  }
+
+  #smallName {
+    margin-top: 1em;
+  }
 }

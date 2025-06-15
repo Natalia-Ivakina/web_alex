@@ -12,6 +12,18 @@ const MainTemplate = ({ apiType }) => {
   const [flippedIndex, setFlippedIndex] = useState(null);
   const cardsRef = useRef([]);
   const [message, setMessage] = useState("");
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  //size of screen
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth <= 900);
+    };
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // fetch & cache videos
   const {
@@ -81,22 +93,7 @@ const MainTemplate = ({ apiType }) => {
   // after any change - refetch
   const afterCRUDVideo = () => refetchVideos();
 
-  // const VideoCardByIndex = ({ index }) => (
-  //   <MainCard
-  //     index={index}
-  //     videoId={extractVideoId(videos[index]?.link || "")}
-  //     flippedIndex={flippedIndex}
-  //     setFlippedIndex={setFlippedIndex}
-  //     setCardRef={setCardRef}
-  //     auth={isAuthenticated}
-  //     color={videos[index]?.color || ""}
-  //     apiType={apiType}
-  //     onReplace={afterCRUDVideo}
-  //     onChangeColor={afterCRUDVideo}
-  //   />
-  //);
-
-  return (
+  return !isSmallScreen ? (
     <div className="film-grid">
       <div className="empty-cell"></div>
       <div className="photo-cell"></div>
@@ -275,6 +272,221 @@ const MainTemplate = ({ apiType }) => {
         </div>
       </div>
       <div className="empty-cell"></div>
+    </div>
+  ) : (
+    <div className="film-grid">
+      <div className="empty-cell"></div>
+      <div className="empty-cell"></div>
+      <div className="empty-cell">
+        <NavBar />
+      </div>
+      <div className="empty-cell"></div>
+      <div className="logo-cell">
+        <img src="./Alex_Logo1.png" id="smallName" alt="" />
+      </div>
+      <div className="empty-cell"></div>
+      <div className="empty-cell">
+        <div className="light-cell"></div>
+        <div className="light-cell"></div>
+        <div className="light-cell"></div>
+      </div>
+      <div className="empty-cell">
+        <MainCard
+          index={0}
+          videoId={extractVideoId(videos[0]?.link || "")}
+          flippedIndex={flippedIndex}
+          setFlippedIndex={setFlippedIndex}
+          setCardRef={setCardRef}
+          auth={isAuthenticated}
+          color={videos[0]?.color || ""}
+          apiType={apiType}
+          onReplace={afterCRUDVideo}
+          onChangeColor={afterCRUDVideo}
+        />
+      </div>
+      <div className="empty-cell">
+        <div className="light-cell"></div>
+        <div className="light-cell"></div>
+        <div className="light-cell"></div>
+      </div>
+      <div className="empty-cell"></div>
+      <div className="logo-cell">
+        <img src="./Edited.png" alt=""></img>
+      </div>
+      <div className="empty-cell"></div>
+      <div className="empty-cell">
+        <div className="light-cell"></div>
+        <div className="light-cell"></div>
+        <div className="light-cell"></div>
+      </div>
+      <div className="empty-cell">
+        <MainCard
+          index={1}
+          videoId={extractVideoId(videos[1]?.link || "")}
+          flippedIndex={flippedIndex}
+          setFlippedIndex={setFlippedIndex}
+          setCardRef={setCardRef}
+          auth={isAuthenticated}
+          color={videos[1]?.color || ""}
+          apiType={apiType}
+          onReplace={afterCRUDVideo}
+          onChangeColor={afterCRUDVideo}
+        />
+      </div>
+      <div className="empty-cell">
+        <div className="light-cell"></div>
+        <div className="light-cell"></div>
+        <div className="light-cell"></div>
+      </div>
+      <div className="empty-cell"></div>
+      <div className="logo-cell">
+        <img src="./Directed.png" alt=""></img>
+      </div>
+      <div className="empty-cell"></div>
+      <div className="empty-cell">
+        <div className="light-cell"></div>
+        <div className="light-cell"></div>
+        <div className="light-cell"></div>
+      </div>
+
+      <div className="empty-cell">
+        <MainCard
+          index={2}
+          videoId={extractVideoId(videos[2]?.link || "")}
+          flippedIndex={flippedIndex}
+          setFlippedIndex={setFlippedIndex}
+          setCardRef={setCardRef}
+          auth={isAuthenticated}
+          color={videos[2]?.color || ""}
+          apiType={apiType}
+          onReplace={afterCRUDVideo}
+          onChangeColor={afterCRUDVideo}
+        />
+      </div>
+      <div className="empty-cell">
+        <div className="light-cell"></div>
+        <div className="light-cell"></div>
+        <div className="light-cell"></div>
+      </div>
+      <div className="empty-cell"></div>
+      <div className="logo-cell">
+        <img src="./Color_Grading.png" alt=""></img>
+      </div>
+      <div className="empty-cell"></div>
+      <div className="empty-cell">
+        <div className="light-cell"></div>
+        <div className="light-cell"></div>
+        <div className="light-cell"></div>
+      </div>
+
+      <div className="empty-cell">
+        <MainCard
+          index={3}
+          videoId={extractVideoId(videos[3]?.link || "")}
+          flippedIndex={flippedIndex}
+          setFlippedIndex={setFlippedIndex}
+          setCardRef={setCardRef}
+          auth={isAuthenticated}
+          color={videos[3]?.color || ""}
+          apiType={apiType}
+          onReplace={afterCRUDVideo}
+          onChangeColor={afterCRUDVideo}
+        />
+      </div>
+      <div className="empty-cell">
+        <div className="light-cell"></div>
+        <div className="light-cell"></div>
+        <div className="light-cell"></div>
+      </div>
+      <div className="empty-cell"></div>
+      <div className="logo-cell">
+        <img src="./Sound.png" alt=""></img>
+      </div>
+      <div className="empty-cell"></div>
+      <div className="empty-cell">
+        <div className="light-cell"></div>
+        <div className="light-cell"></div>
+        <div className="light-cell"></div>
+      </div>
+
+      <div className="empty-cell">
+        <MainCard
+          index={4}
+          videoId={extractVideoId(videos[4]?.link || "")}
+          flippedIndex={flippedIndex}
+          setFlippedIndex={setFlippedIndex}
+          setCardRef={setCardRef}
+          auth={isAuthenticated}
+          color={videos[4]?.color || ""}
+          apiType={apiType}
+          onReplace={afterCRUDVideo}
+          onChangeColor={afterCRUDVideo}
+        />
+      </div>
+      <div className="empty-cell">
+        <div className="light-cell"></div>
+        <div className="light-cell"></div>
+        <div className="light-cell"></div>
+      </div>
+      <div className="empty-cell"></div>
+      <div className="logo-cell">
+        <img src="./VFX.png" alt=""></img>
+      </div>
+      <div className="empty-cell"></div>
+      <div className="empty-cell">
+        <div className="light-cell"></div>
+        <div className="light-cell"></div>
+        <div className="light-cell"></div>
+      </div>
+
+      <div className="empty-cell">
+        <MainCard
+          index={5}
+          videoId={extractVideoId(videos[5]?.link || "")}
+          flippedIndex={flippedIndex}
+          setFlippedIndex={setFlippedIndex}
+          setCardRef={setCardRef}
+          auth={isAuthenticated}
+          color={videos[5]?.color || ""}
+          apiType={apiType}
+          onReplace={afterCRUDVideo}
+          onChangeColor={afterCRUDVideo}
+        />
+      </div>
+      <div className="empty-cell">
+        <div className="light-cell"></div>
+        <div className="light-cell"></div>
+        <div className="light-cell"></div>
+      </div>
+      <div className="empty-cell"></div>
+      <div className="logo-cell">
+        <img src="./Written.png" alt=""></img>
+      </div>
+      <div className="empty-cell"></div>
+      <div className="empty-cell">
+        <div className="light-cell"></div>
+        <div className="light-cell"></div>
+        <div className="light-cell"></div>
+      </div>
+      <div className="empty-cell">
+        <MainCard
+          index={6}
+          videoId={extractVideoId(videos[6]?.link || "")}
+          flippedIndex={flippedIndex}
+          setFlippedIndex={setFlippedIndex}
+          setCardRef={setCardRef}
+          auth={isAuthenticated}
+          color={videos[6]?.color || ""}
+          apiType={apiType}
+          onReplace={afterCRUDVideo}
+          onChangeColor={afterCRUDVideo}
+        />
+      </div>
+      <div className="empty-cell">
+        <div className="light-cell"></div>
+        <div className="light-cell"></div>
+        <div className="light-cell"></div>
+      </div>
     </div>
   );
 };

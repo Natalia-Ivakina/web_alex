@@ -81,6 +81,5 @@
 
 .right-align {
   display: flex;
-  justify-content: flex-end;
-  width: 100%;
+  justify-content: flex-start;
 }

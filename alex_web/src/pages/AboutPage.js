@@ -60,18 +60,6 @@ const AboutPage = () => {
     preloadImages();
   }, []);
 
-  //size of screen_______________________
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMediumScreen(window.innerWidth <= 1024);
-    };
-
-    window.addEventListener("resize", handleResize);
-    handleResize();
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   if (isLoading || !isImagesLoaded) return <div>Loading...</div>;
   if (error) return <div>Error loading page text</div>;
 
@@ -90,20 +78,7 @@ const AboutPage = () => {
             </div>
           )}
           <div>
-            <p className="headertext">{pageText.title}</p>
-
             <div className="row">
-              <div className="aboutme">
-                {pageText.text.split("\n").map((line, index) => (
-                  <p className="abouttext" key={index}>
-                    {line}
-                  </p>
-                ))}
-              </div>
-              {/* {!isMediumScreen && contactBlock} */}
-            </div>
-            <div className="row">
-              {/* {isMediumScreen && contactBlock} */}
               <div className="container2 right-align">
                 <div id="me">
                   <p>
@@ -116,11 +91,20 @@ const AboutPage = () => {
                 <div id="logo">
                   <img src="/logome.png" alt="logo" />
                 </div>
+                <p className="headertext">{pageText.title}</p>
+              </div>
+            </div>
+            <div className="row">
+              <div className="aboutme">
+                {pageText.text.split("\n").map((line, index) => (
+                  <p className="abouttext" key={index}>
+                    {line}
+                  </p>
+                ))}
               </div>
             </div>
           </div>
         </main>
-
         <div className="row developer">
           <p>Design and Development by Natalia Ivakina © ~ 2025</p>
         </div>

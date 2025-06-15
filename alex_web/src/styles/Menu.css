@@ -6,7 +6,7 @@
 }
 
 .burger-button {
-  background-color: #2d3640;
+  background-color: rgba(2, 2, 2, 0.3);
   color: #84a4c9;
   padding: 5px;
   font-size: 20px;
@@ -104,3 +104,11 @@ nav a:hover {
 }
 
 /*-end--*/
+
+.menu-row {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
