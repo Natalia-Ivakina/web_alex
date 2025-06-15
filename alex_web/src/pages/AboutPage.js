@@ -78,22 +78,7 @@ const AboutPage = () => {
             </div>
           )}
           <div>
-            <div className="row">
-              <div className="container2 right-align">
-                <div id="me">
-                  <p>
-                    <img src="/textme.png" alt="logo" />
-                  </p>
-                </div>
-                <div id="arrow">
-                  <img src="/arrow.png" alt="logo" />
-                </div>
-                <div id="logo">
-                  <img src="/logome.png" alt="logo" />
-                </div>
-                <p className="headertext">{pageText.title}</p>
-              </div>
-            </div>
+            <p className="headertext">{pageText.title}</p>
             <div className="row">
               <div className="aboutme">
                 {pageText.text.split("\n").map((line, index) => (
@@ -105,6 +90,21 @@ const AboutPage = () => {
             </div>
           </div>
         </main>
+        <div className="container">
+          <div className="logo-container">
+            <div id="me">
+              <p>
+                <img src="/textme.png" alt="logo" />
+              </p>
+            </div>
+            <div id="arrow">
+              <img src="/arrow.png" alt="logo" />
+            </div>
+            <div id="logo">
+              <img src="/logome.png" alt="logo" />
+            </div>
+          </div>
+        </div>
         <div className="row developer">
           <p>Design and Development by Natalia Ivakina © ~ 2025</p>
         </div>

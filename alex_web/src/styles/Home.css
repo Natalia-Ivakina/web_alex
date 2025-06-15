@@ -103,35 +103,6 @@
   width: 680%;
 }
 
-@media all and (max-width: 1500px) {
-  #photomark {
-    width: 830%;
-  }
-  #top17 {
-    width: 340%;
-  }
-
-  #top20 {
-    width: 300%;
-  }
-
-  #bottom17 {
-    width: 170%;
-  }
-
-  #bottom20 {
-    width: 220%;
-  }
-
-  #photoName {
-    width: 47%;
-  }
-
-  .info img {
-    width: 50%;
-  }
-}
-
 /* nav */
 #homeNav {
   background-color: #202930;
@@ -162,24 +133,20 @@
   .logo-cell {
     display: flex;
     justify-content: center;
-    position: relative;
-    overflow: visible;
   }
 
   .logo-cell img {
     width: 60%;
-    position: absolute;
-    top: -20px;
   }
 
   .empty-cell {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
+    gap: 1.5rem;
     padding: 0;
     margin: 0;
-    min-height: 1.5em;
   }
 
   .light-cell {
@@ -190,6 +157,6 @@
   }
 
   #smallName {
-    margin-top: 1em;
+    margin-top: -0.5em;
   }
 }

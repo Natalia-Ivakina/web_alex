@@ -20,7 +20,6 @@ const VideoList = ({
   changeColor,
 }) => {
   const queryClient = useQueryClient();
-
   const [message, setMessage] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [internalVideosPerPage, setInternalVideosPerPage] = useState(

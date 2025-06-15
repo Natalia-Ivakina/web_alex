@@ -130,7 +130,7 @@ const MainTemplate = ({ apiType }) => {
         </div>
         <div className="top-transparent">
           <div className="info">
-            <img src="./Edited.png" alt=""></img>
+            <img src="./Video-editing.png" alt=""></img>
           </div>
           <div className="info">
             <img src="./Directed.png" alt=""></img>
@@ -221,13 +221,13 @@ const MainTemplate = ({ apiType }) => {
       <div className="info-cell">
         <div className="bottom-transparent">
           <div className="info">
-            <img src="./Sound.png" alt=""></img>
+            <img src="./Sound_design.png" alt=""></img>
           </div>
           <div className="info">
-            <img src="./VFX.png" alt=""></img>
+            <img src="./VFX_1.png" alt=""></img>
           </div>
           <div className="info">
-            <img src="./Written.png" alt=""></img>
+            <img src="./Written_story.png" alt=""></img>
           </div>
         </div>
         <div className="info">
@@ -311,7 +311,7 @@ const MainTemplate = ({ apiType }) => {
       </div>
       <div className="empty-cell"></div>
       <div className="logo-cell">
-        <img src="./Edited.png" alt=""></img>
+        <img src="./Video-editing.png" alt=""></img>
       </div>
       <div className="empty-cell"></div>
       <div className="empty-cell">
@@ -400,7 +400,7 @@ const MainTemplate = ({ apiType }) => {
       </div>
       <div className="empty-cell"></div>
       <div className="logo-cell">
-        <img src="./Sound.png" alt=""></img>
+        <img src="./Sound_design.png" alt=""></img>
       </div>
       <div className="empty-cell"></div>
       <div className="empty-cell">
@@ -430,7 +430,7 @@ const MainTemplate = ({ apiType }) => {
       </div>
       <div className="empty-cell"></div>
       <div className="logo-cell">
-        <img src="./VFX.png" alt=""></img>
+        <img src="./VFX_1.png" alt=""></img>
       </div>
       <div className="empty-cell"></div>
       <div className="empty-cell">
@@ -460,7 +460,7 @@ const MainTemplate = ({ apiType }) => {
       </div>
       <div className="empty-cell"></div>
       <div className="logo-cell">
-        <img src="./Written.png" alt=""></img>
+        <img src="./Written_story.png" alt=""></img>
       </div>
       <div className="empty-cell"></div>
       <div className="empty-cell">

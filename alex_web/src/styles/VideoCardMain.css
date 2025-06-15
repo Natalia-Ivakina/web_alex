@@ -18,22 +18,6 @@
   perspective: 1000px;
 }
 
-@media all and (max-width: 1500px) {
-  .card3 {
-    margin: 20 auto;
-    width: 220px;
-    height: 220px;
-  }
-}
-
-@media all and (max-width: 900px) {
-  .card3 {
-    margin: 20 auto;
-    width: 240px;
-    height: 240px;
-  }
-}
-
 .card3 .card_image {
   width: inherit;
   height: inherit;
@@ -158,4 +142,20 @@
 #homeColorPicker {
   transform: scale(0.8);
   transform-origin: center;
+}
+
+@media all and (max-width: 1500px) {
+  .card3 {
+    margin: 20 auto;
+    width: 220px;
+    height: 220px;
+  }
+}
+
+@media all and (max-width: 900px) {
+  .card3 {
+    margin: 20 auto;
+    width: 240px;
+    height: 240px;
+  }
 }

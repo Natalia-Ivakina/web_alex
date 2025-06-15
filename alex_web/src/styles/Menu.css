@@ -87,6 +87,16 @@ nav a:hover {
   right: 0.4em;
 }
 
+/*-end--*/
+
+.menu-row {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 @media screen and (max-width: 860px) {
   /* middle screen nav */
   nav ul {
@@ -101,14 +111,4 @@ nav a:hover {
     padding-top: 12px;
     padding-bottom: 12px;
   }
-}
-
-/*-end--*/
-
-.menu-row {
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
 }
