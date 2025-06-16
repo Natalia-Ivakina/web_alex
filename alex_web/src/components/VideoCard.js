@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "../styles/VideoCard.css";
 
-const VideoCard = ({ videoId, title, color }) => {
+const VideoCard = ({ videoId, title, color, description }) => {
   const [showVideo, setShowVideo] = useState(false);
   const videoCardRef = useRef(null);
 
@@ -36,6 +36,7 @@ const VideoCard = ({ videoId, title, color }) => {
         </div>
       ) : (
         <div className="video-img" onClick={() => setShowVideo(true)}>
+          {/* <span className="tooltip-desc">{title}</span> */}
           <img
             src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
             alt={title}

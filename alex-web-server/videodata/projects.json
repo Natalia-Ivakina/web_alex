@@ -2,126 +2,151 @@
   {
     "name": "Day 02 – Long forgotten...",
     "link": "https://www.youtube.com/watch?v=YMrUpHefpDs&t=3s",
-    "color": "081154"
+    "color": "081154",
+    "description": "UE5"
   },
   {
     "name": "[ Unreal Engine 5 ] Day 01 – The End of the Universe.",
     "link": "https://www.youtube.com/watch?v=VS3EE8v5pcY",
-    "color": "0a0a0a"
+    "color": "0a0a0a",
+    "description": "UE5"
   },
   {
     "name": "Day 03 – All the Time In the World.",
     "link": "https://www.youtube.com/watch?v=MjNJ0IbfN-g",
-    "color": "eee8e8"
+    "color": "eee8e8",
+    "description": "UE5"
   },
   {
     "name": "Perfume Commercial",
     "link": "https://www.youtube.com/watch?v=hg9jP_rJjd8&t=1s",
-    "color": "f4ecec"
+    "color": "f4ecec",
+    "description": "UE5"
   },
   {
     "name": "VDB | Burning Things Vol. 1: Geometry",
     "link": "https://www.youtube.com/watch?v=umnQUXu0gAU",
-    "color": "121212"
+    "color": "121212",
+    "description": ""
   },
   {
     "name": "Raiders of the Luminara",
     "link": "https://www.youtube.com/watch?v=wd3g3iUIWZ4&t=1s",
-    "color": "121111"
+    "color": "121111",
+    "description": ""
   },
   {
     "name": "Movie Trailer - Veil",
     "link": "https://www.youtube.com/watch?v=yx3AYiFVIis",
-    "color": "fff0f0"
+    "color": "fff0f0",
+    "description": ""
   },
   {
     "name": "Lumière",
     "link": "https://www.youtube.com/watch?v=SGx_vYfs_P0&t=1s",
-    "color": "121212"
+    "color": "121212",
+    "description": ""
   },
   {
     "name": "The Devourer of Worlds.",
     "link": "https://www.youtube.com/watch?v=tjO1eWQ7AM8",
-    "color": "0d0d0d"
+    "color": "0d0d0d",
+    "description": ""
   },
   {
     "name": "Beyond The Horizon - GudX",
     "link": "https://www.youtube.com/watch?v=-VOMQDBQjfE",
-    "color": "080808"
+    "color": "080808",
+    "description": ""
   },
   {
     "name": "Into The Deep",
     "link": "https://www.youtube.com/watch?v=TakDhDNKpGc",
-    "color": "0d0c0c"
+    "color": "0d0c0c",
+    "description": ""
   },
   {
     "name": "Thunder Cat Intro",
     "link": "https://www.youtube.com/watch?v=BzqB8vuf3-Q",
-    "color": "080808"
+    "color": "080808",
+    "description": ""
   },
   {
     "name": "Aqua Cat Intro",
     "link": "https://www.youtube.com/watch?v=ZLao-Eo7-Zs",
-    "color": "0d0d0d"
+    "color": "0d0d0d",
+    "description": ""
   },
   {
     "name": "Meadow Cat Intro",
     "link": "https://www.youtube.com/watch?v=y20wmro3RzU&t=2s",
-    "color": "1a1919"
+    "color": "1a1919",
+    "description": ""
   },
   {
     "name": "What is The Wormtion Design?",
     "link": "https://www.youtube.com/watch?v=Fhp4eirvmYw",
-    "color": "0d0d0d"
+    "color": "0d0d0d",
+    "description": ""
   },
   {
     "name": "Chrono",
     "link": "https://www.youtube.com/watch?v=tbnzq1yCLwQ&t=68s",
-    "color": "030303"
+    "color": "030303",
+    "description": ""
   },
   {
     "name": "Merry Christmas!",
     "link": "https://www.youtube.com/watch?v=TuoRb0lvfpI",
-    "color": "fff0f0"
+    "color": "fff0f0",
+    "description": ""
   },
   {
     "name": "Back to the ...",
     "link": "https://www.youtube.com/watch?v=u6Nr3Kr9irE",
-    "color": "fff0f0"
+    "color": "fff0f0",
+    "description": ""
   },
   {
     "name": "[ Unreal Engine 4 ] Sword of the First King.",
     "link": "https://www.youtube.com/watch?v=wpDmFEBWCBc",
-    "color": "050505"
+    "color": "050505",
+    "description": ""
   },
   {
     "name": "[ After Effects ] Cyberpunk Gem",
     "link": "https://www.youtube.com/watch?v=oAUS5YYeI9w",
-    "color": "fff0f0"
+    "color": "fff0f0",
+    "description": ""
   },
   {
     "name": "The Lost Treasure",
     "link": "https://www.youtube.com/watch?v=JzVuLqxCW6U",
-    "color": "fff0f0"
+    "color": "fff0f0",
+    "description": ""
   },
   {
     "name": "Spoilerless Trailers intro",
     "link": "https://www.youtube.com/watch?v=rgq_pexuChE",
-    "color": "fcf8f8"
+    "color": "fcf8f8",
+    "description": ""
   },
   {
     "name": "Welcome to my World!",
     "link": "https://www.youtube.com/watch?v=vCDgXa7z2jI",
-    "color": "fff0f0"
+    "color": "fff0f0",
+    "description": ""
   },
   {
     "name": "Limits",
     "link": "https://www.youtube.com/watch?v=PK0xWvqkGGA",
-    "color": "100f0f"
+    "color": "100f0f",
+    "description": ""
   },
   {
     "name": "Spoilerless Trailers: \"The Lord of the Rings: The Fellowship of the Ring\"",
     "link": "https://www.youtube.com/watch?v=UiGsliHGTXA",
-    "color": "fff0f0"
+    "color": "fff0f0",
+    "description": ""
   }
 ]

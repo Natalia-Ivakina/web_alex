@@ -54,10 +54,6 @@
   transform: scale(0.9, 0.9);
 }
 
-#changeColor:hover .tooltip {
-  display: block;
-}
-
 .tooltip {
   display: none;
   position: absolute;
@@ -70,4 +66,8 @@
   font-size: 12px;
   border-radius: 4px;
   white-space: nowrap;
+}
+
+#changeColor:hover .tooltip {
+  display: block;
 }

@@ -2,16 +2,19 @@
   {
     "name": "After Effects Matte Painting Timelapse",
     "link": "https://www.youtube.com/watch?v=XVrUnYAvFjI",
-    "color": "b8a3a3"
+    "color": "b8a3a3",
+    "description": ""
   },
   {
     "name": "After Effects VFX Breakdown",
     "link": "https://www.youtube.com/watch?v=0ZfbxaEua3s",
-    "color": "0d0d0d"
+    "color": "0d0d0d",
+    "description": ""
   },
   {
     "name": "After Effects breakdown of my \"The Lost Treasure\" video.",
     "link": "https://www.youtube.com/watch?v=8sOpx0nNzZw",
-    "color": "0d0d0d"
+    "color": "0d0d0d",
+    "description": ""
   }
 ]

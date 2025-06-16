@@ -157,7 +157,6 @@ const VideoList = ({
               const videoId = new URLSearchParams(
                 new URL(project.link).search
               ).get("v");
-
               return (
                 <div key={project.name} className="video-item">
                   {isAuthenticated && (
@@ -169,6 +168,7 @@ const VideoList = ({
                     videoId={videoId}
                     title={project.name}
                     color={project.color}
+                    description={project.description}
                   />
                   {/*_________________ for admin_____________________________*/}
                   {isAuthenticated && (

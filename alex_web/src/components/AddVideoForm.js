@@ -3,7 +3,15 @@ import useVideoForm from "../hooks/useVideoForm";
 import { useEffect, useState } from "react";
 
 const AddNewVideoComponent = ({ apiType, onAddVideo }) => {
-  const { title, setTitle, link, setLink, resetForm } = useVideoForm();
+  const {
+    title,
+    setTitle,
+    link,
+    setLink,
+    description,
+    setDescription,
+    resetForm,
+  } = useVideoForm();
   const [message, setMessage] = useState("");
 
   /**
@@ -25,7 +33,12 @@ const AddNewVideoComponent = ({ apiType, onAddVideo }) => {
    */
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const newVideo = { name: title, link: link, color: "fff" }; //default color
+    const newVideo = {
+      name: title,
+      link: link,
+      color: "fff",
+      description: description,
+    }; //default color
 
     try {
       const response = await addVideo(newVideo, apiType);
@@ -54,6 +67,13 @@ const AddNewVideoComponent = ({ apiType, onAddVideo }) => {
             placeholder="Video link"
             value={link}
             onChange={(e) => setLink(e.target.value)}
+            required
+          ></input>
+          <input
+            type="text"
+            placeholder="Description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
             required
           ></input>
         </div>
