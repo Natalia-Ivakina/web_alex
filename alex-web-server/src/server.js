@@ -1,4 +1,5 @@
 require("dotenv").config({ path: "config/.env" });
+//require("dotenv").config({ path: "../config/.env" });
 console.log("SESSION_SECRET:", process.env.SESSION_SECRET);
 const express = require("express");
 const path = require("path");
@@ -346,6 +347,11 @@ app.post("/api/text/:page", authMiddleware, (req, res) => {
   res
     .status(200)
     .json({ message: `The text for "${pageName}" updated successfully` });
+});
+
+app.use(express.static(path.join(__dirname, "../../alex_web/build")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../../alex_web/build", "index.html"));
 });
 
 const PORT = process.env.PORT || 5000;

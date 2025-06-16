@@ -47,14 +47,12 @@ const ContactPage = () => {
                   >
                     ArtStation
                   </a>
-                  <br />
                   <a
                     id="youtubelink"
                     href="https://www.youtube.com/user/AlexboyAMV"
                   >
                     Youtube
                   </a>
-                  <br />
                   <a
                     id="linkeldnlink"
                     href="https://www.linkedin.com/in/akialex/"

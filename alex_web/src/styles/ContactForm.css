@@ -38,18 +38,15 @@ input {
 }
 
 #contact div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
   text-align: left;
 }
 
 .contact-text {
   margin: 1em 0;
   white-space: nowrap;
-}
-
-#contact a:hover {
-  background-color: #2d3640;
-  color: #bfbfbf;
-  border-radius: 0.5em;
 }
 
 #links {
@@ -61,10 +58,21 @@ input {
 #youtubelink,
 #linkeldnlink,
 #artstationlink {
+  display: inline-block;
   text-decoration: none;
   font-size: 1.1em;
   line-height: 1.8em;
   font-weight: 700;
+  padding: 0.1em 0.4em;
+  transition: background-color 0.3s, color 0.3s;
+  width: fit-content;
+  align-self: flex-start;
+}
+
+#contact a:hover {
+  background-color: #2d3640;
+  color: #bfbfbf;
+  border-radius: 0.5em;
 }
 
 #youtubelink {
