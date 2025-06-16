@@ -7,6 +7,7 @@ const ContactPage = () => {
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
+  const [showPhoto, setShowPhoto] = useState(false);
   const [sent, setSent] = useState(false);
 
   const handleSubmit = (e) => {
@@ -16,18 +17,18 @@ const ContactPage = () => {
     setEmail("");
     setSubject("");
     setMessage("");
-
+    setShowPhoto(true);
     setSent(true);
   };
 
   useEffect(() => {
-    if (message) {
+    if (showPhoto) {
       const timer = setTimeout(() => {
-        setMessage("");
-      }, 5000);
+        setShowPhoto(false);
+      }, 100000);
       return () => clearTimeout(timer);
     }
-  }, [message]);
+  }, [showPhoto]);
 
   return (
     <>
@@ -96,10 +97,22 @@ const ContactPage = () => {
                     Send
                   </button>
                 </form>
+                {showPhoto && (
+                  <div
+                    className="confirmation-overlay"
+                    onClick={() => setShowPhoto(false)}
+                  >
+                    <div
+                      className="confirmation-photo"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <img src="/IwF.png" alt="sent" />
+                    </div>
+                  </div>
+                )}
                 {sent && (
                   <div className="confirmation-text">
                     <p>Your message was sent ...</p>
-                    <p>I will find you and I will contact you</p>
                   </div>
                 )}
               </div>
