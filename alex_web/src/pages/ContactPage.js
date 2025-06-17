@@ -41,24 +41,33 @@ const ContactPage = () => {
               <div id="contact">
                 <div className="contact-text">Find me here:</div>
                 <div id="links">
-                  <a
-                    id="artstationlink"
-                    href="https://www.artstation.com/alexboy"
-                  >
-                    ArtStation
-                  </a>
-                  <a
-                    id="youtubelink"
-                    href="https://www.youtube.com/user/AlexboyAMV"
-                  >
-                    Youtube
-                  </a>
-                  <a
-                    id="linkeldnlink"
-                    href="https://www.linkedin.com/in/akialex/"
-                  >
-                    LinkedIn
-                  </a>
+                  <div className="link-icon">
+                    <a
+                      id="artstationlink"
+                      href="https://www.artstation.com/alexboy"
+                    >
+                      <img src="artstation-brands.svg" alt="artstation" />
+                      ArtStation
+                    </a>
+                  </div>
+                  <div className="link-icon">
+                    <a
+                      id="youtubelink"
+                      href="https://www.youtube.com/user/AlexboyAMV"
+                    >
+                      <img src="youtube-brands.svg" alt="youtube"></img>
+                      Youtube
+                    </a>
+                  </div>
+                  <div className="link-icon">
+                    <a
+                      id="linkeldnlink"
+                      href="https://www.linkedin.com/in/akialex/"
+                    >
+                      <img src="linkedin-brands.svg" alt="linkedin"></img>
+                      LinkedIn
+                    </a>
+                  </div>
                 </div>
               </div>
               <div id="form">
@@ -104,7 +113,7 @@ const ContactPage = () => {
                       className="confirmation-photo"
                       onClick={(e) => e.stopPropagation()}
                     >
-                      <img src="/IwF.png" alt="sent" />
+                      <img src="/IwF.jpg" alt="sent" />
                     </div>
                   </div>
                 )}
@@ -118,7 +127,7 @@ const ContactPage = () => {
           </div>
         </main>
         <div className="row developer">
-          <p>Design and Development by Natalia Ivakina © ~ 2025</p>
+          <p>Design and Development by Natalia Ivakina ~ 2025</p>
         </div>
       </div>
     </>

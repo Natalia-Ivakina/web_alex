@@ -44,7 +44,7 @@
 
 .top-transparent,
 .bottom-transparent {
-  background-image: url("../../public/bg.png");
+  background-image: url("../../public/BG_2.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -158,5 +158,6 @@
 
   #smallName {
     margin-top: -0.5em;
+    margin-bottom: 2rem;
   }
 }

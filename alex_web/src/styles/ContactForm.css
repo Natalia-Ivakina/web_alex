@@ -34,7 +34,6 @@ input {
 
 #contact {
   text-align: center;
-  width: 20%;
 }
 
 #contact div {
@@ -55,24 +54,27 @@ input {
   justify-content: space-between;
 }
 
-#youtubelink,
-#linkeldnlink,
-#artstationlink {
-  display: inline-block;
+.link-icon img {
+  width: 32px;
+  height: 32px;
+}
+
+.link-icon a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   text-decoration: none;
   font-size: 1.1em;
-  line-height: 1.8em;
   font-weight: 700;
+  color: inherit;
   padding: 0.1em 0.4em;
   transition: background-color 0.3s, color 0.3s;
-  width: fit-content;
-  align-self: flex-start;
+  background-color: #2d3640;
+  border-radius: 0.5em;
 }
 
 #contact a:hover {
-  background-color: #2d3640;
   color: #bfbfbf;
-  border-radius: 0.5em;
 }
 
 #youtubelink {

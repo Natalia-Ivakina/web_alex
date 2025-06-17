@@ -106,7 +106,7 @@ const AboutPage = () => {
           </div>
         </div>
         <div className="row developer">
-          <p>Design and Development by Natalia Ivakina © ~ 2025</p>
+          <p>Design and Development by Natalia Ivakina ~ 2025</p>
         </div>
       </div>
     </>

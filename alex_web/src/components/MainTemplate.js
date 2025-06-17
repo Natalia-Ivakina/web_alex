@@ -178,7 +178,7 @@ const MainTemplate = ({ apiType }) => {
       <div className="empty-cell"></div>
       <div className="empty-cell"></div>
       <div className="photo-cell">
-        <img src="./mark.png" id="photomark" alt=""></img>
+        <img src="./Mark.png" id="photomark" alt=""></img>
       </div>
       <div className="photo-cell"></div>
       <div className="photo-cell"></div>
@@ -232,7 +232,7 @@ const MainTemplate = ({ apiType }) => {
         </div>
         <div className="info">
           <div className="row developer" id="homeFooter">
-            <p>Design and Development by Natalia Ivakina © ~ 2025</p>
+            <p>Design and Development by Natalia Ivakina ~ 2025</p>
           </div>
         </div>
       </div>
@@ -289,6 +289,8 @@ const MainTemplate = ({ apiType }) => {
         <div className="light-cell"></div>
         <div className="light-cell"></div>
         <div className="light-cell"></div>
+        <div className="light-cell"></div>
+        <div className="light-cell"></div>
       </div>
       <div className="empty-cell">
         <MainCard
@@ -308,6 +310,8 @@ const MainTemplate = ({ apiType }) => {
         <div className="light-cell"></div>
         <div className="light-cell"></div>
         <div className="light-cell"></div>
+        <div className="light-cell"></div>
+        <div className="light-cell"></div>
       </div>
       <div className="empty-cell"></div>
       <div className="logo-cell">
@@ -315,6 +319,8 @@ const MainTemplate = ({ apiType }) => {
       </div>
       <div className="empty-cell"></div>
       <div className="empty-cell">
+        <div className="light-cell"></div>
+        <div className="light-cell"></div>
         <div className="light-cell"></div>
         <div className="light-cell"></div>
         <div className="light-cell"></div>
@@ -337,6 +343,8 @@ const MainTemplate = ({ apiType }) => {
         <div className="light-cell"></div>
         <div className="light-cell"></div>
         <div className="light-cell"></div>
+        <div className="light-cell"></div>
+        <div className="light-cell"></div>
       </div>
       <div className="empty-cell"></div>
       <div className="logo-cell">
@@ -344,6 +352,8 @@ const MainTemplate = ({ apiType }) => {
       </div>
       <div className="empty-cell"></div>
       <div className="empty-cell">
+        <div className="light-cell"></div>
+        <div className="light-cell"></div>
         <div className="light-cell"></div>
         <div className="light-cell"></div>
         <div className="light-cell"></div>
@@ -367,6 +377,8 @@ const MainTemplate = ({ apiType }) => {
         <div className="light-cell"></div>
         <div className="light-cell"></div>
         <div className="light-cell"></div>
+        <div className="light-cell"></div>
+        <div className="light-cell"></div>
       </div>
       <div className="empty-cell"></div>
       <div className="logo-cell">
@@ -374,6 +386,8 @@ const MainTemplate = ({ apiType }) => {
       </div>
       <div className="empty-cell"></div>
       <div className="empty-cell">
+        <div className="light-cell"></div>
+        <div className="light-cell"></div>
         <div className="light-cell"></div>
         <div className="light-cell"></div>
         <div className="light-cell"></div>
@@ -397,6 +411,8 @@ const MainTemplate = ({ apiType }) => {
         <div className="light-cell"></div>
         <div className="light-cell"></div>
         <div className="light-cell"></div>
+        <div className="light-cell"></div>
+        <div className="light-cell"></div>
       </div>
       <div className="empty-cell"></div>
       <div className="logo-cell">
@@ -404,6 +420,8 @@ const MainTemplate = ({ apiType }) => {
       </div>
       <div className="empty-cell"></div>
       <div className="empty-cell">
+        <div className="light-cell"></div>
+        <div className="light-cell"></div>
         <div className="light-cell"></div>
         <div className="light-cell"></div>
         <div className="light-cell"></div>
@@ -427,6 +445,8 @@ const MainTemplate = ({ apiType }) => {
         <div className="light-cell"></div>
         <div className="light-cell"></div>
         <div className="light-cell"></div>
+        <div className="light-cell"></div>
+        <div className="light-cell"></div>
       </div>
       <div className="empty-cell"></div>
       <div className="logo-cell">
@@ -434,6 +454,8 @@ const MainTemplate = ({ apiType }) => {
       </div>
       <div className="empty-cell"></div>
       <div className="empty-cell">
+        <div className="light-cell"></div>
+        <div className="light-cell"></div>
         <div className="light-cell"></div>
         <div className="light-cell"></div>
         <div className="light-cell"></div>
@@ -457,6 +479,8 @@ const MainTemplate = ({ apiType }) => {
         <div className="light-cell"></div>
         <div className="light-cell"></div>
         <div className="light-cell"></div>
+        <div className="light-cell"></div>
+        <div className="light-cell"></div>
       </div>
       <div className="empty-cell"></div>
       <div className="logo-cell">
@@ -464,6 +488,8 @@ const MainTemplate = ({ apiType }) => {
       </div>
       <div className="empty-cell"></div>
       <div className="empty-cell">
+        <div className="light-cell"></div>
+        <div className="light-cell"></div>
         <div className="light-cell"></div>
         <div className="light-cell"></div>
         <div className="light-cell"></div>
@@ -483,6 +509,8 @@ const MainTemplate = ({ apiType }) => {
         />
       </div>
       <div className="empty-cell">
+        <div className="light-cell"></div>
+        <div className="light-cell"></div>
         <div className="light-cell"></div>
         <div className="light-cell"></div>
         <div className="light-cell"></div>

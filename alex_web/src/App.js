@@ -18,7 +18,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="background-img">
-        <img src="/bg.png" alt="background" />
+        <img src="/BG_2.jpg" alt="background" />
       </div>
       <BrowserRouter>
         <div>
