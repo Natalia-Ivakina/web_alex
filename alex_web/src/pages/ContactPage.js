@@ -1,34 +1,21 @@
 import React, { useEffect, useState } from "react";
+import { useForm, ValidationError } from "@formspree/react";
 import NavBar from "../components/NavBar";
 import "../styles/ContactForm.css";
 
 const ContactPage = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [subject, setSubject] = useState("");
-  const [message, setMessage] = useState("");
+  const [state, handleSubmit] = useForm("xovlalwr");
   const [showPhoto, setShowPhoto] = useState(false);
-  const [sent, setSent] = useState(false);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    setName("");
-    setEmail("");
-    setSubject("");
-    setMessage("");
-    setShowPhoto(true);
-    setSent(true);
-  };
 
   useEffect(() => {
-    if (showPhoto) {
+    if (state.succeeded) {
+      setShowPhoto(true);
       const timer = setTimeout(() => {
         setShowPhoto(false);
       }, 100000);
       return () => clearTimeout(timer);
     }
-  }, [showPhoto]);
+  }, [state.succeeded]);
 
   return (
     <>
@@ -72,38 +59,72 @@ const ContactPage = () => {
               </div>
               <div id="form">
                 <div className="contact-text">Or use the form:</div>
-                <form id="input" onSubmit={handleSubmit}>
-                  <input
-                    type="text"
-                    placeholder="Name*"
-                    required
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                  />
-                  <input
-                    type="email"
-                    placeholder="Email*"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                  <input
-                    type="text"
-                    placeholder="Subject"
-                    value={subject}
-                    onChange={(e) => setSubject(e.target.value)}
-                  />
-                  <textarea
-                    placeholder="Message*"
-                    rows={10}
-                    required
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                  />
-                  <button type="submit" id="sendBtn">
-                    Send
-                  </button>
-                </form>
+                {state.succeeded ? (
+                  <div className="confirmation-text">
+                    <p>Your message was sent!</p>
+                  </div>
+                ) : (
+                  <form id="input" onSubmit={handleSubmit}>
+                    <input
+                      id="name"
+                      type="text"
+                      name="name"
+                      placeholder="Name*"
+                      required
+                    />
+                    <ValidationError
+                      prefix="Name"
+                      field="name"
+                      errors={state.errors}
+                    />
+
+                    <input
+                      id="email"
+                      type="email"
+                      name="email"
+                      placeholder="Email*"
+                      required
+                    />
+                    <ValidationError
+                      prefix="Email"
+                      field="email"
+                      errors={state.errors}
+                    />
+
+                    <input
+                      id="subject"
+                      type="text"
+                      name="subject"
+                      placeholder="Subject"
+                    />
+                    <ValidationError
+                      prefix="Subject"
+                      field="subject"
+                      errors={state.errors}
+                    />
+
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows={10}
+                      placeholder="Message*"
+                      required
+                    />
+                    <ValidationError
+                      prefix="Message"
+                      field="message"
+                      errors={state.errors}
+                    />
+
+                    <button
+                      type="submit"
+                      id="sendBtn"
+                      disabled={state.submitting}
+                    >
+                      {state.submitting ? "Sending..." : "Send"}
+                    </button>
+                  </form>
+                )}
                 {showPhoto && (
                   <div
                     className="confirmation-overlay"
@@ -115,11 +136,6 @@ const ContactPage = () => {
                     >
                       <img src="/IwF.jpg" alt="sent" />
                     </div>
-                  </div>
-                )}
-                {sent && (
-                  <div className="confirmation-text">
-                    <p>Your message was sent ...</p>
                   </div>
                 )}
               </div>
