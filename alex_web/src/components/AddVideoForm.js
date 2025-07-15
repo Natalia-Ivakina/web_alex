@@ -37,8 +37,9 @@ const AddNewVideoComponent = ({ apiType, onAddVideo }) => {
       name: title,
       link: link,
       color: "fff",
-      description: description,
-    }; //default color
+      //description: description,
+      description: "",
+    }; //default color, empty description
 
     try {
       const response = await addVideo(newVideo, apiType);
@@ -69,13 +70,13 @@ const AddNewVideoComponent = ({ apiType, onAddVideo }) => {
             onChange={(e) => setLink(e.target.value)}
             required
           ></input>
-          <input
+          {/* <input
             type="text"
             placeholder="Description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             required
-          ></input>
+          ></input> */}
         </div>
         <div className="row">
           <button type="submit">Save</button>

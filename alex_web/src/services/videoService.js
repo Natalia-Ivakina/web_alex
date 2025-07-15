@@ -125,6 +125,31 @@ export const changeIconColor = async (videoName, newColor, apiType) => {
 };
 
 /**
+ * CHANGE THE VIDEO DESC
+ * @param videoName
+ * @param newColor
+ * @param apiType
+ * @returns {Promise<any>}
+ */
+export const editVideoDesc = async (videoName, newDesc, apiType) => {
+  try {
+    const response = await axios.put(`/api/${apiType}/desc`, {
+      name: videoName,
+      desc: newDesc,
+    });
+    return response.data;
+  } catch (error) {
+    if (error.response && error.response.status === 403) {
+      // Handle unauthorized access
+      console.error("Unauthorized to edit video desc");
+      throw new Error("You are not authorized to change the video desc.");
+    }
+    //console.error("Error changing video desc:", error);
+    throw new Error("Failed to change video desc");
+  }
+};
+
+/**
  * REPLACE VIDEO
  * @param index
  * @param link

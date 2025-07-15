@@ -3,9 +3,11 @@ import {
   changeIconColor,
   deleteVideo,
   reorderVideo,
+  editVideoDesc,
 } from "../services/videoService";
 import "../styles/ManageVideoForm.css";
 import ColorPickerButton from "./ChangeColor";
+import EditVideoDescComponent from "./EditVideoDescription";
 
 const ManageVideoFormComponent = ({
   videoName,
@@ -14,6 +16,7 @@ const ManageVideoFormComponent = ({
   onDelete,
   onReorder,
   onChangeColor,
+  onEditDesc,
 }) => {
   const [error, setError] = useState(null);
   const [newIndex, setNewIndex] = useState("");
@@ -73,6 +76,18 @@ const ManageVideoFormComponent = ({
     }
   };
 
+  const handleVideoDesc = async (desc) => {
+    setError(null);
+    try {
+      const response = await editVideoDesc(videoName, desc, apiType);
+      onActionComplete(response.message);
+      onEditDesc(response.videos);
+    } catch (err) {
+      onActionComplete(err.message);
+      setError(err);
+    }
+  };
+
   return (
     <div className="adminPanel">
       {/* delete */}
@@ -103,6 +118,9 @@ const ManageVideoFormComponent = ({
 
       {/* Color Picker */}
       <ColorPickerButton onColorChange={handleIconColor} />
+
+      {/* Description */}
+      <EditVideoDescComponent onSaveDesc={handleVideoDesc} />
 
       {/* reorder */}
       <div className="reorder">

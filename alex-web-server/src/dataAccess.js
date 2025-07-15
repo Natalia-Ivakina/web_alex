@@ -72,6 +72,24 @@ function reorderVideo(dir, videoName, newIndex) {
   fs.writeFileSync(dir, JSON.stringify(videoList, null, 2), "utf8");
 }
 
+//edit Video description
+function editVideoDesc(dir, videoName, newDesc) {
+  let videoList = loadJsonData(dir);
+  if (!videoList || videoList.length === 0) {
+    return;
+  }
+
+  // Find the video
+  const changingVideo = videoList.findIndex(
+    (video) => video.name === videoName
+  );
+  //set new desc
+  videoList[changingVideo].description = newDesc;
+
+  // Write the updated list back to the file
+  fs.writeFileSync(dir, JSON.stringify(videoList, null, 2), "utf8");
+}
+
 // Edit data
 function changeVideosPerPage(dir, pageName, newData) {
   let data = loadJsonData(dir);
@@ -167,4 +185,5 @@ module.exports = {
   changeTextData,
   changeIconColor,
   replaceVideo,
+  editVideoDesc,
 };

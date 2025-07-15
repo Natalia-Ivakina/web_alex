@@ -42,6 +42,7 @@ const VideoPageTemplate = ({ apiType }) => {
       videosPerPage={videosPerPage}
       addVideos={afterCRUDVideo}
       changeColor={afterCRUDVideo}
+      editDesc={afterCRUDVideo}
     />
   );
 };

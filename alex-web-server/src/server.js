@@ -14,6 +14,7 @@ const {
   changeTextData,
   changeIconColor,
   replaceVideo,
+  editVideoDesc,
 } = require("./dataAccess.js");
 
 const app = express();
@@ -210,7 +211,7 @@ app.put("/api/:category/color", authMiddleware, (req, res) => {
   }
 
   try {
-    const newColor = req.body;
+    //const newColor = req.body;
     changeIconColor(filePath, name, color);
     const videos = loadJsonData(filePath); // new list
     res.status(201).json({
@@ -221,6 +222,33 @@ app.put("/api/:category/color", authMiddleware, (req, res) => {
     res
       .status(500)
       .json({ message: "Error updating color", error: error.message });
+  }
+});
+
+/**
+ * Change the video desc
+ */
+app.put("/api/:category/desc", authMiddleware, (req, res) => {
+  const { category } = req.params;
+  const { name, desc } = req.body;
+  const filePath = videoPaths[category];
+
+  if (!filePath) {
+    return res.status(404).json({ message: "Category not found" });
+  }
+
+  try {
+    //const newDesc = req.body;
+    editVideoDesc(filePath, name, desc);
+    const videos = loadJsonData(filePath); // new list
+    res.status(201).json({
+      message: `Desc of "${name}" updated successfully`,
+      videos,
+    });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Error updating descpription", error: error.message });
   }
 });
 

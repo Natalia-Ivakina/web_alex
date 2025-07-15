@@ -18,6 +18,7 @@ const VideoList = ({
   videosPerPage: externalVideosPerPage,
   addVideos,
   changeColor,
+  editDesc,
 }) => {
   const queryClient = useQueryClient();
   const [message, setMessage] = useState("");
@@ -180,6 +181,7 @@ const VideoList = ({
                         onDelete={deleteVideos}
                         onReorder={reorderVideos}
                         onChangeColor={changeColor}
+                        onEditDesc={editDesc}
                       />
                     </div>
                   )}
