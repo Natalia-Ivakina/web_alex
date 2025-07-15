@@ -162,7 +162,9 @@ const VideoList = ({
                 <div key={project.name} className="video-item">
                   {isAuthenticated && (
                     <div>
-                      <p>Video # {index + 1}</p>
+                      <p>
+                        Video # {index + 1}: {project.description}
+                      </p>
                     </div>
                   )}
                   <VideoCard

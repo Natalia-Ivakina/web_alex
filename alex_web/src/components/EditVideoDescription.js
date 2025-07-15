@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import "../styles/ManageVideoForm.css";
 
-const EditVideoDescComponent = ({ onSaveDesc }) => {
+const EditVideoDescComponent = ({ onSaveDesc, desc }) => {
   const DescInputRef = useRef(null);
   const [newDesc, setNewDesc] = useState("");
 
@@ -17,17 +17,18 @@ const EditVideoDescComponent = ({ onSaveDesc }) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="form-container ">
+      <form onSubmit={handleSubmit} className="reorder">
         <div>
           <input
             type="text"
+            className="desc"
             placeholder="Description"
             value={newDesc}
             onChange={(e) => setNewDesc(e.target.value)}
           ></input>
         </div>
-        <div className="row">
-          <button type="submit">Save</button>
+        <div>
+          <button type="submit">Edit</button>
         </div>
       </form>
     </>

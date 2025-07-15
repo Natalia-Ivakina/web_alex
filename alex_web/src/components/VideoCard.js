@@ -36,7 +36,10 @@ const VideoCard = ({ videoId, title, color, description }) => {
         </div>
       ) : (
         <div className="video-img" onClick={() => setShowVideo(true)}>
-          {/* <span className="tooltip-desc">{title}</span> */}
+          {/* tooltip */}
+          {description?.length > 0 && (
+            <span className="tooltipdesc">{description}</span>
+          )}
           <img
             src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
             alt={title}

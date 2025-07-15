@@ -91,7 +91,7 @@ const ManageVideoFormComponent = ({
   return (
     <div className="adminPanel">
       {/* delete */}
-      <div style={{ width: "170px" }}>
+      <div style={{ width: "130px" }}>
         {!isModalOpen && (
           <div>
             <button className="deleteButton" onClick={handleDelete}>
@@ -106,18 +106,15 @@ const ManageVideoFormComponent = ({
             <div className="modal-content">
               <p>Delete?</p>
               <button id={"confirm"} onClick={confirmDelete}>
-                Yes
+                Y
               </button>
               <button id={"cancel"} onClick={cancelDelete}>
-                No
+                N
               </button>
             </div>
           </div>
         )}
       </div>
-
-      {/* Color Picker */}
-      <ColorPickerButton onColorChange={handleIconColor} />
 
       {/* Description */}
       <EditVideoDescComponent onSaveDesc={handleVideoDesc} />
@@ -133,6 +130,9 @@ const ManageVideoFormComponent = ({
         />
         <button onClick={handleReorder}>Reorder</button>
       </div>
+
+      {/* Color Picker */}
+      <ColorPickerButton onColorChange={handleIconColor} />
     </div>
   );
 };
