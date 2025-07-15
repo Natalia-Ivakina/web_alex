@@ -48,7 +48,7 @@ const VideoCard = ({
             <iframe
               width="100%"
               height="100%"
-              src={`https://www.youtube.com/embed/${videoId}?autoplay=0&modestbranding=1&controls=0&rel=0`}
+              src={`https://www.youtube.com/embed/${videoId}?autoplay=1&modestbranding=1&controls=1&rel=0`}
               allow="autoplay; encrypted-media"
               allowFullScreen
             ></iframe>
