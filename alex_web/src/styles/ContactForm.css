@@ -1,62 +1,77 @@
 .wrapper-contact {
   display: flex;
   flex-direction: column;
+  /* border: solid 1px white; */
   align-items: center;
+  background-color: rgba(2, 2, 2, 0.3);
+  border-radius: 0.5em;
 }
 
 .contact-form {
   display: flex;
-  flex-direction: row;
-  width: 100%;
+  flex-direction: column;
+  width: 50%;
   gap: 15%;
   justify-content: center;
+  align-items: center;
   margin-top: 0.2em;
   font-size: 0.9em;
-  background-color: rgba(2, 2, 2, 0.3);
-  border-radius: 0.5em;
   box-shadow: 0px 0px 0px 0px rgba(245, 245, 245, 1);
-  padding: 2rem 0;
+  /* padding: 2rem 0; */
+  /* border: solid 1px white; */
 }
 
 #form {
-  /* border: solid 1px white; */
   margin-bottom: 20px;
+  /* margin-top: 2rem; */
+  /* border: solid 1px white; */
+  width: 70%;
 }
 
 input {
-  height: 1.3rem;
+  min-height: 1.3rem;
+  width: 100%;
+  min-width: 200px;
+  max-width: 800px;
+  box-sizing: border-box;
+}
+
+textarea {
+  width: 100%;
+  min-width: 200px;
+  max-width: 800px;
+  min-height: 100px;
+  max-height: 400px;
+  box-sizing: border-box;
 }
 
 #sendBtn {
-  display: flex;
-  justify-self: end;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
 }
 
 #contact {
   text-align: center;
+  /* border: solid 1px white; */
+  width: 100%;
 }
 
 #contact div {
   display: flex;
-  flex-direction: column;
-  gap: 0.5em;
-  text-align: left;
+  flex-direction: row;
+  gap: 1em;
+  justify-content: center;
 }
 
 .contact-text {
   margin: 1em 0;
   white-space: nowrap;
-}
-
-#links {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  text-align: center;
 }
 
 .link-icon img {
-  width: 32px;
-  height: 32px;
+  width: 22px;
+  height: 22px;
 }
 
 .link-icon a {
@@ -65,9 +80,9 @@ input {
   gap: 10px;
   text-decoration: none;
   font-size: 1.1em;
-  font-weight: 700;
+  /* font-weight: 700; */
   color: inherit;
-  padding: 0.1em 0.4em;
+  padding: 0.3em 0.4em;
   transition: background-color 0.3s, color 0.3s;
   background-color: #2d3640;
   border-radius: 0.5em;
@@ -118,7 +133,7 @@ input {
   left: 50%;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   #youtubelink,
   #linkeldnlink,
   #artstationlink {
@@ -136,4 +151,17 @@ input {
   #form div {
     text-align: center;
   }
+
+  /* #contact div {
+    flex-direction: column;
+    gap: 0.5em;
+    align-items: center;
+  }
+
+  .link-icon {
+    
+    width: 100%;
+    background-color: #2d3640;
+    border-radius: 0.5em;
+  } */
 }

@@ -13,7 +13,6 @@ const LoginPage = () => {
       <NavBar />
       <div className="wrapper">
         <div className="developer-container">
-          <p>For Admin Only</p>
           <LoginButtonComponent />
         </div>
       </div>

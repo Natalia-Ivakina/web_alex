@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { loadPageText } from "../services/pageTextService";
 import { EditPageTextComponent } from "../components/EditPageTextForm";
@@ -97,8 +98,11 @@ const AboutPage = () => {
                 <img src="/textme.png" alt="logo" />
               </p>
             </div>
+
             <div id="arrow">
-              <img src="/arrow.png" alt="logo" />
+              <Link to="/kosh">
+                <img src="/arrow.png" alt="logo" />
+              </Link>
             </div>
             <div id="logo">
               <img src="/logome.png" alt="logo" />

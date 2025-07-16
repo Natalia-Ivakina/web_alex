@@ -1,23 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { login, logout, checkAuth } from "../services/loginService"; // Import the login services
 import LoginFormComponent from "./LoginForm";
+import LogoutButtonComponent from "../components/LogoutButton";
+import { useAuth } from "../contexts/AuthContext";
 
 const LoginButtonComponent = () => {
   const [isLoginVisible, setIsLoginVisible] = useState(false);
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  const { isAuthenticated, login } = useAuth();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
-  // Check if the user is logged
-  useEffect(() => {
-    checkAuth()
-      .then((authenticated) => {
-        setIsUserLoggedIn(authenticated);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
 
   const handleAdminClick = () => {
     setIsLoginVisible(!isLoginVisible);
@@ -26,19 +16,10 @@ const LoginButtonComponent = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const result = await login(username, password);
-      setIsUserLoggedIn(true);
+      await login(username, password);
+      setIsLoginVisible(false);
     } catch (error) {
       alert("Login failed");
-    }
-  };
-
-  const handleLogout = async () => {
-    try {
-      await logout(); // Call logout service
-      setIsUserLoggedIn(false);
-    } catch (error) {
-      alert("Logout failed");
     }
   };
 
@@ -48,7 +29,7 @@ const LoginButtonComponent = () => {
         <img src="/logome.png" alt="Login" />
       </button>
 
-      {isLoginVisible && !isUserLoggedIn && (
+      {isLoginVisible && !isAuthenticated && (
         <div className="login-form-container">
           <LoginFormComponent
             username={username}
@@ -60,10 +41,10 @@ const LoginButtonComponent = () => {
         </div>
       )}
 
-      {isUserLoggedIn && (
+      {isAuthenticated && (
         <div className="login-form">
           <p>Hi, Admin!</p>
-          <button onClick={handleLogout}>Logout</button>
+          <LogoutButtonComponent />
         </div>
       )}
     </div>

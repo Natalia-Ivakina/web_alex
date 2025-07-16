@@ -25,40 +25,8 @@ const ContactPage = () => {
           <div className="headertext">WANNA WORK TOGETHER?</div>
           <div className="wrapper-contact">
             <div className="contact-form">
-              <div id="contact">
-                <div className="contact-text">Find me here:</div>
-                <div id="links">
-                  <div className="link-icon">
-                    <a
-                      id="artstationlink"
-                      href="https://www.artstation.com/alexboy"
-                    >
-                      <img src="artstation-brands.svg" alt="artstation" />
-                      ArtStation
-                    </a>
-                  </div>
-                  <div className="link-icon">
-                    <a
-                      id="youtubelink"
-                      href="https://www.youtube.com/user/AlexboyAMV"
-                    >
-                      <img src="youtube-brands.svg" alt="youtube"></img>
-                      Youtube
-                    </a>
-                  </div>
-                  <div className="link-icon">
-                    <a
-                      id="linkeldnlink"
-                      href="https://www.linkedin.com/in/akialex/"
-                    >
-                      <img src="linkedin-brands.svg" alt="linkedin"></img>
-                      LinkedIn
-                    </a>
-                  </div>
-                </div>
-              </div>
               <div id="form">
-                <div className="contact-text">Or use the form:</div>
+                <div className="contact-text">Send me a message:</div>
                 {state.succeeded ? (
                   <div className="confirmation-text">
                     <p>Your message was sent!</p>
@@ -125,6 +93,35 @@ const ContactPage = () => {
                     </button>
                   </form>
                 )}
+                <div id="contact">
+                  {/* <div className="contact-text">Find me here:</div> */}
+                  <div id="links">
+                    <div className="link-icon">
+                      <a
+                        id="artstationlink"
+                        href="https://www.artstation.com/alexboy"
+                      >
+                        <img src="artstation-brands.svg" alt="artstation" />
+                      </a>
+                    </div>
+                    <div className="link-icon">
+                      <a
+                        id="youtubelink"
+                        href="https://www.youtube.com/user/AlexboyAMV"
+                      >
+                        <img src="youtube-brands.svg" alt="youtube"></img>
+                      </a>
+                    </div>
+                    <div className="link-icon">
+                      <a
+                        id="linkeldnlink"
+                        href="https://www.linkedin.com/in/akialex/"
+                      >
+                        <img src="linkedin-brands.svg" alt="linkedin"></img>
+                      </a>
+                    </div>
+                  </div>
+                </div>
                 {showPhoto && (
                   <div
                     className="confirmation-overlay"

@@ -3,6 +3,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { checkAuth } from "../services/loginService";
 import { EditPageTextComponent } from "./EditPageTextForm";
 import { loadPageText } from "../services/pageTextService";
+import { useAuth } from "../contexts/AuthContext";
 import PageTextComponent from "./PageText";
 import AddNewVideoComponent from "./AddVideoForm";
 import ManageVideoFormComponent from "../components/ManageVideoForm";
@@ -20,25 +21,14 @@ const VideoList = ({
   changeColor,
   editDesc,
 }) => {
+  const { isAuthenticated } = useAuth();
+
   const queryClient = useQueryClient();
   const [message, setMessage] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [internalVideosPerPage, setInternalVideosPerPage] = useState(
     externalVideosPerPage || 4
   ); // Default 4 videos per page
-
-  // Check if the user is authenticated
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  useEffect(() => {
-    checkAuth()
-      .then((authenticated) => {
-        setIsAuthenticated(authenticated);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
 
   // Fetch the initial page text
   const {

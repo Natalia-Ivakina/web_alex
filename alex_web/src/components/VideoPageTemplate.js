@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { loadVideos } from "../services/videoService";
 import { loadVideoCount } from "../services/videoPerPageService";
+import LogoutButtonComponent from "../components/LogoutButton";
 import VideoList from "./VideoList";
 
 const VideoPageTemplate = ({ apiType }) => {
@@ -34,16 +35,19 @@ const VideoPageTemplate = ({ apiType }) => {
   if (videosError || countError) return <div>Error loading videos</div>;
 
   return (
-    <VideoList
-      videos={videos}
-      apiType={apiType}
-      deleteVideos={afterCRUDVideo}
-      reorderVideos={afterCRUDVideo}
-      videosPerPage={videosPerPage}
-      addVideos={afterCRUDVideo}
-      changeColor={afterCRUDVideo}
-      editDesc={afterCRUDVideo}
-    />
+    <>
+      <LogoutButtonComponent></LogoutButtonComponent>
+      <VideoList
+        videos={videos}
+        apiType={apiType}
+        deleteVideos={afterCRUDVideo}
+        reorderVideos={afterCRUDVideo}
+        videosPerPage={videosPerPage}
+        addVideos={afterCRUDVideo}
+        changeColor={afterCRUDVideo}
+        editDesc={afterCRUDVideo}
+      />
+    </>
   );
 };
 
