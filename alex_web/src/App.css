@@ -243,7 +243,6 @@ textarea {
 .row.developer {
   display: flex;
   justify-content: center;
-  align-items: center;
   color: dimgrey;
   font-size: 0.6em;
 }

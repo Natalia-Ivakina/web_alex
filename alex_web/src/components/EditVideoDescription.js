@@ -9,26 +9,23 @@ const EditVideoDescComponent = ({ onSaveDesc, desc }) => {
     e.preventDefault();
     try {
       await onSaveDesc(newDesc);
-    } catch (error) {
-      //setMessage("Error updating description");
-      //todo
-    }
+    } catch (error) {}
   };
 
   return (
     <>
       <form onSubmit={handleSubmit} className="reorder">
         <div>
-          <input
-            type="text"
-            className="desc"
+          <textarea
+            ref={DescInputRef}
+            id="description"
             placeholder="Description"
             value={newDesc}
             onChange={(e) => setNewDesc(e.target.value)}
-          ></input>
+          />
         </div>
         <div>
-          <button type="submit">Edit</button>
+          <button type="submit">Save</button>
         </div>
       </form>
     </>

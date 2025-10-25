@@ -7,6 +7,7 @@ import { checkAuth } from "../services/loginService";
 import NavBar from "../components/NavBar";
 import "../styles/About.css";
 import ContactIconsComponent from "../components/ContactIcons";
+import LogoutButtonComponent from "../components/LogoutButton";
 
 const AboutPage = () => {
   const queryClient = useQueryClient();
@@ -68,7 +69,9 @@ const AboutPage = () => {
   return (
     <>
       <NavBar />
+
       <div className="wrapper">
+        <LogoutButtonComponent></LogoutButtonComponent>
         <main>
           {isAuthenticated && (
             <div className="adminlayout">
@@ -113,9 +116,9 @@ const AboutPage = () => {
             </div>
           </div>
         </div>
-        <div className="row developer">
+        {/* <div className="row developer">
           <p>Design and Development by Natalia Ivakina ~ 2025</p>
-        </div>
+        </div> */}
       </div>
     </>
   );

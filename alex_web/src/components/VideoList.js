@@ -91,9 +91,6 @@ const VideoList = ({
     };
   }, []);
 
-  //if (isTextLoading) return <div>Loading page text...</div>;
-  //if (textError) return <div>Error loading text</div>;
-
   useEffect(() => {
     if (message) {
       const timer = setTimeout(() => {
@@ -102,6 +99,26 @@ const VideoList = ({
       return () => clearTimeout(timer);
     }
   }, [message]);
+
+  //get YouTube Id
+  function getYouTubeId(link) {
+    try {
+      const url = new URL(link);
+
+      if (url.searchParams.has("v")) {
+        return url.searchParams.get("v");
+      }
+
+      if (url.hostname === "youtu.be") {
+        return url.pathname.slice(1);
+      }
+
+      return null;
+    } catch (error) {
+      console.error("Invalid URL", error);
+      return null;
+    }
+  }
 
   return (
     <div className="page-container">
@@ -144,16 +161,12 @@ const VideoList = ({
         <div className="video-grid">
           {currentVideos.length > 0 ? (
             currentVideos.map((project, index) => {
-              const videoId = new URLSearchParams(
-                new URL(project.link).search
-              ).get("v");
+              const videoId = getYouTubeId(project.link);
               return (
                 <div key={project.name} className="video-item">
                   {isAuthenticated && (
                     <div>
-                      <p>
-                        Video # {index + 1}: {project.description}
-                      </p>
+                      <p>Video # {index + 1}</p>
                     </div>
                   )}
                   <VideoCard

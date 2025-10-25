@@ -3,6 +3,7 @@ import { useForm, ValidationError } from "@formspree/react";
 import NavBar from "../components/NavBar";
 import ContactIconsComponent from "../components/ContactIcons";
 import "../styles/ContactForm.css";
+import LogoutButtonComponent from "../components/LogoutButton";
 
 const ContactPage = () => {
   const [state, handleSubmit] = useForm("xovlalwr");
@@ -23,6 +24,7 @@ const ContactPage = () => {
       <NavBar />
       <div className="wrapper">
         <main>
+          <LogoutButtonComponent></LogoutButtonComponent>
           <div className="headertext">WANNA WORK TOGETHER?</div>
           <div className="wrapper-contact">
             <div className="contact-form">
@@ -112,9 +114,9 @@ const ContactPage = () => {
             </div>
           </div>
         </main>
-        <div className="row developer">
+        {/* <div className="row developer">
           <p>Design and Development by Natalia Ivakina ~ 2025</p>
-        </div>
+        </div> */}
       </div>
     </>
   );

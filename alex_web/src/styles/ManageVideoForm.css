@@ -26,13 +26,17 @@
   margin: 0;
 }
 
-.desc {
+#description {
   padding: 6px 12px;
-  height: 2.2em;
   width: 10em;
   box-sizing: border-box;
   border: none;
   margin: 0;
+  resize: none;
+  min-width: 10em;
+  max-width: 10em;
+  min-height: 2.2em;
+  max-height: 2.2em;
 }
 
 .reorder {
@@ -90,7 +94,6 @@
   width: 100%;
   background: #394652;
   color: #84a4c9;
-  padding: 6px 10px;
   font-size: 0.9em;
   border-radius: 4px 4px 0 0;
   opacity: 0;
@@ -98,7 +101,9 @@
   transition: opacity 0.3s ease, top 0.3s ease;
   z-index: 10;
   text-align: center;
-  white-space: nowrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
 }
 
 .video-img:hover .tooltipdesc {

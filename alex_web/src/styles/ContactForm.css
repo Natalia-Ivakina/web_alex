@@ -17,13 +17,11 @@
   margin-top: 0.2em;
   font-size: 0.9em;
   box-shadow: 0px 0px 0px 0px rgba(245, 245, 245, 1);
-  /* padding: 2rem 0; */
   /* border: solid 1px white; */
 }
 
 #form {
   margin-bottom: 20px;
-  /* margin-top: 2rem; */
   /* border: solid 1px white; */
   width: 70%;
 }
@@ -50,6 +48,7 @@ textarea {
 #sendBtn {
   margin-top: 1rem;
   margin-bottom: 2rem;
+  justify-self: end;
 }
 
 #contact {
@@ -119,25 +118,6 @@ textarea {
   border-radius: 0.5em;
 }
 
-/*#contact a:hover {
-  color: #bfbfbf;
-}
-
-#youtubelink {
-  color: #b34141;
-  font-family: "Montserrat", Arial, sans-serif;
-}
-
-#artstationlink {
-  color: #2975cc;
-  font-family: "Georgia", serif;
-}
-
-#linkeldnlink {
-  color: #1180db;
-  font-family: "Arial", Arial, sans-serif;
-} */
-
 .confirmation-text {
   font-size: 0.8em;
 }
@@ -182,17 +162,4 @@ textarea {
   #form div {
     text-align: center;
   }
-
-  /* #contact div {
-    flex-direction: column;
-    gap: 0.5em;
-    align-items: center;
-  }
-
-  .link-icon {
-    
-    width: 100%;
-    background-color: #2d3640;
-    border-radius: 0.5em;
-  } */
 }

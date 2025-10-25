@@ -1,32 +1,44 @@
 [
   {
-    "name": "Day 02 – Long forgotten...",
-    "link": "https://www.youtube.com/watch?v=YMrUpHefpDs&t=3s",
-    "color": "a03737",
-    "description": "tetettettte ttettete tetetettetetettetete ttetetetetettetet ttetettetetet etetttet etetettetettetetetettetettetette eggegegtger egrgehrgehgrhegrhegrgeruer"
+    "name": "Storm",
+    "link": "https://www.youtube.com/watch?v=6-HRNW9jxso",
+    "color": "fff",
+    "description": ""
   },
   {
-    "name": "[ Unreal Engine 5 ] Day 01 – The End of the Universe.",
-    "link": "https://www.youtube.com/watch?v=VS3EE8v5pcY",
-    "color": "0a0a0a",
-    "description": "UE5"
+    "name": "Blooming Flame",
+    "link": "https://www.youtube.com/watch?v=OWZNn1PEtp8",
+    "color": "ffffff",
+    "description": ""
   },
   {
-    "name": "Day 03 – All the Time In the World.",
-    "link": "https://www.youtube.com/watch?v=MjNJ0IbfN-g",
-    "color": "eee8e8",
-    "description": "UE5"
+    "name": " Desert Flower",
+    "link": "https://www.youtube.com/watch?v=tqLGIjackRY",
+    "color": "fff",
+    "description": ""
   },
   {
-    "name": "Perfume Commercial",
-    "link": "https://www.youtube.com/watch?v=hg9jP_rJjd8&t=1s",
-    "color": "f4ecec",
-    "description": "UE5"
+    "name": "Architectural Visualization Project - Unreal Engine 5",
+    "link": "https://www.youtube.com/watch?v=UkGe1nJJb88",
+    "color": "fff",
+    "description": ""
   },
   {
-    "name": "VDB | Burning Things Vol. 1: Geometry",
-    "link": "https://www.youtube.com/watch?v=umnQUXu0gAU",
-    "color": "121212",
+    "name": "Driving School Project Reel",
+    "link": "https://www.youtube.com/watch?v=0PBP7MzDMyo",
+    "color": "fff",
+    "description": ""
+  },
+  {
+    "name": "Universe - Intro Project",
+    "link": "https://www.youtube.com/watch?v=QpjtgUQlhxg",
+    "color": "fff",
+    "description": ""
+  },
+  {
+    "name": "Happy Holidays! 2025",
+    "link": "https://www.youtube.com/watch?v=Cawo91CpOt0",
+    "color": "fff",
     "description": ""
   },
   {
@@ -42,9 +54,87 @@
     "description": ""
   },
   {
+    "name": "UE5 - Proof Of Concept - Another World",
+    "link": "https://www.youtube.com/watch?v=148tmOZKNIc",
+    "color": "fff",
+    "description": ""
+  },
+  {
+    "name": " Bloom - Unreal Engine 5.4",
+    "link": "https://www.youtube.com/watch?v=6HC5NhqMzq8",
+    "color": "fff",
+    "description": ""
+  },
+  {
+    "name": "Perfume Commercial",
+    "link": "https://www.youtube.com/watch?v=hg9jP_rJjd8&t=1s",
+    "color": "f4ecec",
+    "description": ""
+  },
+  {
+    "name": " The Light",
+    "link": "https://www.youtube.com/watch?v=LEJlMCmg7UY",
+    "color": "fff",
+    "description": ""
+  },
+  {
+    "name": "VDB | Burning Things Vol. 1: Geometry",
+    "link": "https://www.youtube.com/watch?v=umnQUXu0gAU",
+    "color": "121212",
+    "description": ""
+  },
+  {
+    "name": "The Wind",
+    "link": "https://www.youtube.com/watch?v=ioWKYhKBnqE",
+    "color": "fff",
+    "description": ""
+  },
+  {
+    "name": " Color Grading and Color Correction - DaVinci Resolve 18",
+    "link": "https://www.youtube.com/watch?v=f3suIn_aiQ0",
+    "color": "fff",
+    "description": ""
+  },
+  {
+    "name": "Color Grading and Compositing | After Effects",
+    "link": "https://www.youtube.com/watch?v=blecmoh0pQY",
+    "color": "fff",
+    "description": ""
+  },
+  {
+    "name": "VFX - Ground Explosions",
+    "link": "https://www.youtube.com/watch?v=JByIX9OtKl0",
+    "color": "fff",
+    "description": ""
+  },
+  {
     "name": "Lumière",
     "link": "https://www.youtube.com/watch?v=SGx_vYfs_P0&t=1s",
     "color": "121212",
+    "description": ""
+  },
+  {
+    "name": "Day 02 – Long forgotten...",
+    "link": "https://www.youtube.com/watch?v=YMrUpHefpDs&t=3s",
+    "color": "081154",
+    "description": ""
+  },
+  {
+    "name": "Day 03 – All the Time In the World.",
+    "link": "https://www.youtube.com/watch?v=MjNJ0IbfN-g",
+    "color": "eee8e8",
+    "description": ""
+  },
+  {
+    "name": "VFX - Aerial Explosions",
+    "link": "https://www.youtube.com/watch?v=e9V_qqnEqyw",
+    "color": "fff",
+    "description": ""
+  },
+  {
+    "name": "Beyond The Horizon - GudX",
+    "link": "https://www.youtube.com/watch?v=-VOMQDBQjfE",
+    "color": "080808",
     "description": ""
   },
   {
@@ -54,9 +144,9 @@
     "description": ""
   },
   {
-    "name": "Beyond The Horizon - GudX",
-    "link": "https://www.youtube.com/watch?v=-VOMQDBQjfE",
-    "color": "080808",
+    "name": "[ Unreal Engine 5 ] Day 01 – The End of the Universe.",
+    "link": "https://www.youtube.com/watch?v=VS3EE8v5pcY",
+    "color": "0a0a0a",
     "description": ""
   },
   {

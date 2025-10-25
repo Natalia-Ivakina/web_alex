@@ -113,11 +113,14 @@
 }
 
 #homeFooter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #202930;
   border-top-left-radius: 35px;
   border-top-right-radius: 35px;
   margin-top: 24px;
-  padding-bottom: 24px;
+  padding: 12px 0;
   width: 100%;
 }
 
