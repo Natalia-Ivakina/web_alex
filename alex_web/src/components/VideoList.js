@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { checkAuth } from "../services/loginService";
 import { EditPageTextComponent } from "./EditPageTextForm";
 import { loadPageText } from "../services/pageTextService";
 import { useAuth } from "../contexts/AuthContext";

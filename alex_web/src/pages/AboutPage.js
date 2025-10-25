@@ -6,6 +6,7 @@ import { EditPageTextComponent } from "../components/EditPageTextForm";
 import { checkAuth } from "../services/loginService";
 import NavBar from "../components/NavBar";
 import "../styles/About.css";
+import ContactIconsComponent from "../components/ContactIcons";
 
 const AboutPage = () => {
   const queryClient = useQueryClient();
@@ -87,6 +88,9 @@ const AboutPage = () => {
                     {line}
                   </p>
                 ))}
+                <div style={{ marginTop: "3rem" }}>
+                  <ContactIconsComponent />
+                </div>
               </div>
             </div>
           </div>

@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { changeIconColor, replaceVideo } from "../services/videoService";
-import "../styles/ManageVideoForm.css";
 import ColorPickerButton from "./ChangeColor";
+import "../styles/ManageVideoForm.css";
 
 const ManageHomeComponent = ({
   index,

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useForm, ValidationError } from "@formspree/react";
 import NavBar from "../components/NavBar";
+import ContactIconsComponent from "../components/ContactIcons";
 import "../styles/ContactForm.css";
 
 const ContactPage = () => {
@@ -93,35 +94,7 @@ const ContactPage = () => {
                     </button>
                   </form>
                 )}
-                <div id="contact">
-                  {/* <div className="contact-text">Find me here:</div> */}
-                  <div id="links">
-                    <div className="link-icon">
-                      <a
-                        id="artstationlink"
-                        href="https://www.artstation.com/alexboy"
-                      >
-                        <img src="artstation-brands.svg" alt="artstation" />
-                      </a>
-                    </div>
-                    <div className="link-icon">
-                      <a
-                        id="youtubelink"
-                        href="https://www.youtube.com/user/AlexboyAMV"
-                      >
-                        <img src="youtube-brands.svg" alt="youtube"></img>
-                      </a>
-                    </div>
-                    <div className="link-icon">
-                      <a
-                        id="linkeldnlink"
-                        href="https://www.linkedin.com/in/akialex/"
-                      >
-                        <img src="linkedin-brands.svg" alt="linkedin"></img>
-                      </a>
-                    </div>
-                  </div>
-                </div>
+                <ContactIconsComponent />
                 {showPhoto && (
                   <div
                     className="confirmation-overlay"

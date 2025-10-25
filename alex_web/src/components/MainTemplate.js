@@ -1,13 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { loadHomeVideos } from "../services/videoService";
-import { checkAuth } from "../services/loginService";
 import MainCard from "./MainCard";
 import NavBar from "./NavBar";
+import { useAuth } from "../contexts/AuthContext";
 import "../styles/VideoCardMain.css";
 import "../styles/Home.css";
+import LogoutButtonComponent from "../components/LogoutButton";
 
 const MainTemplate = ({ apiType }) => {
+  const { isAuthenticated } = useAuth();
+
   const queryClient = useQueryClient();
   const [flippedIndex, setFlippedIndex] = useState(null);
   const cardsRef = useRef([]);
@@ -42,19 +45,6 @@ const MainTemplate = ({ apiType }) => {
     const match = url.match(regex);
     return match ? match[1] : null;
   };
-
-  // Check if the user is authenticated
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  useEffect(() => {
-    checkAuth()
-      .then((authenticated) => {
-        setIsAuthenticated(authenticated);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -98,6 +88,7 @@ const MainTemplate = ({ apiType }) => {
       <div className="empty-cell"></div>
       <div className="photo-cell"></div>
       <div className="film-cell">
+        <LogoutButtonComponent></LogoutButtonComponent>
         <MainCard
           index={0}
           videoId={extractVideoId(videos[0]?.link || "")}
@@ -279,6 +270,7 @@ const MainTemplate = ({ apiType }) => {
       <div className="empty-cell"></div>
       <div className="empty-cell">
         <NavBar />
+        <LogoutButtonComponent></LogoutButtonComponent>
       </div>
       <div className="empty-cell"></div>
       <div className="logo-cell">
